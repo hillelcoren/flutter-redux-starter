@@ -2,6 +2,8 @@
 
 We're using this approach to develop our [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
 
+This codebase provide a sample for basic app initialization but there are also examples of using Redux to manage [CRUD operations](https://github.com/invoiceninja/flutter-mobile/blob/master/lib/redux/client/client_actions.dart) for REST APIs and supporting switching between [multiple accounts](https://github.com/invoiceninja/flutter-mobile/blob/master/lib/redux/app/app_state.dart#L20).
+
 ## Setup
 
 - Clone/fork the repo
