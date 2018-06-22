@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_starter/keys.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
+import 'package:flutter_redux_starter/ui/auth/login_vm.dart';
 
 class LoginView extends StatefulWidget {
-  final bool isLoading;
-  final AuthState authState;
-  final Function(BuildContext, String, String) onLoginPressed;
+  final LoginVM viewModel;
 
   LoginView({
     Key key,
-    @required this.isLoading,
-    @required this.authState,
-    @required this.onLoginPressed,
+    @required this.viewModel,
   }) : super(key: key);
 
   @override
@@ -29,8 +26,8 @@ class _LoginState extends State<LoginView> {
 
   @override
   void didChangeDependencies() {
-    _emailController.text = widget.authState.email;
-    _passwordController.text = widget.authState.password;
+    var authState = widget.viewModel.authState;
+    _emailController.text = authState.email;
 
     super.didChangeDependencies();
   }
@@ -46,7 +43,9 @@ class _LoginState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    if (!widget.authState.isInitialized) {
+    var viewModel = widget.viewModel;
+
+    if (!viewModel.authState.isInitialized) {
       return Container();
     }
 
@@ -80,13 +79,13 @@ class _LoginState extends State<LoginView> {
                       : null,
                   obscureText: true,
                 ),
-                widget.authState.error == null
+                viewModel.authState.error == null
                     ? Container()
                     : Container(
                   padding: EdgeInsets.only(top: 26.0, bottom: 4.0),
                   child: Center(
                     child: Text(
-                      widget.authState.error,
+                      viewModel.authState.error,
                       style: TextStyle(
                         color: Colors.red,
                         fontWeight: FontWeight.bold,
@@ -103,7 +102,7 @@ class _LoginState extends State<LoginView> {
               if (!_formKey.currentState.validate()) {
                 return;
               }
-              widget.onLoginPressed(
+              viewModel.onLoginPressed(
                   context,
                   _emailController.text,
                   _passwordController.text

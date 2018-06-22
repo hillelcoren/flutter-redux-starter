@@ -21,9 +21,7 @@ class LoginScreen extends StatelessWidget {
         converter: LoginVM.fromStore,
         builder: (context, vm) {
           return LoginView(
-            isLoading: vm.isLoading,
-            authState: vm.authState,
-            onLoginPressed: vm.onLoginPressed,
+            viewModel: vm,
           );
         },
       ),
