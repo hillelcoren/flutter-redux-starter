@@ -17,11 +17,11 @@ We're using this approach to develop our [Flutter app](https://github.com/invoic
 
 ## Basic Flow
 
-- The user is navigated to an initialization screen
-- The app checks if there is a saved state
+- The [user is navigated](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/main.dart#L44) to an initialization screen
+- The [app checks](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/app/app_middleware.dart#L49) if there is a saved state
 - If a state is found the user is taken to the dashboard
-- Otherwise, the user is navigated to the login screen
-- When the user clicks login the app sends an API request
+- Otherwise, the [user is navigated](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/app/app_middleware.dart#L68) to their last screen
+- When the user [clicks login](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/ui/auth/login_vm.dart#L49) the app [sends an API request](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/auth/auth_middleware.dart#L43)
 - If there's a problem the error is shown on the login screen
 - If the credentials are correct the user is logged in
 
