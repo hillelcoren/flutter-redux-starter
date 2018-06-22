@@ -43,7 +43,7 @@ Middleware<AppState> _createLoginInit() {
 Middleware<AppState> _createLoginRequest(AuthRepository repository) {
   return (Store<AppState> store, action, NextDispatcher next) {
     repository
-        .login(action.email, action.password, action.url, action.secret)
+        .login(action.email, action.password)
         .then((data) {
       _saveAuthLocal(action);
 

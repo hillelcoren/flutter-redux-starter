@@ -13,14 +13,16 @@ class AuthRepository {
     this.webClient = const WebClient(),
   });
 
-  Future<BuiltList<dynamic>> login(String email, String password, String url, String secret) async {
+  Future<BuiltList<dynamic>> login(String email, String password) async {
 
     final credentials = {
       'email': email,
       'password': password,
     };
 
-    final response = await webClient.post(url + '/login', json.encode(credentials));
+    var url = 'https://example.com/login';
+
+    final response = await webClient.post(url, json.encode(credentials));
 
     LoginResponse loginResponse = serializers.deserializeWith(
         LoginResponse.serializer, response);

@@ -17,11 +17,11 @@ We're using this approach to develop our [Flutter app](https://github.com/invoic
 
 ## Basic Flow
 
-- [main.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/main.dart) - The user is navigated to an initialization screen
-- [redux/app/app_middleware.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/app/app_middleware.dart) - The app checks if there is a saved state
+- [main.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/main.dart#L44) - The user is navigated to an initialization screen
+- [redux/app/app_middleware.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/app/app_middleware.dart#L49) - The app checks if there is a saved state
 - ui/dashboard - If a state is found the user is taken to the dashboard
 - [ui/auth/login.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/ui/auth/login.dart) - Otherwise, the user is navigated to the login screen
-- [redux/auth/auth_middleware.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/auth/auth_middleware.dart) - When the user clicks login the app sends an API request
+- [redux/auth/auth_middleware.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/auth/auth_middleware.dart#L43) - When the user clicks login the app sends an API request
 - [ui/auth/login.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/ui/auth/login.dart) - If there's a problem the error is shown on the login screen
 - ui/dashboard - If the credentials are correct the user is logged in
 
