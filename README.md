@@ -1,31 +1,27 @@
-# Flutter Redux Starter
+# Flutter Redux Starter/CRUD Generator
 
 We're using this approach to develop our [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
 
-This codebase provide a sample for basic app initialization but there are also examples of using Redux to manage [CRUD operations](https://github.com/invoiceninja/flutter-mobile/blob/master/lib/redux/client/client_actions.dart) for REST APIs and supporting switching between [multiple accounts](https://github.com/invoiceninja/flutter-mobile/blob/master/lib/redux/app/app_state.dart#L20).
-
-## Setup
+## Usage
 
 - Clone/fork the repo
-- Rename .env.dart.example to .env.dart
+- `./starter.sh init <company> <application> <url>`
+- `./starter.sh make <application> <module> <fields>`
+
+For example:
+
+- `git clone git@github.com:hillelcoren/flutter-redux-starter.git todos && cd todos`
+- `./starter.sh init acme todos jsonplaceholder.typicode.com`
+- `./starter.sh make todos todo title,completed`
 
 ## Features
 
 - Supports large Redux stores by persisting parts separately
 - App state (including navigation) is persisted on form changes
+- Automatically implements support for sorting and searching
 - The account email is also backed up in shared preferences
 - All state and models classes are created using built_values
 - Includes sample integration test configured with local settings
-
-## Basic Flow
-
-- [main.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/main.dart#L44) - The user is navigated to an initialization screen
-- [redux/app/app_middleware.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/app/app_middleware.dart#L49) - The app checks if there is a saved state
-- ui/dashboard - If a state is found the user is taken to the dashboard
-- [ui/auth/login.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/ui/auth/login.dart) - Otherwise, the user is navigated to the login screen
-- [redux/auth/auth_middleware.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/redux/auth/auth_middleware.dart#L43) - When the user clicks login the app sends an API request
-- [ui/auth/login.dart](https://github.com/hillelcoren/flutter-redux-starter/blob/master/lib/ui/auth/login.dart) - If there's a problem the error is shown on the login screen
-- ui/dashboard - If the credentials are correct the user is logged in
 
 ## Included Packages
 
