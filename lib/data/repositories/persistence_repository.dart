@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_redux_starter/data/file_storage.dart';
 import 'package:flutter_redux_starter/data/models/serializers.dart';
+import 'package:flutter_redux_starter/redux/app/data_state.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
 import 'package:meta/meta.dart';
@@ -34,6 +35,16 @@ class PersistenceRepository {
   Future<UIState> loadUIState() async {
     String data = await fileStorage.load();
     return serializers.deserializeWith(UIState.serializer, json.decode(data));
+  }
+
+  Future<File> saveDataState(DataState state) async {
+    var data = serializers.serializeWith(UIState.serializer, state);
+    return await fileStorage.save(json.encode(data));
+  }
+
+  Future<DataState> loadDataState() async {
+    String data = await fileStorage.load();
+    return serializers.deserializeWith(DataState.serializer, json.decode(data));
   }
 
   Future<FileSystemEntity> delete() async {

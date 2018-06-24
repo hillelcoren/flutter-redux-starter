@@ -22,17 +22,22 @@ List<Middleware<AppState>> createStorePersistenceMiddleware([
       getApplicationDocumentsDirectory,
     ),
   ),
+  PersistenceRepository dataRepository = const PersistenceRepository(
+    fileStorage: const FileStorage(
+      'data_state',
+      getApplicationDocumentsDirectory,
+    ),
+  ),
 ]) {
   final loadState = _createLoadState(
       authRepository,
-      uiRepository);
-
+      uiRepository,
+      dataRepository);
   final userLoggedIn = _createUserLoggedIn(
       authRepository,
       uiRepository);
-
   final uiChange = _createUIChange(uiRepository);
-
+  final dataChange = _createDataChange(uiRepository);
   final deleteState = _createDeleteState(
       authRepository,
       uiRepository);
@@ -42,13 +47,14 @@ List<Middleware<AppState>> createStorePersistenceMiddleware([
     TypedMiddleware<AppState, LoadStateRequest>(loadState),
     TypedMiddleware<AppState, UserLoginSuccess>(userLoggedIn),
     TypedMiddleware<AppState, PersistUI>(uiChange),
-    //TypedMiddleware<AppState, PersistData>(),
+    TypedMiddleware<AppState, PersistData>(dataChange),
   ];
 }
 
 Middleware<AppState> _createLoadState(
     PersistenceRepository authRepository,
     PersistenceRepository uiRepository,
+    PersistenceRepository dataRepository,
     ) {
   AuthState authState;
   UIState uiState;
@@ -104,6 +110,14 @@ Middleware<AppState> _createUIChange(PersistenceRepository uiRepository) {
     next(action);
 
     uiRepository.saveUIState(store.state.uiState);
+  };
+}
+
+Middleware<AppState> _createDataChange(PersistenceRepository dataRepository) {
+  return (Store<AppState> store, action, NextDispatcher next) {
+    next(action);
+
+    dataRepository.saveDataState(store.state.dataState);
   };
 }
 

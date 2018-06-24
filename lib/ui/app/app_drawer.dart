@@ -23,7 +23,9 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         children: <Widget>[
           Container(
-            child: DrawerHeader(),
+            child: DrawerHeader(
+              child: Container(),
+            ),
           ),
           ListTile(
             leading: Icon(Icons.home),
