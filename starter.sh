@@ -29,19 +29,19 @@ if [ ${action} = "init" ]; then
         "./android/app/src/main/java/com/$company/$package/MainActivity.java"
         './stubs/data/models/stub_model.dart'
         './stubs/data/repositories/stub_repository.dart'
-        './stubs/redux/stub_actions.dart'
-        './stubs/redux/stub_reducer.dart'
-        './stubs/redux/stub_state.dart'
-        './stubs/redux/stub_middleware.dart'
-        './stubs/redux/stub_selectors.dart'
-        './stubs/ui/edit/stub_edit.dart'
-        './stubs/ui/edit/stub_edit_vm.dart'
-        './stubs/ui/view/stub_view.dart'
-        './stubs/ui/view/stub_view_vm.dart'
-        './stubs/ui/stub_item.dart'
-        './stubs/ui/stub_list_vm.dart'
-        './stubs/ui/stub_list.dart'
-        './stubs/ui/stub_screen.dart')
+        './stubs/redux/stub/stub_actions.dart'
+        './stubs/redux/stub/stub_reducer.dart'
+        './stubs/redux/stub/stub_state.dart'
+        './stubs/redux/stub/stub_middleware.dart'
+        './stubs/redux/stub/stub_selectors.dart'
+        './stubs/ui/stub/edit/stub_edit.dart'
+        './stubs/ui/stub/edit/stub_edit_vm.dart'
+        './stubs/ui/stub/view/stub_view.dart'
+        './stubs/ui/stub/view/stub_view_vm.dart'
+        './stubs/ui/stub/stub_item.dart'
+        './stubs/ui/stub/stub_list_vm.dart'
+        './stubs/ui/stub/stub_list.dart'
+        './stubs/ui/stub/stub_screen.dart')
 
     for i in "${files[@]}"
     do
