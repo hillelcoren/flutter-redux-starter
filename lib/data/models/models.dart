@@ -20,6 +20,31 @@ class EntityType extends EnumClass {
   static EntityType valueOf(String name) => _$typeValueOf(name);
 }
 
+abstract class BaseEntity {
+
+  int get id;
+
+  String get listDisplayName {
+    return 'Error: not set';
+  }
+
+  bool matchesSearch(String search) {
+    return true;
+  }
+
+  String matchesSearchField(String search) {
+    return null;
+  }
+
+  String matchesSearchValue(String search) {
+    return null;
+  }
+
+  bool isNew() {
+    return this.id == null || this.id < 0;
+  }
+}
+
 
 abstract class LoginResponse implements Built<LoginResponse, LoginResponseBuilder> {
 
