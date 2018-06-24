@@ -12,10 +12,10 @@ if [ ${action} = "init" ]; then
     package="$3"
     url="$4"
 
-    echo "Init..."
     echo "Company: $company"
     echo "Package: $package"
     echo "URL: $url"
+    echo "Creating files..."
 
     cp .env.dart.example .env.dart
     sed -i "s/__API_URL__/$url/g" ./.env.dart
@@ -181,12 +181,13 @@ else
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     comment="STARTER: states switch - do not remove comment"
-    code="case EntityType.${module}\nreturn ${module}UIState;\n"
+    code="case EntityType.${module}:\nreturn ${module}UIState;\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     comment="STARTER: state getters - do not remove comment"
     code="${Module}State get ${module}State => this.dataState.${module}State;\n"
-    code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n\n"
+    code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n"
+    code="${code}${Module}UIState get ${module}UIState => this.uiState.${module}UIState;\n\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     for element in "${fieldsArray[@]}"
@@ -245,7 +246,7 @@ else
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
 
     comment="STARTER: import - do not remove comment"
-    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
+    code="import 'package:${package}\/redux\/${module}\/${module}_reducer.dart';\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
 
     comment="STARTER: reducer - do not remove comment"
@@ -273,6 +274,26 @@ else
     code="static const EntityType ${module} = _$"
     code="${code}${module};\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/models.dart
+
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/redux\/${module}\/${module}_reducer.dart';\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
+
+    comment="STARTER: properties - do not remove comment"
+    code="${Module}UIState get ${module}UIState;\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
+
+    comment="STARTER: constructor - do not remove comment"
+    code="${module}UIState: ${Module}UIState(),\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
+
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/redux\/${module}\/${module}_reducer.dart';\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
+
+    comment="STARTER: reducer - do not remove comment"
+    code="..${module}UIState.replace(${module}UIReducer(state.${module}UIState, action))\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
