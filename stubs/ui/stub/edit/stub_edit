@@ -5,19 +5,19 @@ import 'package:flutter_redux_starter/ui/app/form_card.dart';
 import 'package:flutter_redux_starter/ui/stub/edit/stub_edit_vm.dart';
 import 'package:flutter_redux_starter/ui/app/save_icon_button.dart';
 
-class ProductEdit extends StatefulWidget {
-  final ProductEditVM viewModel;
+class StubEdit extends StatefulWidget {
+  final StubEditVM viewModel;
 
-  ProductEdit({
+  StubEdit({
     Key key,
     @required this.viewModel,
   }) : super(key: key);
 
   @override
-  _ProductEditState createState() => _ProductEditState();
+  _StubEditState createState() => _StubEditState();
 }
 
-class _ProductEditState extends State<ProductEdit> {
+class _StubEditState extends State<StubEdit> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   //final _stubKeyController = TextEditingController();
