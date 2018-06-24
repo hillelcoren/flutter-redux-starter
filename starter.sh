@@ -203,10 +203,10 @@ else
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
     code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
-    code="${code}import 'package:${package}/ui\/${module}\/edit\/${module}_edit_vm.dart';${code}\n"
-    code="${code}import 'package:${package}/ui\/${module}\/view\/${module}_view_vm.dart';${code}\n"
-    code="${code}import 'package:${package}/redux\/${module}\/${module}_actions.dart';${code}\n"
-    code="${code}import 'package:${package}/redux\/${module}\/${module}_middleware.dart';${code}\n"
+    code="${code}import 'package:${package}\/ui\/${module}\/edit\/${module}_edit_vm.dart';${code}\n"
+    code="${code}import 'package:${package}\/ui\/${module}\/view\/${module}_view_vm.dart';${code}\n"
+    code="${code}import 'package:${package}\/redux\/${module}\/${module}_actions.dart';${code}\n"
+    code="${code}import 'package:${package}\/redux\/${module}\/${module}_middleware.dart';${code}\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
 
     comment="STARTER: middleware - do not remove comment"
@@ -268,6 +268,11 @@ else
     code="${code}},\n"
     code="${code}),\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
+
+    comment="STARTER: types - do not remove comment"
+    code="static const EntityType ${module} = _$"
+    code="${code}${module};\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/models.dart
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/

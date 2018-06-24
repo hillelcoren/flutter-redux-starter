@@ -7,7 +7,9 @@ part 'models.g.dart';
 class EntityType extends EnumClass {
   static Serializer<EntityType> get serializer => _$entityTypeSerializer;
 
-  //static const EntityType invoice = _$invoice;
+  // STARTER: types - do not remove comment
+static const EntityType todo = _$todo;
+
 
   const EntityType._(String name) : super(name);
 
