@@ -173,7 +173,10 @@ else
     done
 
     # Link in new module
-    #sed -i "s/Stub/$Module/g" ./lib/main.dart
+    comment="STARTER: state getters [do not remove comment]"
+    code="${Module}State get ${module}State => this.dataState.${module}State;\n"
+    code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
