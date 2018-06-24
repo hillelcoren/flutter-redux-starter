@@ -35,6 +35,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'uiState',
       serializers.serialize(object.uiState,
           specifiedType: const FullType(UIState)),
+      'dataState',
+      serializers.serialize(object.dataState,
+          specifiedType: const FullType(DataState)),
     ];
 
     return result;
@@ -63,6 +66,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.uiState.replace(serializers.deserialize(value,
               specifiedType: const FullType(UIState)) as UIState);
           break;
+        case 'dataState':
+          result.dataState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(DataState)) as DataState);
+          break;
       }
     }
 
@@ -77,17 +84,22 @@ class _$AppState extends AppState {
   final AuthState authState;
   @override
   final UIState uiState;
+  @override
+  final DataState dataState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.isLoading, this.authState, this.uiState}) : super._() {
+  _$AppState._({this.isLoading, this.authState, this.uiState, this.dataState})
+      : super._() {
     if (isLoading == null)
       throw new BuiltValueNullFieldError('AppState', 'isLoading');
     if (authState == null)
       throw new BuiltValueNullFieldError('AppState', 'authState');
     if (uiState == null)
       throw new BuiltValueNullFieldError('AppState', 'uiState');
+    if (dataState == null)
+      throw new BuiltValueNullFieldError('AppState', 'dataState');
   }
 
   @override
@@ -103,13 +115,16 @@ class _$AppState extends AppState {
     if (other is! AppState) return false;
     return isLoading == other.isLoading &&
         authState == other.authState &&
-        uiState == other.uiState;
+        uiState == other.uiState &&
+        dataState == other.dataState;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc(0, isLoading.hashCode), authState.hashCode), uiState.hashCode));
+        $jc($jc($jc(0, isLoading.hashCode), authState.hashCode),
+            uiState.hashCode),
+        dataState.hashCode));
   }
 
   @override
@@ -117,7 +132,8 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper('AppState')
           ..add('isLoading', isLoading)
           ..add('authState', authState)
-          ..add('uiState', uiState))
+          ..add('uiState', uiState)
+          ..add('dataState', dataState))
         .toString();
   }
 }
@@ -138,6 +154,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   UIStateBuilder get uiState => _$this._uiState ??= new UIStateBuilder();
   set uiState(UIStateBuilder uiState) => _$this._uiState = uiState;
 
+  DataStateBuilder _dataState;
+  DataStateBuilder get dataState =>
+      _$this._dataState ??= new DataStateBuilder();
+  set dataState(DataStateBuilder dataState) => _$this._dataState = dataState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -145,6 +166,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _isLoading = _$v.isLoading;
       _authState = _$v.authState?.toBuilder();
       _uiState = _$v.uiState?.toBuilder();
+      _dataState = _$v.dataState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -169,7 +191,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
           new _$AppState._(
               isLoading: isLoading,
               authState: authState.build(),
-              uiState: uiState.build());
+              uiState: uiState.build(),
+              dataState: dataState.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -177,6 +200,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         authState.build();
         _$failedField = 'uiState';
         uiState.build();
+        _$failedField = 'dataState';
+        dataState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

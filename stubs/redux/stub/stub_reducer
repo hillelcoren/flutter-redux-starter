@@ -1,6 +1,5 @@
 import 'package:redux/redux.dart';
 import 'package:flutter_redux_starter/data/models/models.dart';
-import 'package:flutter_redux_starter/redux/company/company_actions.dart';
 import 'package:flutter_redux_starter/redux/ui/entity_ui_state.dart';
 import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';

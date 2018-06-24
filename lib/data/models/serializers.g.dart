@@ -17,6 +17,7 @@ part of 'serializers.dart';
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AppState.serializer)
       ..add(AuthState.serializer)
+      ..add(DataState.serializer)
       ..add(LoginResponse.serializer)
       ..add(UIState.serializer))
     .build();
