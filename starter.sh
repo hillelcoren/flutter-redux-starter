@@ -32,6 +32,54 @@ if [ ${action} = "init" ]; then
        sed -i "s/hillelcoren/$company/g" $i
     done
 
+    declare -a files=(
+        "./android/app/src/main/java/com/$company/$package/MainActivity.java")
+
+    for i in "${files[@]}"
+    do
+       sed -i "s/flutterReduxStarter/$package/g" $i
+    done
+
+    declare -a files=(
+        "./ios/Runner.xcodeproj/project.pbxproj")
+
+    for i in "${files[@]}"
+    do
+       sed -i "s/flutterreduxstarter/$package/g" $i
+    done
+
+    declare -a files=(
+        "./.packages"
+        "./pubspec.yaml"
+        "./ios/Runner/Info.plist"
+        "./ios/Flutter/Generated.xcconfig"
+        "./android/app/build.gradle"
+        "./android/app/src/main/AndroidManifest.xml"
+        "./lib/main.dart"
+        "./lib/redux/app/app_state.dart"
+        "./lib/redux/app/app_reducer.dart"
+        "./lib/redux/app/app_actions.dart"
+        "./lib/redux/app/app_middleware.dart"
+        "./lib/redux/auth/auth_state.dart"
+        "./lib/redux/auth/auth_actions.dart"
+        "./lib/redux/auth/auth_middleware.dart"
+        "./lib/redux/auth/auth_reducer.dart"
+        "./lib/redux/ui/ui_actions.dart"
+        "./lib/redux/ui/ui_reducer.dart"
+        "./lib/data/repositories/auth_repository.dart"
+        "./lib/data/repositories/persistence_repository.dart"
+        "./lib/data/models/serializers.dart"
+        "./test/login_test.dart"
+        "./lib/redux/ui/ui_state.dart"
+        "./lib/ui/auth/login.dart"
+        "./lib/ui/auth/login_vm.dart")
+
+    for i in "${files[@]}"
+    do
+       sed -i "s/flutter_redux_starter/$package/g" $i
+    done
+
+
 
 else
     module="$2"
@@ -65,17 +113,17 @@ else
     declare -a files=(
        #'lib/data/models/product_model.dart'
        #'lib/data/repositories/product_repository.dart'
-       'lib/redux/product/product_actions.dart'
-       'lib/redux/product/product_reducer.dart'
-       'lib/redux/product/product_state.dart'
-       'lib/redux/product/product_middleware.dart'
-       'lib/redux/product/product_selectors.dart'
-       'lib/ui/product/edit/product_edit.dart'
-       'lib/ui/product/edit/product_edit_vm.dart'
-       'lib/ui/product/product_item.dart'
-       'lib/ui/product/product_list_vm.dart'
-       'lib/ui/product/product_list.dart'
-       'lib/ui/product/product_screen.dart')
+       './lib/redux/product/product_actions.dart'
+       './lib/redux/product/product_reducer.dart'
+       './lib/redux/product/product_state.dart'
+       './lib/redux/product/product_middleware.dart'
+       './lib/redux/product/product_selectors.dart'
+       './lib/ui/product/edit/product_edit.dart'
+       './lib/ui/product/edit/product_edit_vm.dart'
+       './lib/ui/product/product_item.dart'
+       './lib/ui/product/product_list_vm.dart'
+       './lib/ui/product/product_list.dart'
+       './lib/ui/product/product_screen.dart')
 
     for i in "${files[@]}"
     do
