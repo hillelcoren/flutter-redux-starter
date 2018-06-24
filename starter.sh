@@ -216,19 +216,19 @@ else
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: controllers - do not remove comment"
-        code="final _stubKeyController = TextEditingController();\n"
+        code="final _${element}Controller = TextEditingController();\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: array - do not remove comment"
-        code="_stubKeyController,\n"
+        code="_${element}Controller,\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: read value - do not remove comment"
-        code="_stubKeyController.text = stub.stubKey;\n"
+        code="_${element}Controller.text = ${module}.${element};\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: set value - do not remove comment"
-        code="..stubKey = _stubKeyController.text.trim()\n"
+        code="..${element} = _${element}Controller.text.trim()\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: widgets - do not remove comment"
