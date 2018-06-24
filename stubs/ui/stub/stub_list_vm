@@ -41,7 +41,6 @@ class StubListVM {
   StubListVM({
     @required this.stubList,
     @required this.stubMap,
-    @required this.clientMap,
     @required this.isLoading,
     @required this.isLoaded,
     @required this.onStubTap,

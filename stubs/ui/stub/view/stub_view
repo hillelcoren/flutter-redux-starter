@@ -29,9 +29,6 @@ class _StubViewState extends State<StubView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(stub.displayName),
-        bottom: TabBar(
-          controller: _controller,
-        ),
         actions: stub.isNew()
             ? []
             : [

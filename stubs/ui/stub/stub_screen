@@ -4,6 +4,7 @@ import 'package:flutter_redux_starter/ui/app/app_search.dart';
 import 'package:flutter_redux_starter/ui/app/app_search_button.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/ui/stub/stub_list_vm.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/ui/app/app_drawer_vm.dart';
