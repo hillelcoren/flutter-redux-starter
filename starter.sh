@@ -72,6 +72,8 @@ if [ ${action} = "init" ]; then
         './lib/redux/auth/auth_reducer.dart'
         './lib/redux/ui/ui_actions.dart'
         './lib/redux/ui/ui_reducer.dart'
+        './lib/redux/ui/entity_ui_state.dart'
+        './lib/redux/ui/list_ui_state.dart'
         './lib/data/repositories/auth_repository.dart'
         './lib/data/repositories/persistence_repository.dart'
         './lib/data/models/serializers.dart'
