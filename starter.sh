@@ -217,19 +217,19 @@ else
 
         comment="STARTER: controllers - do not remove comment"
         code="final _stubKeyController = TextEditingController();\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: array - do not remove comment"
         code="_stubKeyController,\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: read value - do not remove comment"
         code="_stubKeyController.text = stub.stubKey;\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: set value - do not remove comment"
         code="..stubKey = _stubKeyController.text.trim()\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: widgets - do not remove comment"
         code="TextFormField(\n"
@@ -239,11 +239,11 @@ else
         code="${code}labelText: '${element}',\n"
         code="${code}),\n"
         code="${code}),\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         #comment="STARTER: widgets - do not remove comment"
         #code=""
-        #sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_view.dart"
+        #sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/view/${module}_view.dart"
 
     done
 
