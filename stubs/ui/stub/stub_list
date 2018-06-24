@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hillelcoren/ui/app/loading_indicator.dart';
-import 'package:hillelcoren/ui/stub/stub_item.dart';
-import 'package:hillelcoren/ui/stub/stub_list_vm.dart';
+import 'package:flutter_redux_starter/ui/app/loading_indicator.dart';
+import 'package:flutter_redux_starter/ui/stub/stub_item.dart';
+import 'package:flutter_redux_starter/ui/stub/stub_list_vm.dart';
 
 class StubList extends StatelessWidget {
   final StubListVM viewModel;

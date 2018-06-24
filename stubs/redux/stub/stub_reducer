@@ -1,10 +1,10 @@
 import 'package:redux/redux.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/redux/company/company_actions.dart';
-import 'package:hillelcoren/redux/ui/entity_ui_state.dart';
-import 'package:hillelcoren/redux/ui/list_ui_state.dart';
-import 'package:hillelcoren/redux/stub/stub_actions.dart';
-import 'package:hillelcoren/redux/stub/stub_state.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/redux/company/company_actions.dart';
+import 'package:flutter_redux_starter/redux/ui/entity_ui_state.dart';
+import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_state.dart';
 
 EntityUIState stubUIReducer(StubUIState state, action) {
   return state.rebuild((b) => b

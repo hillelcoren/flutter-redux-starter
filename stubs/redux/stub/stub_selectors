@@ -1,7 +1,7 @@
 import 'package:memoize/memoize.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/redux/ui/list_ui_state.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
 
 var memoizedStubList = memo3((
     BuiltMap<int, StubEntity> stubMap,

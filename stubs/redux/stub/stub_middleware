@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/redux/product/product_actions.dart';
-import 'package:hillelcoren/redux/ui/ui_actions.dart';
-import 'package:hillelcoren/ui/stub/edit/stub_edit_vm.dart';
-import 'package:hillelcoren/ui/stub/view/stub_view_vm.dart';
-import 'package:hillelcoren/redux/stub/stub_actions.dart';
-import 'package:hillelcoren/redux/app/app_state.dart';
-import 'package:hillelcoren/data/repositories/stub_repository.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/redux/product/product_actions.dart';
+import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
+import 'package:flutter_redux_starter/ui/stub/edit/stub_edit_vm.dart';
+import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
+import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutter_redux_starter/data/repositories/stub_repository.dart';
 
 List<Middleware<AppState>> createStoreStubsMiddleware([
   StubRepository repository = const StubRepository(),

@@ -2,14 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/redux/app/app_state.dart';
-import 'package:hillelcoren/ui/app/actions_menu_button.dart';
-import 'package:hillelcoren/ui/app/icon_message.dart';
-import 'package:hillelcoren/ui/app/stub/stub_item_view.dart';
-import 'package:hillelcoren/ui/app/two_value_header.dart';
-import 'package:hillelcoren/ui/stub/view/stub_view_vm.dart';
-import 'package:hillelcoren/utils/localization.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutter_redux_starter/ui/app/actions_menu_button.dart';
+import 'package:flutter_redux_starter/ui/app/icon_message.dart';
+import 'package:flutter_redux_starter/ui/app/stub/stub_item_view.dart';
+import 'package:flutter_redux_starter/ui/app/two_value_header.dart';
+import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
+import 'package:flutter_redux_starter/utils/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class StubView extends StatefulWidget {

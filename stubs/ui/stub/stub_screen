@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:hillelcoren/ui/app/app_search.dart';
-import 'package:hillelcoren/ui/app/app_search_button.dart';
-import 'package:hillelcoren/utils/localization.dart';
-import 'package:hillelcoren/redux/app/app_state.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/ui/stub/stub_list_vm.dart';
-import 'package:hillelcoren/redux/stub/stub_actions.dart';
-import 'package:hillelcoren/ui/app/app_drawer_vm.dart';
-import 'package:hillelcoren/ui/app/app_bottom_bar.dart';
+import 'package:flutter_redux_starter/ui/app/app_search.dart';
+import 'package:flutter_redux_starter/ui/app/app_search_button.dart';
+import 'package:flutter_redux_starter/utils/localization.dart';
+import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/ui/stub/stub_list_vm.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
+import 'package:flutter_redux_starter/ui/app/app_drawer_vm.dart';
+import 'package:flutter_redux_starter/ui/app/app_bottom_bar.dart';
 
 class StubScreen extends StatelessWidget {
   static final String route = '/stub';

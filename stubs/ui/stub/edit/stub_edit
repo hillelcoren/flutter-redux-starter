@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hillelcoren/ui/app/actions_menu_button.dart';
-import 'package:hillelcoren/ui/app/form_card.dart';
-import 'package:hillelcoren/ui/product/edit/product_edit_vm.dart';
-import 'package:hillelcoren/utils/localization.dart';
-import 'package:hillelcoren/ui/app/save_icon_button.dart';
+import 'package:flutter_redux_starter/ui/app/actions_menu_button.dart';
+import 'package:flutter_redux_starter/ui/app/form_card.dart';
+import 'package:flutter_redux_starter/ui/product/edit/product_edit_vm.dart';
+import 'package:flutter_redux_starter/utils/localization.dart';
+import 'package:flutter_redux_starter/ui/app/save_icon_button.dart';
 
 class ProductEdit extends StatefulWidget {
   final ProductEditVM viewModel;

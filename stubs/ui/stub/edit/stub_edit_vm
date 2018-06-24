@@ -2,15 +2,15 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:hillelcoren/redux/ui/ui_actions.dart';
-import 'package:hillelcoren/ui/stub/stub_screen.dart';
-import 'package:hillelcoren/utils/localization.dart';
+import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
+import 'package:flutter_redux_starter/ui/stub/stub_screen.dart';
+import 'package:flutter_redux_starter/utils/localization.dart';
 import 'package:redux/redux.dart';
-import 'package:hillelcoren/redux/stub/stub_actions.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/ui/stub/edit/stub_edit.dart';
-import 'package:hillelcoren/redux/app/app_state.dart';
-import 'package:hillelcoren/ui/app/snackbar_row.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/ui/stub/edit/stub_edit.dart';
+import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutter_redux_starter/ui/app/snackbar_row.dart';
 
 class StubEditScreen extends StatelessWidget {
   static final String route = '/stub/edit';

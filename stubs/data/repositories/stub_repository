@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
-import 'package:hillelcoren/data/models/serializers.dart';
-import 'package:hillelcoren/redux/auth/auth_state.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/data/web_stub.dart';
+import 'package:flutter_redux_starter/data/models/serializers.dart';
+import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/data/web_stub.dart';
 
 class StubRepository {
   final WebClient webClient;

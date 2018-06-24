@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:hillelcoren/redux/stub/stub_selectors.dart';
-import 'package:hillelcoren/ui/app/snackbar_row.dart';
-import 'package:hillelcoren/utils/localization.dart';
-import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/ui/stub/stub_list.dart';
-import 'package:hillelcoren/redux/app/app_state.dart';
-import 'package:hillelcoren/redux/stub/stub_actions.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_selectors.dart';
+import 'package:flutter_redux_starter/ui/app/snackbar_row.dart';
+import 'package:flutter_redux_starter/utils/localization.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/ui/stub/stub_list.dart';
+import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 
 class StubListBuilder extends StatelessWidget {
   static final String route = '/stubs/edit';
