@@ -18,7 +18,7 @@ if [ ${action} = "init" ]; then
     echo "Creating files..."
 
     cp .env.dart.example .env.dart
-    sed -i "s/__API_URL__/$url/g" ./.env.dart
+    sed -i "s/__API_URL__/$url/g" ./lib/constants.dart
 
     mv "./android/app/src/main/java/com/hillelcoren" "./android/app/src/main/java/com/$company"
     mv "./android/app/src/main/java/com/$company/flutterreduxstarter" "./android/app/src/main/java/com/$company/$package"
@@ -279,7 +279,7 @@ else
     comment="STARTER: menu - do not remove comment"
     code="ListTile(\n"
     code="${code}leading: Icon(Icons.widgets),\n"
-    code="${code}title: Text(''),\n"
+    code="${code}title: Text('${Module}'),\n"
     code="${code}onTap: () {\n"
     code="${code}store.dispatch(Search${Module}s(null));\n"
     code="${code}store.dispatch(UpdateCurrentRoute(${Module}Screen.route));\n"
