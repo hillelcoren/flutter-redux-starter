@@ -176,36 +176,81 @@ else
     done
 
     # Link in new module
-    package="todos"
-    module="todo"
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
-    echo "$comment $code"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     comment="STARTER: states switch - do not remove comment"
     code="case EntityType.${module}\nreturn ${module}UIState;\n"
-    echo "$comment $code"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     comment="STARTER: state getters - do not remove comment"
     code="${Module}State get ${module}State => this.dataState.${module}State;\n"
     code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n\n"
-    echo "$comment $code"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     for element in "${fieldsArray[@]}"
     do
         comment="STARTER: fields - do not remove comment"
         code="static const String ${element} = '${element}';\n"
-        echo "$comment $code"
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: properties - do not remove comment"
         code="String get ${element};\n"
-        echo "$comment $code"
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
     done
+
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
+    code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
+    code="${code}import 'package:${package}/ui\/${module}\/edit\/${module}_edit_vm.dart';${code}\n"
+    code="${code}import 'package:${package}/ui\/${module}\/view\/${module}_view_vm.dart';${code}\n"
+    code="${code}import 'package:${package}/redux\/${module}\/${module}_actions.dart';${code}\n"
+    code="${code}import 'package:${package}/redux\/${module}\/${module}_middleware.dart';${code}\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+
+    comment="STARTER: middleware - do not remove comment"
+    code="..addAll(createStore${Module}sMiddleware())\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+
+    comment="STARTER: routes - do not remove comment"
+    code="${Module}Screen.route: (context) {\n"
+    code="${code}widget.store.dispatch(Load${Module}s());\n"
+    code="${code}return ${Module}Screen();\n"
+    code="${code}},\n"
+    code="${code}${Module}ViewScreen.route: (context) => ${Module}ViewScreen(),\n"
+    code="${code}${Module}EditScreen.route: (context) => ${Module}EditScreen(),\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/data\/models\/${module}_model.dart';\n"
+    code="${code}import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
+
+    comment="STARTER: serializers - do not remove comment"
+    code="${Module}ListResponse,\n"
+    code="${code}${Module}ItemResponse,\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
+
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
+
+    comment="STARTER: fields - do not remove comment"
+    code="${Module}State get ${module}State;\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
+
+    comment="STARTER: constructor - do not remove comment"
+    code="${module}State: ${Module}State(),\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
+
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
+
+    comment="STARTER: reducer - do not remove comment"
+    code="..${module}State.replace(${module}sReducer(state.${module}State, action))\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
