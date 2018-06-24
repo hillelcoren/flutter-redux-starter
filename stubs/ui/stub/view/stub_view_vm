@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_starter/redux/client/client_actions.dart';
-import 'package:flutter_redux_starter/utils/localization.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/ui/stub/view/stub_view.dart';
@@ -49,27 +48,6 @@ class StubViewVM {
 
   factory StubViewVM.fromStore(Store<AppState> store) {
     final stub = store.state.stubUIState.selected;
-    final client = store.state.clientState.map[stub.clientId];
-
-    Future<Null> _viewPdf(BuildContext context) async {
-      var localization = AppLocalization.of(context);
-      var url;
-      var useWebView;
-
-      if (Theme.of(context).platform == TargetPlatform.iOS) {
-        url = stub.invitationSilentLink;
-        useWebView = true;
-      } else {
-        url = 'https://docs.google.com/viewer?url=' +  stub.invitationDownloadLink;
-        useWebView = false;
-      }
-
-      if (await canLaunch(url)) {
-        await launch(url, forceSafariVC: useWebView, forceWebView: useWebView);
-      } else {
-        throw '${localization.anErrorOccurred}';
-      }
-    }
 
     return StubViewVM(
         isLoading: store.state.isLoading,
@@ -86,7 +64,7 @@ class StubViewVM {
               break;
             case EntityAction.delete:
               store.dispatch(DeleteStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyDeletedStub;
+              message = 'Successfully Deleted Stub';
               break;
           }
           if (message != null) {

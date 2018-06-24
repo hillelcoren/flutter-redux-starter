@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
-import 'package:flutter_redux_starter/redux/product/product_actions.dart';
+import 'package:flutter_redux_starter/data/models/stub_model.dart';
+import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
 import 'package:flutter_redux_starter/ui/stub/edit/stub_edit_vm.dart';
 import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
@@ -49,7 +49,7 @@ Middleware<AppState> _deleteStub(StubRepository repository) {
   return (Store<AppState> store, action, NextDispatcher next) {
     var origStub = store.state.stubState.map[action.stubId];
     repository
-        .saveData(store.state.selectedCompany, store.state.authState,
+        .saveData(store.state.authState,
             origStub, EntityAction.delete)
         .then((stub) {
       store.dispatch(DeleteStubSuccess(stub));
@@ -69,7 +69,7 @@ Middleware<AppState> _saveStub(StubRepository repository) {
   return (Store<AppState> store, action, NextDispatcher next) {
     repository
         .saveData(
-            store.state.selectedCompany, store.state.authState, action.stub)
+            store.state.authState, action.stub)
         .then((stub) {
       if (action.stub.isNew()) {
         store.dispatch(AddStubSuccess(stub));
@@ -103,14 +103,14 @@ Middleware<AppState> _loadStubs(StubRepository repository) {
 
     store.dispatch(LoadStubsRequest());
     repository
-        .loadList(state.selectedCompany, state.authState)
+        .loadList(state.authState)
         .then((data) {
       store.dispatch(LoadStubsSuccess(data));
 
       if (action.completer != null) {
         action.completer.complete(null);
       }
-      if (state.productState.isStale) {
+      if (state.stubState.isStale) {
         store.dispatch(LoadProducts());
       }
     }).catchError((error) {

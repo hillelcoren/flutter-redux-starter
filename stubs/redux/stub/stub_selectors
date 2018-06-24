@@ -16,9 +16,6 @@ List<int> visibleStubsSelector(
 
   var list = stubList.where((stubId) {
     var stub = stubMap[stubId];
-    if (! stub.matchesStates(stubListState.stateFilters)) {
-      return false;
-    }
     return stub.matchesSearch(stubListState.search);
   }).toList();
 

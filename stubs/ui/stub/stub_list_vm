@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_selectors.dart';
 import 'package:flutter_redux_starter/ui/app/snackbar_row.dart';
-import 'package:flutter_redux_starter/utils/localization.dart';
 import 'package:flutter_redux_starter/data/models/models.dart';
 import 'package:flutter_redux_starter/ui/stub/stub_list.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
@@ -58,7 +57,7 @@ class StubListVM {
       return completer.future.then((_) {
         Scaffold.of(context).showSnackBar(SnackBar(
             content: SnackBarRow(
-              message: AppLocalization.of(context).refreshComplete,
+              message: 'Refresh complete',
             ),
             duration: Duration(seconds: 3)));
       });
@@ -79,26 +78,8 @@ class StubListVM {
         onDismissed: (BuildContext context, StubEntity stub,
             DismissDirection direction) {
           final Completer<Null> completer = new Completer<Null>();
-          var message = '';
-          /*
-          if (direction == DismissDirection.endToStart) {
-            if (stub.isArchived()) {
-              store.dispatch(RestoreStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyRestoredStub;
-            } else {
-              store.dispatch(ArchiveStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyArchivedStub;
-            }
-          } else if (direction == DismissDirection.startToEnd) {
-            if (stub.isArchived() || stub.isDeleted) {
-              store.dispatch(RestoreStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyRestoredStub;
-            } else {
-              store.dispatch(DeleteStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyDeletedStub;
-            }
-          }
-          */
+          store.dispatch(DeleteStubRequest(completer, stub.id));
+          var message = 'Successfully Deleted Stub';
           return completer.future.then((_) {
             Scaffold.of(context).showSnackBar(SnackBar(
                 content: SnackBarRow(

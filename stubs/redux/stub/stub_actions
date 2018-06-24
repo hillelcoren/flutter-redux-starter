@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/redux/app/app_actions.dart';
 
 class LoadStubs {

@@ -83,6 +83,7 @@ if [ ${action} = "init" ]; then
         './lib/ui/auth/login_vm.dart'
         './lib/ui/app/app_drawer.dart'
         './lib/ui/app/app_drawer_vm.dart'
+        './lib/ui/app/actions_menu_button.dart'
         './lib/ui/home/home_screen.dart'
         './stubs/data/models/stub_model'
         './stubs/data/repositories/stub_repository'

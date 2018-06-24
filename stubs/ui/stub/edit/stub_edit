@@ -2,8 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_starter/ui/app/actions_menu_button.dart';
 import 'package:flutter_redux_starter/ui/app/form_card.dart';
-import 'package:flutter_redux_starter/ui/product/edit/product_edit_vm.dart';
-import 'package:flutter_redux_starter/utils/localization.dart';
+import 'package:flutter_redux_starter/ui/stub/edit/stub_edit_vm.dart';
 import 'package:flutter_redux_starter/ui/app/save_icon_button.dart';
 
 class ProductEdit extends StatefulWidget {
@@ -21,7 +20,7 @@ class ProductEdit extends StatefulWidget {
 class _ProductEditState extends State<ProductEdit> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  //final _productKeyController = TextEditingController();
+  //final _stubKeyController = TextEditingController();
 
   var _controllers = [];
 
@@ -29,13 +28,13 @@ class _ProductEditState extends State<ProductEdit> {
   void didChangeDependencies() {
 
     _controllers = [
-      //_productKeyController,
+      //_stubKeyController,
     ];
 
     _controllers.forEach((controller) => controller.removeListener(_onChanged));
 
-    //var product = widget.viewModel.product;
-    //_productKeyController.text = product.productKey;
+    //var stub = widget.viewModel.stub;
+    //_stubKeyController.text = stub.stubKey;
 
     _controllers.forEach((controller) => controller.addListener(_onChanged));
 
@@ -53,11 +52,11 @@ class _ProductEditState extends State<ProductEdit> {
   }
 
   _onChanged() {
-    var product = widget.viewModel.product.rebuild((b) => b
-      ..productKey = _productKeyController.text.trim()
+    var stub = widget.viewModel.stub.rebuild((b) => b
+      ..stubKey = _stubKeyController.text.trim()
     );
-    if (product != widget.viewModel.product) {
-      widget.viewModel.onChanged(product);
+    if (stub != widget.viewModel.stub) {
+      widget.viewModel.onChanged(stub);
     }
   }
 
@@ -72,7 +71,7 @@ class _ProductEditState extends State<ProductEdit> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text(viewModel.product.isNew()
+          title: Text(viewModel.stub.isNew()
               ? 'New Stub'
               : viewModel.stub.displayName),
           actions: <Widget>[
@@ -88,11 +87,11 @@ class _ProductEditState extends State<ProductEdit> {
                 },
               );
             }),
-            viewModel.product.isNew()
+            viewModel.stub.isNew()
                 ? Container()
                 : ActionMenuButton(
                     isLoading: viewModel.isLoading,
-                    entity: viewModel.product,
+                    entity: viewModel.stub,
                     onSelected: viewModel.onActionSelected,
                   )
           ],
@@ -104,10 +103,10 @@ class _ProductEditState extends State<ProductEdit> {
               FormCard(
                 children: <Widget>[
                   TextFormField(
-                    controller: _productKeyController,
+                    controller: _stubKeyController,
                     autocorrect: false,
                     decoration: InputDecoration(
-                      labelText: AppLocalization.of(context).product,
+                      labelText: 'Stub',
                     ),
                   ),
                 ],

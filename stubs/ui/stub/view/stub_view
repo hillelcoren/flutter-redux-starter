@@ -9,7 +9,6 @@ import 'package:flutter_redux_starter/ui/app/icon_message.dart';
 import 'package:flutter_redux_starter/ui/app/stub/stub_item_view.dart';
 import 'package:flutter_redux_starter/ui/app/two_value_header.dart';
 import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
-import 'package:flutter_redux_starter/utils/localization.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class StubView extends StatefulWidget {

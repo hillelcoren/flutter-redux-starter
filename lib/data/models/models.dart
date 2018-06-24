@@ -20,6 +20,17 @@ class EntityType extends EnumClass {
   static EntityType valueOf(String name) => _$typeValueOf(name);
 }
 
+class EntityAction extends EnumClass {
+  static Serializer<EntityAction> get serializer => _$entityActionSerializer;
+
+  static const EntityAction delete = _$delete;
+
+  const EntityAction._(String name) : super(name);
+
+  static BuiltSet<EntityAction> get values => _$values;
+  static EntityAction valueOf(String name) => _$valueOf(name);
+}
+
 abstract class BaseEntity {
 
   int get id;
@@ -43,6 +54,11 @@ abstract class BaseEntity {
   bool isNew() {
     return this.id == null || this.id < 0;
   }
+
+  bool get isActive {
+    return true;
+  }
+
 }
 
 

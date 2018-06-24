@@ -24,7 +24,25 @@ EntityType _$typeValueOf(String name) {
 final BuiltSet<EntityType> _$typeValues =
     new BuiltSet<EntityType>(const <EntityType>[]);
 
+const EntityAction _$delete = const EntityAction._('delete');
+
+EntityAction _$valueOf(String name) {
+  switch (name) {
+    case 'delete':
+      return _$delete;
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<EntityAction> _$values =
+    new BuiltSet<EntityAction>(const <EntityAction>[
+  _$delete,
+]);
+
 Serializer<EntityType> _$entityTypeSerializer = new _$EntityTypeSerializer();
+Serializer<EntityAction> _$entityActionSerializer =
+    new _$EntityActionSerializer();
 Serializer<LoginResponse> _$loginResponseSerializer =
     new _$LoginResponseSerializer();
 
@@ -43,6 +61,23 @@ class _$EntityTypeSerializer implements PrimitiveSerializer<EntityType> {
   EntityType deserialize(Serializers serializers, Object serialized,
           {FullType specifiedType: FullType.unspecified}) =>
       EntityType.valueOf(serialized as String);
+}
+
+class _$EntityActionSerializer implements PrimitiveSerializer<EntityAction> {
+  @override
+  final Iterable<Type> types = const <Type>[EntityAction];
+  @override
+  final String wireName = 'EntityAction';
+
+  @override
+  Object serialize(Serializers serializers, EntityAction object,
+          {FullType specifiedType: FullType.unspecified}) =>
+      object.name;
+
+  @override
+  EntityAction deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType: FullType.unspecified}) =>
+      EntityAction.valueOf(serialized as String);
 }
 
 class _$LoginResponseSerializer implements StructuredSerializer<LoginResponse> {

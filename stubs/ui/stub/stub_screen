@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_starter/ui/app/app_search.dart';
 import 'package:flutter_redux_starter/ui/app/app_search_button.dart';
-import 'package:flutter_redux_starter/utils/localization.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/data/models/models.dart';
 import 'package:flutter_redux_starter/ui/stub/stub_list_vm.dart';
@@ -16,7 +15,6 @@ class StubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var store = StoreProvider.of<AppState>(context);
-    var localization = AppLocalization.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -53,7 +51,7 @@ class StubScreen extends StatelessWidget {
           store.dispatch(EditStub(stub: StubEntity(), context: context));
         },
         child: Icon(Icons.add,color: Colors.white,),
-        tooltip: localization.newStub,
+        tooltip: 'New Stub',
       ),
     );
   }
