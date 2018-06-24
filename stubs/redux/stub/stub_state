@@ -48,7 +48,7 @@ abstract class StubUIState extends Object with EntityUIState implements Built<St
 
   factory StubUIState() {
     return _$StubUIState._(
-      listUIState: ListUIState(StubFields.name),
+      listUIState: ListUIState(),
       selected: StubEntity(),
     );
   }

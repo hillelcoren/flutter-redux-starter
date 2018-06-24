@@ -7,6 +7,7 @@ import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_middleware.dart';
 import 'package:flutter_redux_starter/ui/app/init.dart';
 import 'package:flutter_redux_starter/ui/auth/login_vm.dart';
+import 'package:flutter_redux_starter/ui/home/home_screen.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 
@@ -48,6 +49,9 @@ class _SampleReduxAppState extends State<SampleReduxApp> {
           LoginScreen.route: (context) {
             return LoginScreen();
           },
+          HomeScreen.route: (context) {
+            return HomeScreen();
+          }
         },
       ),
     );
