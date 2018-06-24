@@ -6,7 +6,7 @@ import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
 import 'package:flutter_redux_starter/ui/stub/stub_screen.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/ui/stub/edit/stub_edit.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/ui/app/snackbar_row.dart';
@@ -63,7 +63,7 @@ class StubEditVM {
         store.dispatch(SaveStubRequest(completer: completer, stub: stub));
         return completer.future.then((_) {
           Scaffold.of(context).showSnackBar(SnackBar(
-              content: SnackBarRow(
+              content: IconMessage(
                 message: stub.isNew()
                     ? 'Successfully Created Stub'
                     : 'Successfully Updated Stub',

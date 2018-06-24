@@ -70,7 +70,7 @@ class StubViewVM {
           if (message != null) {
             return completer.future.then((_) {
               Scaffold.of(context).showSnackBar(SnackBar(
-                  content: SnackBarRow(
+                  content: IconMessage(
                     message: message,
                   ),
                   duration: Duration(seconds: 3)));

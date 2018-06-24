@@ -53,7 +53,7 @@ class _StubEditState extends State<StubEdit> {
 
   _onChanged() {
     var stub = widget.viewModel.stub.rebuild((b) => b
-      ..stubKey = _stubKeyController.text.trim()
+      //..stubKey = _stubKeyController.text.trim()
     );
     if (stub != widget.viewModel.stub) {
       widget.viewModel.onChanged(stub);
@@ -87,13 +87,6 @@ class _StubEditState extends State<StubEdit> {
                 },
               );
             }),
-            viewModel.stub.isNew()
-                ? Container()
-                : ActionMenuButton(
-                    isLoading: viewModel.isLoading,
-                    entity: viewModel.stub,
-                    onSelected: viewModel.onActionSelected,
-                  )
           ],
         ),
         body: Form(
@@ -103,7 +96,7 @@ class _StubEditState extends State<StubEdit> {
               FormCard(
                 children: <Widget>[
                   TextFormField(
-                    controller: _stubKeyController,
+                    //controller: _stubKeyController,
                     autocorrect: false,
                     decoration: InputDecoration(
                       labelText: 'Stub',

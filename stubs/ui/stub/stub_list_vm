@@ -56,7 +56,7 @@ class StubListVM {
       store.dispatch(LoadStubs(completer, true));
       return completer.future.then((_) {
         Scaffold.of(context).showSnackBar(SnackBar(
-            content: SnackBarRow(
+            content: IconMessage(
               message: 'Refresh complete',
             ),
             duration: Duration(seconds: 3)));
@@ -82,7 +82,7 @@ class StubListVM {
           var message = 'Successfully Deleted Stub';
           return completer.future.then((_) {
             Scaffold.of(context).showSnackBar(SnackBar(
-                content: SnackBarRow(
+                content: IconMessage(
                   message: message,
                 ),
                 duration: Duration(seconds: 3)));

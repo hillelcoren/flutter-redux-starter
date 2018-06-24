@@ -1,7 +1,10 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
 import 'package:flutter_redux_starter/redux/app/data_state.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
+import 'package:flutter_redux_starter/redux/ui/entity_ui_state.dart';
+import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
 
 part 'app_state.g.dart';
@@ -24,7 +27,21 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   AppState._();
   static Serializer<AppState> get serializer => _$appStateSerializer;
 
-  /*
+  EntityUIState getUIState(EntityType type) {
+    switch (type) {
+      // STARTER: states [do not remove comment]
+      //case EntityType.product:
+      //  return productUIState;
+      default:
+        return null;
+    }
+  }
+
+  ListUIState getListState(EntityType type) {
+    return getUIState(type).listUIState;
+  }
+
+/*
   @override
   String toString() {
     return 'Is Loading: ${this.isLoading}';
