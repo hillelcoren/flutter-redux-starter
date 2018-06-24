@@ -276,7 +276,7 @@ else
     sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/models.dart
 
     comment="STARTER: import - do not remove comment"
-    code="import 'package:${package}\/redux\/${module}\/${module}_reducer.dart';\n"
+    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
 
     comment="STARTER: properties - do not remove comment"
