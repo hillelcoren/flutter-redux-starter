@@ -132,29 +132,29 @@ else
 
     # Create new module files
     declare -a files=(
-       './stubs/data/models/stub_model.dart'
-       './stubs/data/repositories/stub_repository.dart'
-       './stubs/redux/stub/stub_actions.dart'
-       './stubs/redux/stub/stub_reducer.dart'
-       './stubs/redux/stub/stub_state.dart'
-       './stubs/redux/stub/stub_middleware.dart'
-       './stubs/redux/stub/stub_selectors.dart'
-       './stubs/ui/stub/edit/stub_edit.dart'
-       './stubs/ui/stub/edit/stub_edit_vm.dart'
-       './stubs/ui/stub/view/stub_view.dart'
-       './stubs/ui/stub/view/stub_view_vm.dart'
-       './stubs/ui/stub/stub_item.dart'
-       './stubs/ui/stub/stub_list_vm.dart'
-       './stubs/ui/stub/stub_list.dart'
-       './stubs/ui/stub/stub_screen.dart')
+       './stubs/data/models/stub_model'
+       './stubs/data/repositories/stub_repository'
+       './stubs/redux/stub/stub_actions'
+       './stubs/redux/stub/stub_reducer'
+       './stubs/redux/stub/stub_state'
+       './stubs/redux/stub/stub_middleware'
+       './stubs/redux/stub/stub_selectors'
+       './stubs/ui/stub/edit/stub_edit'
+       './stubs/ui/stub/edit/stub_edit_vm'
+       './stubs/ui/stub/view/stub_view'
+       './stubs/ui/stub/view/stub_view_vm'
+       './stubs/ui/stub/stub_item'
+       './stubs/ui/stub/stub_list_vm'
+       './stubs/ui/stub/stub_list'
+       './stubs/ui/stub/stub_screen')
 
     for i in "${files[@]}"
     do
        filename=$(echo $i | sed "s/stubs/lib/g" | sed "s/stub/$module/g")
        echo "Creating file: $filename"
-       cp $i $filename
-       sed -i "s/stub/$module/g" $filename
-       sed -i "s/Stub/$Module/g" $filename
+       cp $i "$filename.dart"
+       sed -i "s/stub/$module/g" "$filename.dart"
+       sed -i "s/Stub/$Module/g" "$filename.dart"
     done
 
     flutter packages pub run build_runner build
