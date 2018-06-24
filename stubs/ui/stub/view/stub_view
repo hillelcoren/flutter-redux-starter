@@ -5,7 +5,6 @@ import 'package:flutter_redux_starter/data/models/models.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/ui/app/actions_menu_button.dart';
 import 'package:flutter_redux_starter/ui/app/icon_message.dart';
-import 'package:flutter_redux_starter/ui/app/stub/stub_item_view.dart';
 import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
 
 class StubView extends StatefulWidget {
@@ -29,7 +28,10 @@ class _StubViewState extends State<StubView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text((stub.displayName ?? ''),
+        title: Text(stub.displayName),
+        bottom: TabBar(
+          controller: _controller,
+        ),
         actions: stub.isNew()
             ? []
             : [
@@ -39,9 +41,14 @@ class _StubViewState extends State<StubView> {
                     viewModel.onEditPressed(context);
                   },
                 ),
+                ActionMenuButton(
+                  isLoading: viewModel.isLoading,
+                  entity: stub,
+                  onSelected: viewModel.onActionSelected,
+                )
               ],
       ),
-      body: Text('view'),
+      body: StubViewScreen(),
     );
   }
 }

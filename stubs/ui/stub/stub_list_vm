@@ -32,7 +32,6 @@ class StubListBuilder extends StatelessWidget {
 class StubListVM {
   final List<int> stubList;
   final BuiltMap<int, StubEntity> stubMap;
-  final BuiltMap<int, ClientEntity> clientMap;
   final bool isLoading;
   final bool isLoaded;
   final Function(BuildContext, StubEntity) onStubTap;
