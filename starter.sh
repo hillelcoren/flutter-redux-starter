@@ -199,7 +199,22 @@ else
         comment="STARTER: properties - do not remove comment"
         code="String get ${element};\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+        comment="STARTER: sort switch - do not remove comment"
+        code="case ${Module}Fields.${element}:\n"
+        code="${code}response = stubA.${element}.compareTo(stubB.${element});\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+        comment="STARTER: search - do not remove comment"
+        code="if (${element}.contains(search)){\n"
+        code="${code}return true;\n"
+        code="${code}}\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
     done
+
+    comment="STARTER: sort default - do not remove comment"
+    code="return ${module}A.${fieldsArray[0]}.compareTo(${module}B.${fieldsArray[0]})\n"
+    sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"

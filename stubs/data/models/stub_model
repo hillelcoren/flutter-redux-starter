@@ -47,12 +47,11 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
     StubEntity stubB = sortAscending ? stub: this; 
 
     switch (sortField) {
-      // TODO case StubFields.taskRate:
-      //  response = stubA.taskRate.compareTo(stubB.taskRate);
+      // STARTER: sort switch - do not remove comment
     }
 
     if (response == 0) {
-      // TODO return stubA.name.compareTo(stubB.name);
+      // STARTER: sort default - do not remove comment
     } else {
       return response;
     }
@@ -63,7 +62,10 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
       return true;
     }
 
+    // STARTER: search - do not remove comment
     // TODO return name.contains(search);
+
+    return false;
   }
 
   StubEntity._();
