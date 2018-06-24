@@ -151,12 +151,13 @@ else
     for i in "${files[@]}"
     do
        filename=$(echo $i | sed "s/stubs/lib/g" | sed "s/stub/$module/g")
-       echo "Creating file: $filename"
+       echo "Creating file: $filename.dart"
        cp $i "$filename.dart"
        sed -i "s/stub/$module/g" "$filename.dart"
        sed -i "s/Stub/$Module/g" "$filename.dart"
     done
 
+    rm -rf .dart_tool/build/
     flutter packages pub run build_runner build
 fi
 
