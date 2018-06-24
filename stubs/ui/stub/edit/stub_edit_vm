@@ -9,7 +9,7 @@ import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/ui/stub/edit/stub_edit.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/ui/app/snackbar_row.dart';
+import 'package:flutter_redux_starter/ui/app/icon_message.dart';
 
 class StubEditScreen extends StatelessWidget {
   static final String route = '/stub/edit';
@@ -50,7 +50,6 @@ class StubEditVM {
 
     return StubEditVM(
       isLoading: store.state.isLoading,
-      isDirty: stub.isNew(),
       stub: stub,
       onChanged: (StubEntity stub) {
         store.dispatch(UpdateStub(stub));

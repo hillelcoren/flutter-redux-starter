@@ -87,6 +87,7 @@ if [ ${action} = "init" ]; then
         './lib/ui/app/app_bottom_bar.dart'
         './lib/ui/app/app_search.dart'
         './lib/ui/app/app_search_button.dart'
+        './lib/ui/app/dismissible_entity.dart'
         './lib/ui/home/home_screen.dart'
         './stubs/data/models/stub_model'
         './stubs/data/repositories/stub_repository'

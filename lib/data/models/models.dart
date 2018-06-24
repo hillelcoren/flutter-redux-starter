@@ -59,6 +59,10 @@ abstract class BaseEntity {
     return true;
   }
 
+  bool get isDeleted {
+    return false;
+  }
+
 }
 
 

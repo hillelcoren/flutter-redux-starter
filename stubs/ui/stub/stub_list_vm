@@ -6,8 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_selectors.dart';
-import 'package:flutter_redux_starter/ui/app/snackbar_row.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/ui/app/icon_message.dart';
+import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/ui/stub/stub_list.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
@@ -67,10 +67,8 @@ class StubListVM {
         stubList: memoizedStubList(store.state.stubState.map,
             store.state.stubState.list, store.state.stubListState),
         stubMap: store.state.stubState.map,
-        clientMap: store.state.clientState.map,
         isLoading: store.state.isLoading,
-        isLoaded: store.state.stubState.isLoaded &&
-            store.state.clientState.isLoaded,
+        isLoaded: store.state.stubState.isLoaded,
         onStubTap: (context, stub) {
           store.dispatch(ViewStub(stub: stub, context: context));
         },

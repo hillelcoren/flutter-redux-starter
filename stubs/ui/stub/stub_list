@@ -18,7 +18,7 @@ class StubList extends StatelessWidget {
       if (! viewModel.isLoading) {
         viewModel.onRefreshed(context);
       }
-      return LoadingIndicator();
+      return Center(child: CircularProgressIndicator());
     }
 
     return _buildListView(context);
@@ -36,7 +36,6 @@ class StubList extends StatelessWidget {
             return Column(children: <Widget>[
               StubItem(
                 stub: stub,
-                client: viewModel.clientMap[stub.clientId],
                 onDismissed: (DismissDirection direction) =>
                     viewModel.onDismissed(context, stub, direction),
                 onTap: () => viewModel.onStubTap(context, stub),
