@@ -252,6 +252,23 @@ else
     code="..${module}State.replace(${module}sReducer(state.${module}State, action))\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
 
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}\/redux\/${module}\/${module}_actions.dart';\n"
+    code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
+
+    comment="STARTER: menu - do not remove comment"
+    code="ListTile(\n"
+    code="${code}leading: Icon(Icons.widgets),\n"
+    code="${code}title: Text(''),\n"
+    code="${code}onTap: () {\n"
+    code="${code}store.dispatch(Search${Module}s(null));\n"
+    code="${code}store.dispatch(UpdateCurrentRoute(${Module}Screen.route));\n"
+    code="${code}navigator.pushReplacementNamed(${Module}Screen.route);\n"
+    code="${code}},\n"
+    code="${code}),\n"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
+
     echo "Generating built files.."
     rm -rf .dart_tool/build/
     flutter packages pub run build_runner build --delete-conflicting-outputs
