@@ -21,17 +21,34 @@ if [ ${action} = "init" ]; then
     mv "./android/app/src/main/java/com/hillelcoren" "./android/app/src/main/java/com/$company"
     mv "./android/app/src/main/java/com/$company/flutterreduxstarter" "./android/app/src/main/java/com/$company/$package"
 
+    # Replace 'hillelcoren'
     declare -a files=(
-        "./ios/Runner.xcodeproj/project.pbxproj"
-        "./android/app/build.gradle"
-        "./android/app/src/main/AndroidManifest.xml"
-        "./android/app/src/main/java/com/$company/$package/MainActivity.java")
+        './ios/Runner.xcodeproj/project.pbxproj'
+        './android/app/build.gradle'
+        './android/app/src/main/AndroidManifest.xml'
+        "./android/app/src/main/java/com/$company/$package/MainActivity.java"
+        './stubs/data/models/stub_model.dart'
+        './stubs/data/repositories/stub_repository.dart'
+        './stubs/redux/stub_actions.dart'
+        './stubs/redux/stub_reducer.dart'
+        './stubs/redux/stub_state.dart'
+        './stubs/redux/stub_middleware.dart'
+        './stubs/redux/stub_selectors.dart'
+        './stubs/ui/edit/stub_edit.dart'
+        './stubs/ui/edit/stub_edit_vm.dart'
+        './stubs/ui/view/stub_view.dart'
+        './stubs/ui/view/stub_view_vm.dart'
+        './stubs/ui/stub_item.dart'
+        './stubs/ui/stub_list_vm.dart'
+        './stubs/ui/stub_list.dart'
+        './stubs/ui/stub_screen.dart')
 
     for i in "${files[@]}"
     do
        sed -i "s/hillelcoren/$company/g" $i
     done
 
+    # Replace 'flutterReduxStarter'
     declare -a files=(
         "./android/app/src/main/java/com/$company/$package/MainActivity.java")
 
@@ -40,6 +57,7 @@ if [ ${action} = "init" ]; then
        sed -i "s/flutterReduxStarter/$package/g" $i
     done
 
+    # Replace 'flutterreduxstarter'
     declare -a files=(
         "./ios/Runner.xcodeproj/project.pbxproj")
 
@@ -79,17 +97,15 @@ if [ ${action} = "init" ]; then
        sed -i "s/flutter_redux_starter/$package/g" $i
     done
 
-
-
 else
+
     module="$2"
     Module="$(tr '[:lower:]' '[:upper:]' <<< ${module:0:1})${module:1}"
 
     echo "Flutter/Redux Starter: Make..."
-    echo "Creating $Module module"
+    echo "Creating $module module"
 
-    ## Create new directories
-
+    # Create new directories
     if [ ! -d "lib/redux/$module" ]
     then
        echo "Creating directory: lib/redux/$module"
@@ -108,30 +124,31 @@ else
        mkdir "lib/ui/$module/edit"
     fi
 
-    ## Create new files
-
+    # Create new files
     declare -a files=(
-       #'lib/data/models/product_model.dart'
-       #'lib/data/repositories/product_repository.dart'
-       './lib/redux/product/product_actions.dart'
-       './lib/redux/product/product_reducer.dart'
-       './lib/redux/product/product_state.dart'
-       './lib/redux/product/product_middleware.dart'
-       './lib/redux/product/product_selectors.dart'
-       './lib/ui/product/edit/product_edit.dart'
-       './lib/ui/product/edit/product_edit_vm.dart'
-       './lib/ui/product/product_item.dart'
-       './lib/ui/product/product_list_vm.dart'
-       './lib/ui/product/product_list.dart'
-       './lib/ui/product/product_screen.dart')
+       './stubs/data/models/stub_model.dart'
+       './stubs/data/repositories/stub_repository.dart'
+       './stubs/redux/stub/stub_actions.dart'
+       './stubs/redux/stub/stub_reducer.dart'
+       './stubs/redux/stub/stub_state.dart'
+       './stubs/redux/stub/stub_middleware.dart'
+       './stubs/redux/stub/stub_selectors.dart'
+       './stubs/ui/stub/edit/stub_edit.dart'
+       './stubs/ui/stub/edit/stub_edit_vm.dart'
+       './stubs/ui/stub/view/stub_view.dart'
+       './stubs/ui/stub/view/stub_view_vm.dart'
+       './stubs/ui/stub/stub_item.dart'
+       './stubs/ui/stub/stub_list_vm.dart'
+       './stubs/ui/stub/stub_list.dart'
+       './stubs/ui/stub/stub_screen.dart')
 
     for i in "${files[@]}"
     do
-       filename=$(echo $i | sed "s/product/$module/g")
+       filename=$(echo $i | sed "s/\/stubs/lib/g" | sed "s/stub/$module/g")
        echo "Creating file: $filename"
-       cp $i $filename
-       sed -i "s/product/$module/g" $filename
-       sed -i "s/Product/$Module/g" $filename
+       #cp $i $filename
+       #sed -i "s/stub/$module/g" $filename
+       #sed -i "s/Stub/$Module/g" $filename
     done
 
 fi
