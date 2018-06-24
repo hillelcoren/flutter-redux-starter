@@ -20,9 +20,11 @@ final editingReducer = combineReducers<StubEntity>([
   TypedReducer<StubEntity, UpdateStub>(_updateEditing),
 ]);
 
+/*
 StubEntity  _clearEditing(StubEntity stub, action) {
   return StubEntity();
 }
+*/
 
 StubEntity _updateEditing(StubEntity stub, action) {
   return action.stub;

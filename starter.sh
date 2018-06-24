@@ -204,10 +204,10 @@ else
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
     code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
-    code="${code}import 'package:${package}\/ui\/${module}\/edit\/${module}_edit_vm.dart';${code}\n"
-    code="${code}import 'package:${package}\/ui\/${module}\/view\/${module}_view_vm.dart';${code}\n"
-    code="${code}import 'package:${package}\/redux\/${module}\/${module}_actions.dart';${code}\n"
-    code="${code}import 'package:${package}\/redux\/${module}\/${module}_middleware.dart';${code}\n"
+    code="${code}import 'package:${package}\/ui\/${module}\/edit\/${module}_edit_vm.dart';\n"
+    code="${code}import 'package:${package}\/ui\/${module}\/view\/${module}_view_vm.dart';\n"
+    code="${code}import 'package:${package}\/redux\/${module}\/${module}_actions.dart';\n"
+    code="${code}import 'package:${package}\/redux\/${module}\/${module}_middleware.dart';\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
 
     comment="STARTER: middleware - do not remove comment"

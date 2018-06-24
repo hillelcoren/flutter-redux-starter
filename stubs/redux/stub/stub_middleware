@@ -5,7 +5,6 @@ import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
 import 'package:flutter_redux_starter/ui/stub/edit/stub_edit_vm.dart';
 import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
-import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/data/repositories/stub_repository.dart';
 
