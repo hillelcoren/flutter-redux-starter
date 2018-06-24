@@ -176,12 +176,14 @@ else
     done
 
     # Link in new module
+    package="todos"
+    module="todo"
     comment="STARTER: import - do not remove comment"
-    code="import 'package:${package}/redux/${module}/${module}_state.dart';\n"
+    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
     echo "$comment $code"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
-    comment="STARTER: state switch - do not remove comment"
+    comment="STARTER: states switch - do not remove comment"
     code="case EntityType.${module}\nreturn ${module}UIState;\n"
     echo "$comment $code"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
