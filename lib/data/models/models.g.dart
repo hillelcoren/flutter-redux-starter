@@ -14,8 +14,36 @@ part of 'models.dart';
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: sort_constructors_first
 
+EntityType _$typeValueOf(String name) {
+  switch (name) {
+    default:
+      throw new ArgumentError(name);
+  }
+}
+
+final BuiltSet<EntityType> _$typeValues =
+    new BuiltSet<EntityType>(const <EntityType>[]);
+
+Serializer<EntityType> _$entityTypeSerializer = new _$EntityTypeSerializer();
 Serializer<LoginResponse> _$loginResponseSerializer =
     new _$LoginResponseSerializer();
+
+class _$EntityTypeSerializer implements PrimitiveSerializer<EntityType> {
+  @override
+  final Iterable<Type> types = const <Type>[EntityType];
+  @override
+  final String wireName = 'EntityType';
+
+  @override
+  Object serialize(Serializers serializers, EntityType object,
+          {FullType specifiedType: FullType.unspecified}) =>
+      object.name;
+
+  @override
+  EntityType deserialize(Serializers serializers, Object serialized,
+          {FullType specifiedType: FullType.unspecified}) =>
+      EntityType.valueOf(serialized as String);
+}
 
 class _$LoginResponseSerializer implements StructuredSerializer<LoginResponse> {
   @override

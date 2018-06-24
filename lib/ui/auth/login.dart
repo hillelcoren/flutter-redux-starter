@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux_starter/keys.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
 import 'package:flutter_redux_starter/ui/auth/login_vm.dart';
 
 class LoginView extends StatefulWidget {
