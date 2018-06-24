@@ -214,6 +214,37 @@ else
         comment="STARTER: constructor - do not remove comment"
         code="${element}: '',\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+        comment="STARTER: controllers - do not remove comment"
+        code="final _stubKeyController = TextEditingController();\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+
+        comment="STARTER: array - do not remove comment"
+        code="_stubKeyController,\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+
+        comment="STARTER: read value - do not remove comment"
+        code="_stubKeyController.text = stub.stubKey;\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+
+        comment="STARTER: set value - do not remove comment"
+        code="..stubKey = _stubKeyController.text.trim()\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+
+        comment="STARTER: widgets - do not remove comment"
+        code="TextFormField(\n"
+        code="${code}controller: _${element}Controller,\n"
+        code="${code}autocorrect: false,\n"
+        code="${code}decoration: InputDecoration(\n"
+        code="${code}labelText: '${element}',\n"
+        code="${code}),\n"
+        code="${code}),\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_edit.dart"
+
+        #comment="STARTER: widgets - do not remove comment"
+        #code=""
+        #sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_view.dart"
+
     done
 
     comment="STARTER: sort default - do not remove comment"

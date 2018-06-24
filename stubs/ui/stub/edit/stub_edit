@@ -19,7 +19,7 @@ class StubEdit extends StatefulWidget {
 class _StubEditState extends State<StubEdit> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  //final _stubKeyController = TextEditingController();
+  // STARTER: controllers - do not remove comment
 
   var _controllers = [];
 
@@ -27,13 +27,13 @@ class _StubEditState extends State<StubEdit> {
   void didChangeDependencies() {
 
     _controllers = [
-      //_stubKeyController,
+      // STARTER: array - do not remove comment
     ];
 
     _controllers.forEach((controller) => controller.removeListener(_onChanged));
 
-    //var stub = widget.viewModel.stub;
-    //_stubKeyController.text = stub.stubKey;
+    var stub = widget.viewModel.stub;
+    // STARTER: read value - do not remove comment
 
     _controllers.forEach((controller) => controller.addListener(_onChanged));
 
@@ -52,7 +52,7 @@ class _StubEditState extends State<StubEdit> {
 
   _onChanged() {
     var stub = widget.viewModel.stub.rebuild((b) => b
-      //..stubKey = _stubKeyController.text.trim()
+      // STARTER: set value - do not remove comment
     );
     if (stub != widget.viewModel.stub) {
       widget.viewModel.onChanged(stub);
@@ -94,13 +94,7 @@ class _StubEditState extends State<StubEdit> {
             children: <Widget>[
               FormCard(
                 children: <Widget>[
-                  TextFormField(
-                    //controller: _stubKeyController,
-                    autocorrect: false,
-                    decoration: InputDecoration(
-                      labelText: 'Stub',
-                    ),
-                  ),
+                  // STARTER: widgets - do not remove comment
                 ],
               ),
             ],

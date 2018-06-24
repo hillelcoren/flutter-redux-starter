@@ -40,7 +40,11 @@ class _StubViewState extends State<StubView> {
                 )
               ],
       ),
-      body: StubViewScreen(),
+      body: FormCard(
+        children: [
+          // STARTER: widgets - do not remove comment
+        ]
+      ),
     );
   }
 }
