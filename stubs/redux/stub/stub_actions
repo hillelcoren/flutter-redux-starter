@@ -50,24 +50,17 @@ class UpdateStub implements PersistUI {
   UpdateStub(this.stub);
 }
 
-class AddContact implements PersistUI {}
-
-class UpdateContact implements PersistUI {
-  final int index;
-  final ContactEntity contact;
-  UpdateContact({this.index, this.contact});
-}
-
-class DeleteContact implements PersistUI {
-  final int index;
-  DeleteContact(this.index);
-}
-
 class SaveStubRequest implements StartLoading {
   final Completer completer;
   final StubEntity stub;
   SaveStubRequest({this.completer, this.stub});
 }
+
+class AddStubSuccess implements StopLoading, PersistData {
+  final StubEntity stub;
+  AddStubSuccess(this.stub);
+}
+
 
 class SaveStubSuccess implements StopLoading, PersistData {
   final StubEntity stub;
@@ -95,11 +88,6 @@ class DeleteStubSuccess implements StopLoading, PersistData {
 class DeleteStubFailure implements StopLoading {
   final StubEntity stub;
   DeleteStubFailure(this.stub);
-}
-
-class AddStubSuccess implements StopLoading, PersistData {
-  final StubEntity stub;
-  AddStubSuccess(this.stub);
 }
 
 

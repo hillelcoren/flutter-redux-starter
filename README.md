@@ -29,13 +29,14 @@ This codebase provide a sample for basic app initialization but there are also e
 
 ## Included Packages
 
-- [flutter_redux](https://pub.dartlang.org/packages/flutter_redux) - Consume a Redux Store to build Flutter Widgets.
-- [redux_logging](https://pub.dartlang.org/packages/redux_logging) - Print the latest state\action changes.
-- [path_provider](https://pub.dartlang.org/packages/path_provider) - Find commonly used locations on the filesystem.
-- [shared_preferences ](https://pub.dartlang.org/packages/shared_preferences) - Provides a persistent store for simple data.
-- [build_runner](https://pub.dartlang.org/packages/build_runner) - A concrete way of generating files using Dart code.
-- [built_value](https://pub.dartlang.org/packages/built_value) - Built Values for Dart.
-- [built_collection](https://pub.dartlang.org/packages/built_collection) - Built Collections for Dart.
+- [flutter_redux](https://pub.dartlang.org/packages/flutter_redux) - Consume a Redux Store to build Flutter Widgets
+- [redux_logging](https://pub.dartlang.org/packages/redux_logging) - Print the latest state\action changes
+- [path_provider](https://pub.dartlang.org/packages/path_provider) - Find commonly used locations on the filesystem
+- [shared_preferences ](https://pub.dartlang.org/packages/shared_preferences) - Provides a persistent store for simple data
+- [build_runner](https://pub.dartlang.org/packages/build_runner) - A concrete way of generating files using Dart code
+- [built_value](https://pub.dartlang.org/packages/built_value) - Built Values for Dart
+- [built_collection](https://pub.dartlang.org/packages/built_collection) - Built Collections for Dart
+- [memoize](https://pub.dartlang.org/packages/memoize) - Cache results of function calls
 
 ## Application Architecture
 

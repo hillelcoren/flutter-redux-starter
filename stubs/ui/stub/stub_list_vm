@@ -80,6 +80,7 @@ class StubListVM {
             DismissDirection direction) {
           final Completer<Null> completer = new Completer<Null>();
           var message = '';
+          /*
           if (direction == DismissDirection.endToStart) {
             if (stub.isArchived()) {
               store.dispatch(RestoreStubRequest(completer, stub.id));
@@ -97,6 +98,7 @@ class StubListVM {
               message = AppLocalization.of(context).successfullyDeletedStub;
             }
           }
+          */
           return completer.future.then((_) {
             Scaffold.of(context).showSnackBar(SnackBar(
                 content: SnackBarRow(

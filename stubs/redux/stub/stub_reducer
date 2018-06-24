@@ -37,24 +37,6 @@ StubEntity _updateEditing(StubEntity stub, action) {
   return action.stub;
 }
 
-StubEntity _addContact(StubEntity stub, AddContact action) {
-  return stub.rebuild((b) => b
-    ..contacts.add(ContactEntity())
-  );
-}
-
-StubEntity _removeContact(StubEntity stub, DeleteContact action) {
-  return stub.rebuild((b) => b
-    ..contacts.removeAt(action.index)
-  );
-}
-
-StubEntity _updateContact(StubEntity stub, UpdateContact action) {
-  return stub.rebuild((b) => b
-    ..contacts[action.index] = action.contact
-  );
-}
-
 final stubListReducer = combineReducers<ListUIState>([
   TypedReducer<ListUIState, SortStubs>(_sortStubs),
   TypedReducer<ListUIState, FilterStubsByState>(_filterStubsByState),
@@ -100,8 +82,6 @@ final stubsReducer = combineReducers<StubState>([
 
 StubState _deleteStubRequest(StubState stubState, DeleteStubRequest action) {
   var stub = stubState.map[action.stubId].rebuild((b) => b
-    ..archivedAt = DateTime.now().millisecondsSinceEpoch
-    ..isDeleted = true
   );
 
   return stubState.rebuild((b) => b
