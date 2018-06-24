@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "Flutter/Redux Starter"
-echo "Developed by @hillelcoren\n"
+echo "Flutter/Redux Starter - Developed by @hillelcoren"
 
 action="$1"
 
@@ -102,6 +101,8 @@ if [ ${action} = "init" ]; then
        sed -i "s/flutter_redux_starter/$package/g" $i
     done
 
+    flutter pub get
+
 else
 
     module="$2"
@@ -164,7 +165,6 @@ else
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
-    flutter pub get
     flutter packages pub run build_runner build --delete-conflicting-outputs
 fi
 
