@@ -1,5 +1,5 @@
 import 'package:redux/redux.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/redux/ui/entity_ui_state.dart';
 import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
@@ -10,14 +10,6 @@ EntityUIState stubUIReducer(StubUIState state, action) {
     ..listUIState.replace(stubListReducer(state.listUIState, action))
     ..selected.replace(editingReducer(state.selected, action))
   );
-}
-
-Reducer<String> dropdownFilterReducer = combineReducers([
-  TypedReducer<String, FilterStubDropdown>(filterStubDropdownReducer),
-]);
-
-String filterStubDropdownReducer(String dropdownFilter, FilterStubDropdown action) {
-  return action.filter;
 }
 
 final editingReducer = combineReducers<StubEntity>([
@@ -38,21 +30,8 @@ StubEntity _updateEditing(StubEntity stub, action) {
 
 final stubListReducer = combineReducers<ListUIState>([
   TypedReducer<ListUIState, SortStubs>(_sortStubs),
-  TypedReducer<ListUIState, FilterStubsByState>(_filterStubsByState),
   TypedReducer<ListUIState, SearchStubs>(_searchStubs),
 ]);
-
-ListUIState _filterStubsByState(ListUIState stubListState, FilterStubsByState action) {
-  if (stubListState.stateFilters.contains(action.state)) {
-    return stubListState.rebuild((b) => b
-        ..stateFilters.remove(action.state)
-    );
-  } else {
-    return stubListState.rebuild((b) => b
-        ..stateFilters.add(action.state)
-    );
-  }
-}
 
 ListUIState _searchStubs(ListUIState stubListState, SearchStubs action) {
   return stubListState.rebuild((b) => b
