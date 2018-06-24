@@ -167,6 +167,9 @@ else
        sed -i "s/Stub/$Module/g" "$filename.dart"
     done
 
+    # Link in new module
+    #sed -i "s/Stub/$Module/g" ./lib/main.dart
+
     echo "Generating built files.."
     rm -rf .dart_tool/build/
     flutter packages pub run build_runner build --delete-conflicting-outputs
