@@ -24,7 +24,7 @@ abstract class StubItemResponse implements Built<StubItemResponse, StubItemRespo
 }
 
 class StubFields {
-
+  // STARTER: fields [do not remove comment]
 }
 
 abstract class StubEntity extends Object with BaseEntity implements Built<StubEntity, StubEntityBuilder> {

@@ -3,6 +3,7 @@ import 'package:flutter_redux_starter/data/file_storage.dart';
 import 'package:flutter_redux_starter/data/repositories/persistence_repository.dart';
 import 'package:flutter_redux_starter/redux/app/app_actions.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutter_redux_starter/redux/app/data_state.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
@@ -58,21 +59,26 @@ Middleware<AppState> _createLoadState(
     ) {
   AuthState authState;
   UIState uiState;
+  DataState dataState;
 
   return (Store<AppState> store, action, NextDispatcher next) {
+
+    // TODO passing back future/single catchError
     authRepository.exists().then((exists) {
       if (exists) {
         authRepository.loadAuthState().then((state) {
           authState = state;
           uiRepository.loadUIState().then((state) {
             uiState = state;
-            AppState appState = AppState().rebuild((b) => b
-              ..authState.replace(authState)
-              ..uiState.replace(uiState));
-            store.dispatch(LoadStateSuccess(appState));
-
-            Navigator.of(action.context).pushReplacementNamed(uiState.currentRoute);
-
+            dataRepository.loadDataState().then((state) {
+              dataState = state;
+              AppState appState = AppState().rebuild((b) => b
+                ..authState.replace(authState)
+                ..uiState.replace(uiState)
+                ..dataState.replace(dataState));
+              store.dispatch(LoadStateSuccess(appState));
+              Navigator.of(action.context).pushReplacementNamed(uiState.currentRoute);
+            }).catchError((error) => _handleError(store, error, action.context));
           }).catchError((error) => _handleError(store, error, action.context));
         }).catchError((error) => _handleError(store, error, action.context));
       } else {

@@ -65,6 +65,7 @@ if [ ${action} = "init" ]; then
         './lib/redux/app/app_reducer.dart'
         './lib/redux/app/app_actions.dart'
         './lib/redux/app/app_middleware.dart'
+        './lib/redux/app/data_reducer.dart'
         './lib/redux/auth/auth_state.dart'
         './lib/redux/auth/auth_actions.dart'
         './lib/redux/auth/auth_middleware.dart'

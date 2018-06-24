@@ -35,6 +35,7 @@ class AppDrawer extends StatelessWidget {
               navigator.pushReplacementNamed(HomeScreen.route);
             },
           ),
+          // STARTER: menu [do not remove comment]
           AboutListTile(
             applicationName: '',
             icon: Icon(Icons.info_outline),
