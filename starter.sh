@@ -157,7 +157,8 @@ else
        sed -i "s/Stub/$Module/g" "$filename.dart"
     done
 
+    echo "Building model files.."
     rm -rf .dart_tool/build/
-    flutter packages pub run build_runner build
+    flutter packages pub run build_runner build --delete-conflicting-outputs
 fi
 
