@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Flutter/Redux Starter"
-echo "Developed by @hillelcoren"
+echo "Developed by @hillelcoren\n"
 
 action="$1"
 
@@ -164,6 +164,7 @@ else
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
+    flutter pub get
     flutter packages pub run build_runner build --delete-conflicting-outputs
 fi
 
