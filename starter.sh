@@ -18,8 +18,8 @@ if [ ${action} = "init" ]; then
     cp .env.dart.example .env.dart
     sed -i "s/__API_URL__/$url/g" ./.env.dart
 
-    mv ./android/app/src/main/java/com/hillelcoren/ "./android/app/src/main/java/com/$company/"
-    mv "./android/app/src/main/java/com/$company/$package" "./android/app/src/main/java/com/$company/$package"
+    mv "./android/app/src/main/java/com/hillelcoren" "./android/app/src/main/java/com/$company"
+    mv "./android/app/src/main/java/com/$company/flutterreduxstarter" "./android/app/src/main/java/com/$company/$package"
 
     declare -a files=(
         "./ios/Runner.xcodeproj/project.pbxproj"
@@ -29,7 +29,7 @@ if [ ${action} = "init" ]; then
 
     for i in "${files[@]}"
     do
-       sed -i "s/hillelcoren/$company/g" $filename
+       sed -i "s/hillelcoren/$company/g" $i
     done
 
 
