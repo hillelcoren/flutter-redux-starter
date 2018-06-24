@@ -29,6 +29,8 @@ class StubFields {
 
 abstract class StubEntity extends Object with BaseEntity implements Built<StubEntity, StubEntityBuilder> {
 
+  // STARTER: properties [do not remove comment]
+
   static int counter = 0;
   factory StubEntity() {
     return _$StubEntity._(

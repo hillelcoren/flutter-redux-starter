@@ -10,8 +10,9 @@ import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
 part 'serializers.g.dart';
 
 @SerializersFor(const [
-  LoginResponse,
   AppState,
+  LoginResponse,
+  // STARTER: serializers [do not remove comment]
 ])
 final Serializers serializers =
 (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
