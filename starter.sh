@@ -118,13 +118,19 @@ else
        mkdir "lib/ui/$module"
     fi
 
+    if [ ! -d "lib/ui/$module/view" ]
+    then
+       echo "Creating directory: lib/ui/$module/view"
+       mkdir "lib/ui/$module/view"
+    fi
+
     if [ ! -d "lib/ui/$module/edit" ]
     then
        echo "Creating directory: lib/ui/$module/edit"
        mkdir "lib/ui/$module/edit"
     fi
 
-    # Create new files
+    # Create new module files
     declare -a files=(
        './stubs/data/models/stub_model.dart'
        './stubs/data/repositories/stub_repository.dart'
