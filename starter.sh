@@ -173,10 +173,11 @@ else
     done
 
     # Link in new module
-    comment="STARTER: state getters [do not remove comment]"
+    comment="STARTER: state getters - do not remove comment"
     code="${Module}State get ${module}State => this.dataState.${module}State;\n"
     code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+    echo "$comment $code"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
