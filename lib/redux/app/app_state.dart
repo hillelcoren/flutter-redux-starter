@@ -6,7 +6,7 @@ import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
 import 'package:flutter_redux_starter/redux/ui/entity_ui_state.dart';
 import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
-// STARTER: import [do not remove comment]
+// STARTER: import - do not remove comment
 
 part 'app_state.g.dart';
 
@@ -30,9 +30,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   EntityUIState getUIState(EntityType type) {
     switch (type) {
-      // STARTER: states switch [do not remove comment]
-      //case EntityType.product:
-      //  return productUIState;
+      // STARTER: states switch - do not remove comment
       default:
         return null;
     }
@@ -43,10 +41,6 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   }
 
   // STARTER: state getters [do not remove comment]
-
-  //ProductState get productState => this.selectedCompanyState.productState;
-  //ListUIState get productListState => this.uiState.productUIState.listUIState;
-
 
   /*
   @override

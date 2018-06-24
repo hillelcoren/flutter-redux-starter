@@ -24,12 +24,12 @@ abstract class StubItemResponse implements Built<StubItemResponse, StubItemRespo
 }
 
 class StubFields {
-  // STARTER: fields [do not remove comment]
+  // STARTER: fields - do not remove comment
 }
 
 abstract class StubEntity extends Object with BaseEntity implements Built<StubEntity, StubEntityBuilder> {
 
-  // STARTER: properties [do not remove comment]
+  // STARTER: properties - do not remove comment
 
   static int counter = 0;
   factory StubEntity() {

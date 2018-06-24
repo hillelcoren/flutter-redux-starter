@@ -114,8 +114,11 @@ if [ ${action} = "init" ]; then
 
 else
 
-    module="$2"
+    package="$2"
+    module="$3"
     Module="$(tr '[:lower:]' '[:upper:]' <<< ${module:0:1})${module:1}"
+    fields="$4"
+    IFS=', ' read -r -a fieldsArray <<< "$fields"
 
     echo "Make..."
     echo "Creating $module module"
@@ -173,11 +176,34 @@ else
     done
 
     # Link in new module
+    comment="STARTER: import - do not remove comment"
+    code="import 'package:${package}/redux/${module}/${module}_state.dart';\n"
+    echo "$comment $code"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
+
+    comment="STARTER: state switch - do not remove comment"
+    code="case EntityType.${module}\nreturn ${module}UIState;\n"
+    echo "$comment $code"
+    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
+
     comment="STARTER: state getters - do not remove comment"
     code="${Module}State get ${module}State => this.dataState.${module}State;\n"
     code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n\n"
     echo "$comment $code"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
+
+    for element in "${fieldsArray[@]}"
+    do
+        comment="STARTER: fields - do not remove comment"
+        code="static const String ${element} = '${element}';\n"
+        echo "$comment $code"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+        comment="STARTER: properties - do not remove comment"
+        code="String get ${element};\n"
+        echo "$comment $code"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+    done
 
     echo "Generating built files.."
     rm -rf .dart_tool/build/
