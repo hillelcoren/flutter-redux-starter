@@ -1,8 +1,8 @@
 name: flutter_redux_starter
-description: Starter project for a Flutter app with Redux
 version: 0.0.1
-author: Hillel Coren
-homepage: https://www.hillelcoren.com
+description:
+author:
+homepage: 
 
 dependencies:
   flutter:
