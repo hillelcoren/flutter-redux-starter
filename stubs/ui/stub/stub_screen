@@ -1,11 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:hillelcoren/ui/app/app_search.dart';
 import 'package:hillelcoren/ui/app/app_search_button.dart';
 import 'package:hillelcoren/utils/localization.dart';
 import 'package:hillelcoren/redux/app/app_state.dart';
-import 'package:flutter/material.dart';
 import 'package:hillelcoren/data/models/models.dart';
 import 'package:hillelcoren/ui/stub/stub_list_vm.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:hillelcoren/redux/stub/stub_actions.dart';
 import 'package:hillelcoren/ui/app/app_drawer_vm.dart';
 import 'package:hillelcoren/ui/app/app_bottom_bar.dart';
@@ -43,12 +43,8 @@ class StubScreen extends StatelessWidget {
           store.dispatch(SortStubs(value));
         },
         sortFields: [
-          StubFields.stubNumber,
-          StubFields.stubDate,
+          //StubFields.name,
         ],
-        onSelectedState: (EntityState state, value) {
-          store.dispatch(FilterStubsByState(state));
-        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(

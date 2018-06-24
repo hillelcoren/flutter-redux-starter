@@ -35,6 +35,10 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
     );
   }
 
+  String get displayName {
+    return 'Error: not set';
+  }
+
   int compareTo(StubEntity stub, String sortField, bool sortAscending) {
     int response = 0;
     StubEntity stubA = sortAscending ? this : stub;

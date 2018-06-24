@@ -14,18 +14,14 @@ List<Middleware<AppState>> createStoreStubsMiddleware([
 ]) {
   final loadStubs = _loadStubs(repository);
   final saveStub = _saveStub(repository);
-  final archiveStub = _archiveStub(repository);
   final deleteStub = _deleteStub(repository);
-  final restoreStub = _restoreStub(repository);
   final editStub = _editStub();
   final viewStub = _viewStub();
 
   return [
     TypedMiddleware<AppState, LoadStubs>(loadStubs),
     TypedMiddleware<AppState, SaveStubRequest>(saveStub),
-    TypedMiddleware<AppState, ArchiveStubRequest>(archiveStub),
     TypedMiddleware<AppState, DeleteStubRequest>(deleteStub),
-    TypedMiddleware<AppState, RestoreStubRequest>(restoreStub),
     TypedMiddleware<AppState, EditStub>(editStub),
     TypedMiddleware<AppState, ViewStub>(viewStub),
   ];
@@ -49,26 +45,6 @@ Middleware<AppState> _viewStub() {
   };
 }
 
-Middleware<AppState> _archiveStub(StubRepository repository) {
-  return (Store<AppState> store, action, NextDispatcher next) {
-    var origStub = store.state.stubState.map[action.stubId];
-    repository
-        .saveData(store.state.selectedCompany, store.state.authState,
-            origStub, EntityAction.archive)
-        .then((stub) {
-      store.dispatch(ArchiveStubSuccess(stub));
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((error) {
-      print(error);
-      store.dispatch(ArchiveStubFailure(origStub));
-    });
-
-    next(action);
-  };
-}
-
 Middleware<AppState> _deleteStub(StubRepository repository) {
   return (Store<AppState> store, action, NextDispatcher next) {
     var origStub = store.state.stubState.map[action.stubId];
@@ -83,26 +59,6 @@ Middleware<AppState> _deleteStub(StubRepository repository) {
     }).catchError((error) {
       print(error);
       store.dispatch(DeleteStubFailure(origStub));
-    });
-
-    next(action);
-  };
-}
-
-Middleware<AppState> _restoreStub(StubRepository repository) {
-  return (Store<AppState> store, action, NextDispatcher next) {
-    var origStub = store.state.stubState.map[action.stubId];
-    repository
-        .saveData(store.state.selectedCompany, store.state.authState,
-            origStub, EntityAction.restore)
-        .then((stub) {
-      store.dispatch(RestoreStubSuccess(stub));
-      if (action.completer != null) {
-        action.completer.complete(null);
-      }
-    }).catchError((error) {
-      print(error);
-      store.dispatch(RestoreStubFailure(origStub));
     });
 
     next(action);

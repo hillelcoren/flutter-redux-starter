@@ -20,7 +20,6 @@ class StubListBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, StubListVM>(
-      //rebuildOnChange: true,
       converter: StubListVM.fromStore,
       builder: (context, vm) {
         return StubList(

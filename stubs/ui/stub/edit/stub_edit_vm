@@ -3,27 +3,27 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:hillelcoren/redux/ui/ui_actions.dart';
-import 'package:hillelcoren/ui/product/product_screen.dart';
+import 'package:hillelcoren/ui/stub/stub_screen.dart';
 import 'package:hillelcoren/utils/localization.dart';
 import 'package:redux/redux.dart';
-import 'package:hillelcoren/redux/product/product_actions.dart';
+import 'package:hillelcoren/redux/stub/stub_actions.dart';
 import 'package:hillelcoren/data/models/models.dart';
-import 'package:hillelcoren/ui/product/edit/product_edit.dart';
+import 'package:hillelcoren/ui/stub/edit/stub_edit.dart';
 import 'package:hillelcoren/redux/app/app_state.dart';
 import 'package:hillelcoren/ui/app/snackbar_row.dart';
 
-class ProductEditScreen extends StatelessWidget {
-  static final String route = '/product/edit';
-  ProductEditScreen({Key key}) : super(key: key);
+class StubEditScreen extends StatelessWidget {
+  static final String route = '/stub/edit';
+  StubEditScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, ProductEditVM>(
+    return StoreConnector<AppState, StubEditVM>(
       converter: (Store<AppState> store) {
-        return ProductEditVM.fromStore(store);
+        return StubEditVM.fromStore(store);
       },
       builder: (context, vm) {
-        return ProductEdit(
+        return StubEdit(
           viewModel: vm,
         );
       },
@@ -31,76 +31,47 @@ class ProductEditScreen extends StatelessWidget {
   }
 }
 
-class ProductEditVM {
-  final ProductEntity product;
-  final Function(ProductEntity) onChanged;
+class StubEditVM {
+  final StubEntity stub;
+  final Function(StubEntity) onChanged;
   final Function(BuildContext) onSavePressed;
-  final Function(BuildContext, EntityAction) onActionSelected;
   final Function onBackPressed;
   final bool isLoading;
-  final bool isDirty;
 
-  ProductEditVM({
-    @required this.product,
+  StubEditVM({
+    @required this.stub,
     @required this.onChanged,
     @required this.onSavePressed,
     @required this.onBackPressed,
-    @required this.onActionSelected,
     @required this.isLoading,
-    @required this.isDirty,
   });
 
-  factory ProductEditVM.fromStore(Store<AppState> store) {
-    final product = store.state.productUIState.selected;
+  factory StubEditVM.fromStore(Store<AppState> store) {
+    final stub = store.state.stubUIState.selected;
 
-    return ProductEditVM(
+    return StubEditVM(
       isLoading: store.state.isLoading,
-      isDirty: product.isNew(),
-      product: product,
-      onChanged: (ProductEntity product) {
-        store.dispatch(UpdateProduct(product));
+      isDirty: stub.isNew(),
+      stub: stub,
+      onChanged: (StubEntity stub) {
+        store.dispatch(UpdateStub(stub));
       },
       onBackPressed: () {
-        store.dispatch(UpdateCurrentRoute(ProductScreen.route));
+        store.dispatch(UpdateCurrentRoute(StubScreen.route));
       },
       onSavePressed: (BuildContext context) {
         final Completer<Null> completer = new Completer<Null>();
-        store.dispatch(SaveProductRequest(completer: completer, product: product));
+        store.dispatch(SaveStubRequest(completer: completer, stub: stub));
         return completer.future.then((_) {
           Scaffold.of(context).showSnackBar(SnackBar(
               content: SnackBarRow(
-                message: product.isNew()
-                    ? AppLocalization.of(context).successfullyCreatedProduct
-                    : AppLocalization.of(context).successfullyUpdatedProduct,
+                message: stub.isNew()
+                    ? 'Successfully Created Stub'
+                    : 'Successfully Updated Stub',
               ),
               duration: Duration(seconds: 3)));
         });
       },
-      onActionSelected: (BuildContext context, EntityAction action) {
-        final Completer<Null> completer = new Completer<Null>();
-        var message = '';
-        switch (action) {
-          case EntityAction.archive:
-            store.dispatch(ArchiveProductRequest(completer, product.id));
-            message = AppLocalization.of(context).successfullyArchivedProduct;
-            break;
-          case EntityAction.delete:
-            store.dispatch(DeleteProductRequest(completer, product.id));
-            message = AppLocalization.of(context).successfullyDeletedProduct;
-            break;
-          case EntityAction.restore:
-            store.dispatch(RestoreProductRequest(completer, product.id));
-            message = AppLocalization.of(context).successfullyRestoredProduct;
-            break;
-        }
-        return completer.future.then((_) {
-          Scaffold.of(context).showSnackBar(SnackBar(
-              content: SnackBarRow(
-                message: message,
-              ),
-              duration: Duration(seconds: 3)));
-        });
-      }
     );
   }
 }

@@ -37,7 +37,6 @@ class StubViewVM {
   final Function(BuildContext) onEditPressed;
   final Function(BuildContext) onClientPressed;
   final bool isLoading;
-  final bool isDirty;
 
   StubViewVM({
     @required this.stub,
@@ -46,7 +45,6 @@ class StubViewVM {
     @required this.onEditPressed,
     @required this.onClientPressed,
     @required this.isLoading,
-    @required this.isDirty,
   });
 
   factory StubViewVM.fromStore(Store<AppState> store) {
@@ -75,14 +73,9 @@ class StubViewVM {
 
     return StubViewVM(
         isLoading: store.state.isLoading,
-        isDirty: stub.isNew(),
         stub: stub,
-        client: client,
         onEditPressed: (BuildContext context) {
           store.dispatch(EditStub(stub: stub, context: context));
-        },
-        onClientPressed: (BuildContext context) {
-          store.dispatch(ViewClient(client: client, context: context));
         },
         onActionSelected: (BuildContext context, EntityAction action) {
           final Completer<Null> completer = new Completer<Null>();
@@ -91,21 +84,9 @@ class StubViewVM {
             case EntityAction.pdf:
               _viewPdf(context);
               break;
-            case EntityAction.email:
-              store.dispatch(EmailStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyEmailedStub;
-              break;
-            case EntityAction.archive:
-              store.dispatch(ArchiveStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyArchivedStub;
-              break;
             case EntityAction.delete:
               store.dispatch(DeleteStubRequest(completer, stub.id));
               message = AppLocalization.of(context).successfullyDeletedStub;
-              break;
-            case EntityAction.restore:
-              store.dispatch(RestoreStubRequest(completer, stub.id));
-              message = AppLocalization.of(context).successfullyRestoredStub;
               break;
           }
           if (message != null) {

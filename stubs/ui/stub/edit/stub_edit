@@ -21,9 +21,7 @@ class ProductEdit extends StatefulWidget {
 class _ProductEditState extends State<ProductEdit> {
   static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final _productKeyController = TextEditingController();
-  final _notesController = TextEditingController();
-  final _costController = TextEditingController();
+  //final _productKeyController = TextEditingController();
 
   var _controllers = [];
 
@@ -31,17 +29,13 @@ class _ProductEditState extends State<ProductEdit> {
   void didChangeDependencies() {
 
     _controllers = [
-      _productKeyController,
-      _notesController,
-      _costController,
+      //_productKeyController,
     ];
 
     _controllers.forEach((controller) => controller.removeListener(_onChanged));
 
-    var product = widget.viewModel.product;
-    _productKeyController.text = product.productKey;
-    _notesController.text = product.notes;
-    _costController.text = product.cost?.toStringAsFixed(2) ?? '';
+    //var product = widget.viewModel.product;
+    //_productKeyController.text = product.productKey;
 
     _controllers.forEach((controller) => controller.addListener(_onChanged));
 
@@ -61,8 +55,6 @@ class _ProductEditState extends State<ProductEdit> {
   _onChanged() {
     var product = widget.viewModel.product.rebuild((b) => b
       ..productKey = _productKeyController.text.trim()
-      ..notes = _notesController.text.trim()
-      ..cost = double.tryParse(_costController.text) ?? 0.0
     );
     if (product != widget.viewModel.product) {
       widget.viewModel.onChanged(product);
@@ -81,8 +73,8 @@ class _ProductEditState extends State<ProductEdit> {
       child: Scaffold(
         appBar: AppBar(
           title: Text(viewModel.product.isNew()
-              ? AppLocalization.of(context).newProduct
-              : viewModel.product.productKey),
+              ? 'New Stub'
+              : viewModel.stub.displayName),
           actions: <Widget>[
             Builder(builder: (BuildContext context) {
               return SaveIconButton(
@@ -115,26 +107,7 @@ class _ProductEditState extends State<ProductEdit> {
                     controller: _productKeyController,
                     autocorrect: false,
                     decoration: InputDecoration(
-                      //border: InputBorder.none,
                       labelText: AppLocalization.of(context).product,
-                    ),
-                    validator: (val) => val.isEmpty || val.trim().length == 0
-                        ? AppLocalization.of(context).pleaseEnterAProductKey
-                        : null,
-                  ),
-                  TextFormField(
-                    controller: _notesController,
-                    maxLines: 4,
-                    decoration: InputDecoration(
-                      labelText: AppLocalization.of(context).notes,
-                    ),
-                  ),
-                  TextFormField(
-                    autocorrect: false,
-                    controller: _costController,
-                    keyboardType: TextInputType.number,
-                    decoration: InputDecoration(
-                      labelText: AppLocalization.of(context).cost,
                     ),
                   ),
                 ],

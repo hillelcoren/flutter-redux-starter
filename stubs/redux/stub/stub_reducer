@@ -10,7 +10,6 @@ EntityUIState stubUIReducer(StubUIState state, action) {
   return state.rebuild((b) => b
     ..listUIState.replace(stubListReducer(state.listUIState, action))
     ..selected.replace(editingReducer(state.selected, action))
-    ..dropdownFilter = dropdownFilterReducer(state.dropdownFilter, action)
   );
 }
 
@@ -28,10 +27,6 @@ final editingReducer = combineReducers<StubEntity>([
   TypedReducer<StubEntity, ViewStub>(_updateEditing),
   TypedReducer<StubEntity, EditStub>(_updateEditing),
   TypedReducer<StubEntity, UpdateStub>(_updateEditing),
-  TypedReducer<StubEntity, AddContact>(_addContact),
-  TypedReducer<StubEntity, DeleteContact>(_removeContact),
-  TypedReducer<StubEntity, UpdateContact>(_updateContact),
-  TypedReducer<StubEntity, SelectCompany>(_clearEditing),
 ]);
 
 StubEntity  _clearEditing(StubEntity stub, action) {
@@ -98,40 +93,10 @@ final stubsReducer = combineReducers<StubState>([
   TypedReducer<StubState, LoadStubsSuccess>(_setLoadedStubs),
   TypedReducer<StubState, LoadStubsFailure>(_setNoStubs),
 
-  TypedReducer<StubState, ArchiveStubRequest>(_archiveStubRequest),
-  TypedReducer<StubState, ArchiveStubSuccess>(_archiveStubSuccess),
-  TypedReducer<StubState, ArchiveStubFailure>(_archiveStubFailure),
-
   TypedReducer<StubState, DeleteStubRequest>(_deleteStubRequest),
   TypedReducer<StubState, DeleteStubSuccess>(_deleteStubSuccess),
   TypedReducer<StubState, DeleteStubFailure>(_deleteStubFailure),
-
-  TypedReducer<StubState, RestoreStubRequest>(_restoreStubRequest),
-  TypedReducer<StubState, RestoreStubSuccess>(_restoreStubSuccess),
-  TypedReducer<StubState, RestoreStubFailure>(_restoreStubFailure),
 ]);
-
-StubState _archiveStubRequest(StubState stubState, ArchiveStubRequest action) {
-  var stub = stubState.map[action.stubId].rebuild((b) => b
-    ..archivedAt = DateTime.now().millisecondsSinceEpoch
-  );
-
-  return stubState.rebuild((b) => b
-    ..map[action.stubId] = stub
-  );
-}
-
-StubState _archiveStubSuccess(StubState stubState, ArchiveStubSuccess action) {
-  return stubState.rebuild((b) => b
-    ..map[action.stub.id] = action.stub
-  );
-}
-
-StubState _archiveStubFailure(StubState stubState, ArchiveStubFailure action) {
-  return stubState.rebuild((b) => b
-    ..map[action.stub.id] = action.stub
-  );
-}
 
 StubState _deleteStubRequest(StubState stubState, DeleteStubRequest action) {
   var stub = stubState.map[action.stubId].rebuild((b) => b
@@ -155,30 +120,6 @@ StubState _deleteStubFailure(StubState stubState, DeleteStubFailure action) {
     ..map[action.stub.id] = action.stub
   );
 }
-
-
-StubState _restoreStubRequest(StubState stubState, RestoreStubRequest action) {
-  var stub = stubState.map[action.stubId].rebuild((b) => b
-    ..archivedAt = null
-    ..isDeleted = false
-  );
-  return stubState.rebuild((b) => b
-    ..map[action.stubId] = stub
-  );
-}
-
-StubState _restoreStubSuccess(StubState stubState, RestoreStubSuccess action) {
-  return stubState.rebuild((b) => b
-    ..map[action.stub.id] = action.stub
-  );
-}
-
-StubState _restoreStubFailure(StubState stubState, RestoreStubFailure action) {
-  return stubState.rebuild((b) => b
-    ..map[action.stub.id] = action.stub
-  );
-}
-
 
 StubState _addStub(
     StubState stubState, AddStubSuccess action) {

@@ -80,23 +80,6 @@ class SaveStubFailure implements StopLoading {
   SaveStubFailure (this.error);
 }
 
-class ArchiveStubRequest implements StartLoading {
-  final Completer completer;
-  final int stubId;
-
-  ArchiveStubRequest(this.completer, this.stubId);
-}
-
-class ArchiveStubSuccess implements StopLoading, PersistData {
-  final StubEntity stub;
-  ArchiveStubSuccess(this.stub);
-}
-
-class ArchiveStubFailure implements StopLoading {
-  final StubEntity stub;
-  ArchiveStubFailure(this.stub);
-}
-
 class DeleteStubRequest implements StartLoading {
   final Completer completer;
   final int stubId;
@@ -114,22 +97,6 @@ class DeleteStubFailure implements StopLoading {
   DeleteStubFailure(this.stub);
 }
 
-class RestoreStubRequest implements StartLoading {
-  final Completer completer;
-  final int stubId;
-  RestoreStubRequest(this.completer, this.stubId);
-}
-
-class RestoreStubSuccess implements StopLoading, PersistData {
-  final StubEntity stub;
-  RestoreStubSuccess(this.stub);
-}
-
-class RestoreStubFailure implements StopLoading {
-  final StubEntity stub;
-  RestoreStubFailure(this.stub);
-}
-
 class AddStubSuccess implements StopLoading, PersistData {
   final StubEntity stub;
   AddStubSuccess(this.stub);
@@ -145,15 +112,4 @@ class SearchStubs {
 class SortStubs implements PersistUI {
   final String field;
   SortStubs(this.field);
-}
-
-class FilterStubsByState implements PersistUI {
-  final EntityState state;
-
-  FilterStubsByState(this.state);
-}
-
-class FilterStubDropdown {
-  final String filter;
-  FilterStubDropdown(this.filter);
 }

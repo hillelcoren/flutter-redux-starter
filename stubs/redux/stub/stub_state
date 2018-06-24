@@ -50,7 +50,6 @@ abstract class StubUIState extends Object with EntityUIState implements Built<St
     return _$StubUIState._(
       listUIState: ListUIState(StubFields.name),
       selected: StubEntity(),
-      dropdownFilter: '',
     );
   }
 
