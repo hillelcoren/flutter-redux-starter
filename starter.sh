@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Flutter/Redux Starter"
+echo "Developed by @hillelcoren"
+
 action="$1"
 
 [ $# -eq 0 ] && { echo "Usage: $0 init or $0 make <module-name>"; exit 1; }
@@ -10,7 +13,7 @@ if [ ${action} = "init" ]; then
     package="$3"
     url="$4"
 
-    echo "Flutter/Redux Starter: Init..."
+    echo "Init..."
     echo "Company: $company"
     echo "Package: $package"
     echo "URL: $url"
@@ -102,7 +105,7 @@ else
     module="$2"
     Module="$(tr '[:lower:]' '[:upper:]' <<< ${module:0:1})${module:1}"
 
-    echo "Flutter/Redux Starter: Make..."
+    echo "Make..."
     echo "Creating $module module"
 
     # Create new directories
@@ -157,8 +160,9 @@ else
        sed -i "s/Stub/$Module/g" "$filename.dart"
     done
 
-    echo "Building model files.."
+    echo "Generating built files.."
     rm -rf .dart_tool/build/
     flutter packages pub run build_runner build --delete-conflicting-outputs
 fi
 
+echo "Successfully completed"
