@@ -23,7 +23,6 @@ if [ ${action} = "init" ]; then
 
     # Replace 'hillelcoren'
     declare -a files=(
-        "./.packages"
         './ios/Runner.xcodeproj/project.pbxproj'
         './android/app/build.gradle'
         './android/app/src/main/AndroidManifest.xml'
@@ -68,6 +67,7 @@ if [ ${action} = "init" ]; then
     done
 
     declare -a files=(
+        "./.packages"
         "./pubspec.yaml"
         "./ios/Runner/Info.plist"
         "./ios/Flutter/Generated.xcconfig"

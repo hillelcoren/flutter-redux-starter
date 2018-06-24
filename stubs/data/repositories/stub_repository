@@ -8,16 +8,16 @@ import 'package:hillelcoren/data/models/models.dart';
 import 'package:hillelcoren/data/web_stub.dart';
 
 class StubRepository {
-  final WebStub webStub;
+  final WebClient webClient;
 
   const StubRepository({
-    this.webStub = const WebStub(),
+    this.webClient = const WebClient(),
   });
 
-  Future<BuiltList<StubEntity>> loadList(CompanyEntity company, AuthState auth) async {
+  Future<BuiltList<StubEntity>> loadList(AuthState auth) async {
 
-    final response = await webStub.get(
-        auth.url + '/stubs', company.token);
+    final response = await webClient.get(
+        auth.url + '/stubs');
 
     StubListResponse stubResponse = serializers.deserializeWith(
         StubListResponse.serializer, response);
@@ -25,17 +25,17 @@ class StubRepository {
     return stubResponse.data;
   }
 
-  Future saveData(CompanyEntity company, AuthState auth, StubEntity stub) async {
+  Future saveData(AuthState auth, StubEntity stub) async {
 
     var data = serializers.serializeWith(StubEntity.serializer, stub);
     var response;
 
     if (stub.isNew()) {
-      response = await webStub.post(
-          auth.url + '/stubs', company.token, json.encode(data));
+      response = await webClient.post(
+          auth.url + '/stubs', json.encode(data));
     } else {
       var url = auth.url + '/stubs/' + stub.id.toString();
-      response = await webStub.put(url, company.token, json.encode(data));
+      response = await webClient.put(url, json.encode(data));
     }
 
     StubItemResponse stubResponse = serializers.deserializeWith(
