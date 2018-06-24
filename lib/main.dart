@@ -10,7 +10,7 @@ import 'package:flutter_redux_starter/redux/auth/auth_middleware.dart';
 import 'package:flutter_redux_starter/ui/app/init.dart';
 import 'package:flutter_redux_starter/ui/auth/login_vm.dart';
 import 'package:flutter_redux_starter/ui/home/home_screen.dart';
-// STARTER: import [do not remove comment]
+// STARTER: import - do not remove comment
 
 void main() {
   final store = Store<AppState>(appReducer,
@@ -18,7 +18,7 @@ void main() {
       middleware: []
         ..addAll(createStoreAuthMiddleware())
         ..addAll(createStorePersistenceMiddleware())
-        // STARTER: middleware [do not remove comment]
+        // STARTER: middleware - do not remove comment
         ..addAll([
           LoggingMiddleware.printer(),
         ]));
@@ -54,7 +54,7 @@ class _SampleReduxAppState extends State<SampleReduxApp> {
           HomeScreen.route: (context) {
             return HomeScreen();
           },
-          // STARTER: routes [do not remove comment]
+          // STARTER: routes - do not remove comment
         },
       ),
     );

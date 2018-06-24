@@ -40,7 +40,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     return getUIState(type).listUIState;
   }
 
-  // STARTER: state getters [do not remove comment]
+  // STARTER: state getters - do not remove comment
 
   /*
   @override
