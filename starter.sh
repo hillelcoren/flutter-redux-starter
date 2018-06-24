@@ -157,5 +157,6 @@ else
        sed -i "s/Stub/$Module/g" $filename
     done
 
+    flutter packages pub run build_runner build
 fi
 
