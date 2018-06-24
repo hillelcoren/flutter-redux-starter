@@ -144,11 +144,11 @@ else
 
     for i in "${files[@]}"
     do
-       filename=$(echo $i | sed "s/\/stubs/lib/g" | sed "s/stub/$module/g")
+       filename=$(echo $i | sed "s/stubs/lib/g" | sed "s/stub/$module/g")
        echo "Creating file: $filename"
-       #cp $i $filename
-       #sed -i "s/stub/$module/g" $filename
-       #sed -i "s/Stub/$Module/g" $filename
+       cp $i $filename
+       sed -i "s/stub/$module/g" $filename
+       sed -i "s/Stub/$Module/g" $filename
     done
 
 fi
