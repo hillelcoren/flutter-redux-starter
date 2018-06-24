@@ -34,6 +34,8 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
   static int counter = 0;
   factory StubEntity() {
     return _$StubEntity._(
+      id: 0,
+      // STARTER: constructor - do not remove comment
     );
   }
 
@@ -63,7 +65,6 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
     }
 
     // STARTER: search - do not remove comment
-    // TODO return name.contains(search);
 
     return false;
   }

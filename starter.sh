@@ -210,6 +210,10 @@ else
         code="${code}return true;\n"
         code="${code}}\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+        comment="STARTER: constructor - do not remove comment"
+        code="${element}: '',\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
     done
 
     comment="STARTER: sort default - do not remove comment"
@@ -217,8 +221,7 @@ else
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
     comment="STARTER: import - do not remove comment"
-    code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
-    code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
+    code="import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
     code="${code}import 'package:${package}\/ui\/${module}\/edit\/${module}_edit_vm.dart';\n"
     code="${code}import 'package:${package}\/ui\/${module}\/view\/${module}_view_vm.dart';\n"
     code="${code}import 'package:${package}\/redux\/${module}\/${module}_actions.dart';\n"
