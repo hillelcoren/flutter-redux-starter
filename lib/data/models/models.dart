@@ -8,8 +8,6 @@ class EntityType extends EnumClass {
   static Serializer<EntityType> get serializer => _$entityTypeSerializer;
 
   // STARTER: types - do not remove comment
-static const EntityType todo = _$todo;
-
 
   const EntityType._(String name) : super(name);
 
