@@ -29,22 +29,7 @@ if [ ${action} = "init" ]; then
         './ios/Runner.xcodeproj/project.pbxproj'
         './android/app/build.gradle'
         './android/app/src/main/AndroidManifest.xml'
-        "./android/app/src/main/java/com/$company/$package/MainActivity.java"
-        './stubs/data/models/stub_model'
-        './stubs/data/repositories/stub_repository'
-        './stubs/redux/stub/stub_actions'
-        './stubs/redux/stub/stub_reducer'
-        './stubs/redux/stub/stub_state'
-        './stubs/redux/stub/stub_middleware'
-        './stubs/redux/stub/stub_selectors'
-        './stubs/ui/stub/edit/stub_edit'
-        './stubs/ui/stub/edit/stub_edit_vm'
-        './stubs/ui/stub/view/stub_view'
-        './stubs/ui/stub/view/stub_view_vm'
-        './stubs/ui/stub/stub_item'
-        './stubs/ui/stub/stub_list_vm'
-        './stubs/ui/stub/stub_list'
-        './stubs/ui/stub/stub_screen')
+        "./android/app/src/main/java/com/$company/$package/MainActivity.java")
 
     for i in "${files[@]}"
     do
@@ -70,30 +55,45 @@ if [ ${action} = "init" ]; then
     done
 
     declare -a files=(
-        "./.packages"
-        "./pubspec.yaml"
-        "./ios/Runner/Info.plist"
-        "./ios/Flutter/Generated.xcconfig"
-        "./android/app/build.gradle"
-        "./android/app/src/main/AndroidManifest.xml"
-        "./lib/main.dart"
-        "./lib/redux/app/app_state.dart"
-        "./lib/redux/app/app_reducer.dart"
-        "./lib/redux/app/app_actions.dart"
-        "./lib/redux/app/app_middleware.dart"
-        "./lib/redux/auth/auth_state.dart"
-        "./lib/redux/auth/auth_actions.dart"
-        "./lib/redux/auth/auth_middleware.dart"
-        "./lib/redux/auth/auth_reducer.dart"
-        "./lib/redux/ui/ui_actions.dart"
-        "./lib/redux/ui/ui_reducer.dart"
-        "./lib/data/repositories/auth_repository.dart"
-        "./lib/data/repositories/persistence_repository.dart"
-        "./lib/data/models/serializers.dart"
-        "./test/login_test.dart"
-        "./lib/redux/ui/ui_state.dart"
-        "./lib/ui/auth/login.dart"
-        "./lib/ui/auth/login_vm.dart")
+        './.packages'
+        './pubspec.yaml'
+        './ios/Runner/Info.plist'
+        './ios/Flutter/Generated.xcconfig'
+        './android/app/build.gradle'
+        './android/app/src/main/AndroidManifest.xml'
+        './lib/main.dart'
+        './lib/redux/app/app_state.dart'
+        './lib/redux/app/app_reducer.dart'
+        './lib/redux/app/app_actions.dart'
+        './lib/redux/app/app_middleware.dart'
+        './lib/redux/auth/auth_state.dart'
+        './lib/redux/auth/auth_actions.dart'
+        './lib/redux/auth/auth_middleware.dart'
+        './lib/redux/auth/auth_reducer.dart'
+        './lib/redux/ui/ui_actions.dart'
+        './lib/redux/ui/ui_reducer.dart'
+        './lib/data/repositories/auth_repository.dart'
+        './lib/data/repositories/persistence_repository.dart'
+        './lib/data/models/serializers.dart'
+        './test/login_test.dart'
+        './lib/redux/ui/ui_state.dart'
+        './lib/ui/auth/login.dart'
+        './lib/ui/auth/login_vm.dart'
+        './stubs/data/models/stub_model'
+        './stubs/data/repositories/stub_repository'
+        './stubs/redux/stub/stub_actions'
+        './stubs/redux/stub/stub_reducer'
+        './stubs/redux/stub/stub_state'
+        './stubs/redux/stub/stub_middleware'
+        './stubs/redux/stub/stub_selectors'
+        './stubs/ui/stub/edit/stub_edit'
+        './stubs/ui/stub/edit/stub_edit_vm'
+        './stubs/ui/stub/view/stub_view'
+        './stubs/ui/stub/view/stub_view_vm'
+        './stubs/ui/stub/stub_item'
+        './stubs/ui/stub/stub_list_vm'
+        './stubs/ui/stub/stub_list'
+        './stubs/ui/stub/stub_screen')
 
     for i in "${files[@]}"
     do
