@@ -27,21 +27,21 @@ if [ ${action} = "init" ]; then
         './android/app/build.gradle'
         './android/app/src/main/AndroidManifest.xml'
         "./android/app/src/main/java/com/$company/$package/MainActivity.java"
-        './stubs/data/models/stub_model.dart'
-        './stubs/data/repositories/stub_repository.dart'
-        './stubs/redux/stub/stub_actions.dart'
-        './stubs/redux/stub/stub_reducer.dart'
-        './stubs/redux/stub/stub_state.dart'
-        './stubs/redux/stub/stub_middleware.dart'
-        './stubs/redux/stub/stub_selectors.dart'
-        './stubs/ui/stub/edit/stub_edit.dart'
-        './stubs/ui/stub/edit/stub_edit_vm.dart'
-        './stubs/ui/stub/view/stub_view.dart'
-        './stubs/ui/stub/view/stub_view_vm.dart'
-        './stubs/ui/stub/stub_item.dart'
-        './stubs/ui/stub/stub_list_vm.dart'
-        './stubs/ui/stub/stub_list.dart'
-        './stubs/ui/stub/stub_screen.dart')
+        './stubs/data/models/stub_model'
+        './stubs/data/repositories/stub_repository'
+        './stubs/redux/stub/stub_actions'
+        './stubs/redux/stub/stub_reducer'
+        './stubs/redux/stub/stub_state'
+        './stubs/redux/stub/stub_middleware'
+        './stubs/redux/stub/stub_selectors'
+        './stubs/ui/stub/edit/stub_edit'
+        './stubs/ui/stub/edit/stub_edit_vm'
+        './stubs/ui/stub/view/stub_view'
+        './stubs/ui/stub/view/stub_view_vm'
+        './stubs/ui/stub/stub_item'
+        './stubs/ui/stub/stub_list_vm'
+        './stubs/ui/stub/stub_list'
+        './stubs/ui/stub/stub_screen')
 
     for i in "${files[@]}"
     do
