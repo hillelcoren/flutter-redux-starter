@@ -109,9 +109,6 @@ Middleware<AppState> _loadStubs(StubRepository repository) {
       if (action.completer != null) {
         action.completer.complete(null);
       }
-      if (state.stubState.isStale) {
-        store.dispatch(LoadStubs());
-      }
     }).catchError((error) {
       print(error);
       store.dispatch(LoadStubsFailure(error));
