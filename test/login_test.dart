@@ -15,8 +15,8 @@ void main() {
       driver = await FlutterDriver.connect();
 
       // read config file
-      loginEmail = Config.LOGIN_EMAIL;
-      loginPassword = Config.LOGIN_PASSWORD;
+      loginEmail = Config.testLoginEmail;
+      loginPassword = Config.testLoginPassword;
     });
 
     tearDown(() async {
