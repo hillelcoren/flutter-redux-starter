@@ -1,18 +1,6 @@
-# Flutter Redux Starter/CRUD Generator
+# Flutter Redux Starter
 
 We're using this approach to develop our [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
-
-## Usage
-
-- Clone/fork the repo
-- `./starter.sh init <company> <application> <url>`
-- `./starter.sh make <application> <module> <fields>`
-
-For example:
-
-- `git clone git@github.com:hillelcoren/flutter-redux-starter.git todos && cd todos`
-- `./starter.sh init acme todos jsonplaceholder.typicode.com`
-- `./starter.sh make todos todo title,completed`
 
 ## Features
 
