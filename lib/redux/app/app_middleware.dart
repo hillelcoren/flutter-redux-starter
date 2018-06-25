@@ -80,7 +80,7 @@ Middleware<AppState> _createLoadState(
                 ..uiState.replace(uiState)
                 ..dataState.replace(dataState));
               store.dispatch(LoadStateSuccess(appState));
-              if (uiState.currentRoute != LoginScreen.route) {
+              if (uiState.currentRoute != LoginScreen.routeu'') {
                 NavigatorState navigator = Navigator.of(action.context);
                 bool isFirst = true;
                 _getRoutes(appState).forEach((route) {

@@ -37,6 +37,10 @@ class SampleReduxApp extends StatefulWidget {
 
 class _SampleReduxAppState extends State<SampleReduxApp> {
 
+  // TODO seems like there should be a cleaner solution
+  // to prevent sending multiple LoadState actions
+  bool hasLoadedState = false;
+
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
@@ -45,7 +49,10 @@ class _SampleReduxAppState extends State<SampleReduxApp> {
         title: 'Sample Redux App',
         routes: {
           InitScreen.route: (context) {
-            widget.store.dispatch(LoadStateRequest(context));
+            if (! hasLoadedState) {
+              widget.store.dispatch(LoadStateRequest(context));
+              hasLoadedState = true;
+            }
             return InitScreen();
           },
           LoginScreen.route: (context) {
