@@ -70,7 +70,7 @@ Middleware<AppState> _saveStub(StubRepository repository) {
         .saveData(
             store.state.authState, action.stub)
         .then((stub) {
-      if (action.stub.isNew()) {
+      if (action.stub.isNew) {
         store.dispatch(AddStubSuccess(stub));
       } else {
         store.dispatch(SaveStubSuccess(stub));

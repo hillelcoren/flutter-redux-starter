@@ -22,8 +22,10 @@ class AppSearch extends StatelessWidget {
       converter: (Store<AppState> store) =>
           store.state.getListState(entityType),
       builder: (BuildContext context, listUIState) {
+        var title = entityType.plural.toString();
         return listUIState.search == null
-            ? Text(entityType.plural.toString())
+            // TODO replace with localization
+            ? Text(title[0].toUpperCase() + title.substring(1))
             : Container(
           padding: const EdgeInsets.only(left: 8.0),
           height: 38.0,

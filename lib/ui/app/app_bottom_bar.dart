@@ -42,7 +42,8 @@ class _AppBottomBarState extends State<AppBottomBar> {
                   children: widget.sortFields.map((sortField) {
                     return RadioListTile(
                       dense: true,
-                      title: Text(sortField),
+                      // TODO replace with localization
+                      title: Text(sortField[0].toUpperCase() + sortField.substring(1)),
                       subtitle: sortField == listUIState.sortField
                           ? Text(listUIState.sortAscending
                           ? 'Ascending'

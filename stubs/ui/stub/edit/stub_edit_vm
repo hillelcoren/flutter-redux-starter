@@ -63,7 +63,7 @@ class StubEditVM {
         return completer.future.then((_) {
           Scaffold.of(context).showSnackBar(SnackBar(
               content: IconMessage(
-                message: stub.isNew()
+                message: stub.isNew
                     ? 'Successfully Created Stub'
                     : 'Successfully Updated Stub',
               ),

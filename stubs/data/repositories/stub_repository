@@ -31,7 +31,7 @@ class StubRepository {
     var data = serializers.serializeWith(StubEntity.serializer, stub);
     var response;
 
-    if (stub.isNew()) {
+    if (stub.isNew) {
       response = await webClient.post(
           kApiUrl + '/stubs', json.encode(data));
     } else {

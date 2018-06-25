@@ -25,7 +25,7 @@ class _StubViewState extends State<StubView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(stub.displayName),
-        actions: stub.isNew()
+        actions: stub.isNew
             ? []
             : [
                 IconButton(

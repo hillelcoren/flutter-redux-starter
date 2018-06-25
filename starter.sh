@@ -192,6 +192,8 @@ else
 
     for element in "${fieldsArray[@]}"
     do
+        Element="$(tr '[:lower:]' '[:upper:]' <<< ${element:0:1})${element:1}"
+
         comment="STARTER: fields - do not remove comment"
         code="static const String ${element} = '${element}';\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
@@ -236,7 +238,7 @@ else
         code="${code}controller: _${element}Controller,\n"
         code="${code}autocorrect: false,\n"
         code="${code}decoration: InputDecoration(\n"
-        code="${code}labelText: '${element}',\n"
+        code="${code}labelText: '${Element}',\n"
         code="${code}),\n"
         code="${code}),\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"

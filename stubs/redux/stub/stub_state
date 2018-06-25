@@ -44,7 +44,7 @@ abstract class StubUIState extends Object with EntityUIState implements Built<St
   @nullable
   StubEntity get selected;
 
-  bool get isSelectedNew => selected.isNew();
+  bool get isSelectedNew => selected.isNew;
 
   factory StubUIState() {
     return _$StubUIState._(
