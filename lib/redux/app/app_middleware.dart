@@ -7,6 +7,7 @@ import 'package:flutter_redux_starter/redux/app/data_state.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
+import 'package:flutter_redux_starter/ui/home/home_screen.dart';
 import 'package:redux/redux.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -82,8 +83,11 @@ Middleware<AppState> _createLoadState(
           }).catchError((error) => _handleError(store, error, action.context));
         }).catchError((error) => _handleError(store, error, action.context));
       } else {
-        store.dispatch(UserLogout());
-        store.dispatch(LoadUserLogin(action.context));
+        store.dispatch(UserLoginSuccess());
+        Navigator.of(action.context).pushReplacementNamed(HomeScreen.route);
+
+        //store.dispatch(UserLogout());
+        //store.dispatch(LoadUserLogin(action.context));
       }
     });
 
@@ -93,8 +97,12 @@ Middleware<AppState> _createLoadState(
 
 _handleError(store, error, context) {
   print(error);
-  store.dispatch(UserLogout());
-  store.dispatch(LoadUserLogin(context));
+
+  store.dispatch(UserLoginSuccess());
+  Navigator.of(context).pushReplacementNamed(HomeScreen.route);
+
+  //store.dispatch(UserLogout());
+  //store.dispatch(LoadUserLogin(context));
 }
 
 Middleware<AppState> _createUserLoggedIn(
