@@ -45,6 +45,8 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
       return true;
     }
 
+    search = search.toLowerCase();
+
     // STARTER: search - do not remove comment
 
     return false;

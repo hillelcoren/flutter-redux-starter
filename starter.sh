@@ -221,7 +221,7 @@ else
         sed -i -e "s/$comment/$comment${lineBreak}$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: search - do not remove comment"
-        code="if (${element}.contains(search)){${lineBreak}"
+        code="if (${element}.toLowerCase().contains(search)){${lineBreak}"
         code="${code}return true;${lineBreak}"
         code="${code}}${lineBreak}"
         sed -i -e "s/$comment/$comment${lineBreak}$code/g" "./lib/data/models/${module}_model.dart"
