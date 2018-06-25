@@ -277,7 +277,7 @@ else
     if [ "$countFields" -gt 1 ]; then
         comment="STARTER: subtitle - do not remove comment"
         code="subtitle: Text(${module}.${fieldsArray[1]}, maxLines: 4),\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/stub/stub_item.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_item.dart"
     fi
 
     comment="STARTER: import - do not remove comment"
