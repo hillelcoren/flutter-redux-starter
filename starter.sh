@@ -2,9 +2,9 @@
 
 echo "Flutter/Redux Starter by @hillelcoren"
 
-
 [ $# -eq 0 ] && { echo "Usage: $0 init or $0 make <module-name>"; exit 1; }
 
+action="$1"
 
 if [ "$(uname)" = "Darwin" ]; then
     lineBreak=''$'\n'
