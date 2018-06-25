@@ -250,6 +250,10 @@ else
         fi
         sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/view/${module}_view.dart"
 
+        comment="STARTER: sort - do not remove comment"
+        code="${Module}Fields.${element},\n"
+        sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/${module}_screen.dart"
+
     done
 
     comment="STARTER: sort default - do not remove comment"

@@ -42,6 +42,7 @@ class StubScreen extends StatelessWidget {
           store.dispatch(SortStubs(value));
         },
         sortFields: [
+          // STARTER: sort - do not remove comment
           //StubFields.name,
         ],
       ),
