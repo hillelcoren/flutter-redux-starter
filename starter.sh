@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Flutter/Redux Starter - Developed by @hillelcoren"
+echo "Flutter/Redux Starter by @hillelcoren"
 
 action="$1"
 
@@ -239,7 +239,7 @@ else
         code="${code}labelText: '${element}',\n"
         code="${code}),\n"
         code="${code}),\n"
-        sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: widgets - do not remove comment"
         if [ ${element} = ${fieldsArray[0]} ]; then
@@ -248,11 +248,11 @@ else
         else
             code="Text(${module}.${element}),"
         fi
-        sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/view/${module}_view.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/view/${module}_view.dart"
 
         comment="STARTER: sort - do not remove comment"
         code="${Module}Fields.${element},\n"
-        sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/${module}_screen.dart"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_screen.dart"
 
     done
 
@@ -261,7 +261,7 @@ else
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
     comment="STARTER: display name - do not remove comment"
-    code="return ${module}.${fieldsArray[0]};\n"
+    code="return ${fieldsArray[0]};\n"
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
     count=${#fieldsArray[@]}
@@ -364,7 +364,7 @@ else
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
 
     echo "Generating built files.."
-    rm -rf .dart_tool/build/
+    rm -rf ./.dart_tool/build/
     flutter packages pub run build_runner build --delete-conflicting-outputs
 fi
 
