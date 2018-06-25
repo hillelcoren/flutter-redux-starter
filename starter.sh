@@ -329,7 +329,7 @@ else
     comment="STARTER: menu - do not remove comment"
     code="ListTile(\n"
     code="${code}leading: Icon(Icons.widgets),\n"
-    code="${code}title: Text('${Module}'),\n"
+    code="${code}title: Text('${Module}s'),\n"
     code="${code}onTap: () {\n"
     code="${code}store.dispatch(Search${Module}s(null));\n"
     code="${code}store.dispatch(UpdateCurrentRoute(${Module}Screen.route));\n"

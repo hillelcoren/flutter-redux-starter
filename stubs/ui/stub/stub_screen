@@ -43,7 +43,6 @@ class StubScreen extends StatelessWidget {
         },
         sortFields: [
           // STARTER: sort - do not remove comment
-          //StubFields.name,
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
