@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux_starter/data/file_storage.dart';
+import 'package:flutter_redux_starter/data/models/models.dart';
 import 'package:flutter_redux_starter/data/repositories/persistence_repository.dart';
 import 'package:flutter_redux_starter/redux/app/app_actions.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_redux_starter/redux/app/data_state.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
+import 'package:flutter_redux_starter/ui/auth/login_vm.dart';
 import 'package:flutter_redux_starter/ui/home/home_screen.dart';
 import 'package:redux/redux.dart';
 import 'package:path_provider/path_provider.dart';
@@ -78,7 +80,18 @@ Middleware<AppState> _createLoadState(
                 ..uiState.replace(uiState)
                 ..dataState.replace(dataState));
               store.dispatch(LoadStateSuccess(appState));
-              Navigator.of(action.context).pushReplacementNamed(uiState.currentRoute);
+              if (uiState.currentRoute != LoginScreen.route) {
+                NavigatorState navigator = Navigator.of(action.context);
+                bool isFirst = true;
+                _getRoutes(appState).forEach((route) {
+                  if (isFirst) {
+                    navigator.pushReplacementNamed(route);
+                  } else {
+                    navigator.pushNamed(route);
+                  }
+                  isFirst = false;
+                });
+              }
             }).catchError((error) => _handleError(store, error, action.context));
           }).catchError((error) => _handleError(store, error, action.context));
         }).catchError((error) => _handleError(store, error, action.context));
@@ -93,6 +106,35 @@ Middleware<AppState> _createLoadState(
 
     next(action);
   };
+}
+
+List<String> _getRoutes(AppState state) {
+  List<String> routes = [];
+  var route = '';
+  EntityType entityType = null;
+
+  state.uiState.currentRoute
+      .split('/')
+      .where((part) => part.isNotEmpty)
+      .forEach((part) {
+    if (part == 'edit') {
+      // Only restore new unsaved entities to prevent conflicts
+      bool isNew = state.getUIState(entityType).isSelectedNew;
+      if (isNew) {
+        route += '/edit';
+      }
+    } else {
+      if (entityType == null) {
+        entityType = EntityType.valueOf(part);
+      }
+
+      route += '/' + part;
+    }
+
+    routes.add(route);
+  });
+
+  return routes;
 }
 
 _handleError(store, error, context) {
