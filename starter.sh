@@ -14,7 +14,7 @@ else
     lineBreak='\r\n'
 fi
 
-if [ "${action}" = "init" ]; then
+if [ ${action} = "init" ]; then
 
     company="$2"
     package="$3"
