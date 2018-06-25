@@ -5,14 +5,7 @@ echo "Flutter/Redux Starter by @hillelcoren"
 [ $# -eq 0 ] && { echo "Usage: $0 init or $0 make <module-name>"; exit 1; }
 
 action="$1"
-
-if [ "$(uname)" = "Darwin" ]; then
-    lineBreak=''$'\n'
-elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
-    lineBreak='\n'
-else
-    lineBreak='\r\n'
-fi
+lineBreak='\'$'\n'
 
 if [ ${action} = "init" ]; then
 
