@@ -190,8 +190,8 @@ else
     code="${code}${Module}UIState get ${module}UIState => this.uiState.${module}UIState;\n\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
-    for element in "${fieldsArray[@]}"
-    do
+    for (( idx=${#fieldsArray[@]}-1 ; idx>=0 ; idx-- )) ; do
+        element="${fieldsArray[idx]}"
         Element="$(tr '[:lower:]' '[:upper:]' <<< ${element:0:1})${element:1}"
 
         comment="STARTER: fields - do not remove comment"
