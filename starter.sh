@@ -191,7 +191,11 @@ else
     sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     for (( idx=${#fieldsArray[@]}-1 ; idx>=0 ; idx-- )) ; do
-        element="${fieldsArray[idx]}"
+        elements="${fieldsArray[idx]}"
+        IFS=':' read -r -a elementArray <<< "$elements"
+
+        element="${elementArray[0]}"
+        type="${elementArray[1]}"
         Element="$(tr '[:lower:]' '[:upper:]' <<< ${element:0:1})${element:1}"
 
         comment="STARTER: fields - do not remove comment"
@@ -237,6 +241,9 @@ else
         code="TextFormField(\n"
         code="${code}controller: _${element}Controller,\n"
         code="${code}autocorrect: false,\n"
+        if [ ${type} = "textarea" ]; then
+           code="${code}maxLines: 4,\n"
+        fi
         code="${code}decoration: InputDecoration(\n"
         code="${code}labelText: '${Element}',\n"
         code="${code}),\n"
@@ -266,8 +273,7 @@ else
     code="return ${fieldsArray[0]};\n"
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
-    count=${#fieldsArray[@]}
-    if [count -gt 1]; then
+    if [${fieldsArray[1]} -neq '']; then
         comment="STARTER: subtitle - do not remove comment"
         code="subtitle: Text(${module}.${fieldsArray[1]}, maxLines: 4),\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/stub/stub_item.dart"
