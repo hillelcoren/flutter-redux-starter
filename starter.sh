@@ -273,7 +273,7 @@ else
     code="return ${fieldsArray[0]};\n"
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
-    if [${fieldsArray[1]} -neq '']; then
+    if [ ${fieldsArray[1]} -neq '' ]; then
         comment="STARTER: subtitle - do not remove comment"
         code="subtitle: Text(${module}.${fieldsArray[1]}, maxLines: 4),\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/stub/stub_item.dart"
