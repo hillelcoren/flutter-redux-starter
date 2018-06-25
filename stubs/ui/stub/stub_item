@@ -19,6 +19,7 @@ class StubItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /*
     return DismissibleEntity(
       entity: stub,
       onDismissed: onDismissed,
@@ -41,5 +42,24 @@ class StubItem extends StatelessWidget {
         // STARTER: subtitle - do not remove comment
       ),
     );
+  }
+  */
+
+    return ListTile(
+      onTap: onTap,
+      title: Container(
+        width: MediaQuery.of(context).size.width,
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                stub.displayName,
+                style: Theme.of(context).textTheme.title,
+              ),
+            ),
+          ],
+        ),
+      );
+
   }
 }
