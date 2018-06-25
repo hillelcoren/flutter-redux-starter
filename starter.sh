@@ -239,17 +239,33 @@ else
         code="${code}labelText: '${element}',\n"
         code="${code}),\n"
         code="${code}),\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
-        #comment="STARTER: widgets - do not remove comment"
-        #code=""
-        #sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/view/${module}_view.dart"
+        comment="STARTER: widgets - do not remove comment"
+        if [ ${element} = ${fieldsArray[0]} ]; then
+            code="Text(${module}.${element}, style: Theme.of(context).textTheme.title),\n"
+            code="${code}SizedBox(height: 12.0),\n"
+        else
+            code="Text(${module}.${element}),"
+        fi
+        sed -i "s/$comment/$code\n$comment/g" "./lib/ui/${module}/view/${module}_view.dart"
 
     done
 
     comment="STARTER: sort default - do not remove comment"
     code="return ${module}A.${fieldsArray[0]}.compareTo(${module}B.${fieldsArray[0]});\n"
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+    comment="STARTER: display name - do not remove comment"
+    code="return ${module}.${fieldsArray[0]};\n"
+    sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+
+    count=${#fieldsArray[@]}
+    if [count -gt 1]; then
+        comment="STARTER: subtitle - do not remove comment"
+        code="subtitle: Text(${module}.${fieldsArray[1]}, maxLines: 4),\n"
+        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/stub/stub_item.dart"
+    fi
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"

@@ -22,7 +22,7 @@ abstract class StubEntity extends Object with BaseEntity implements Built<StubEn
   }
 
   String get displayName {
-    return 'Error: not set';
+    // STARTER: display name - do not remove comment
   }
 
   int compareTo(StubEntity stub, String sortField, bool sortAscending) {

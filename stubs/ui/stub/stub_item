@@ -38,6 +38,7 @@ class StubItem extends StatelessWidget {
             ],
           ),
         ),
+        // STARTER: subtitle - do not remove comment
       ),
     );
   }
