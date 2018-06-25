@@ -18,7 +18,7 @@ if [ ${action} = "init" ]; then
     echo "Creating files..."
 
     cp .env.dart.example .env.dart
-    sed -i "s/__API_URL__/$url/g" ./lib/constants.dart
+    sed -i -e "s/__API_URL__/$url/g" ./lib/constants.dart
 
     mv "./android/app/src/main/java/com/hillelcoren" "./android/app/src/main/java/com/$company"
     mv "./android/app/src/main/java/com/$company/flutterreduxstarter" "./android/app/src/main/java/com/$company/$package"
@@ -32,7 +32,7 @@ if [ ${action} = "init" ]; then
 
     for i in "${files[@]}"
     do
-       sed -i "s/hillelcoren/$company/g" $i
+       sed -i -e "s/hillelcoren/$company/g" $i
     done
 
     # Replace 'flutterReduxStarter'
@@ -41,7 +41,7 @@ if [ ${action} = "init" ]; then
 
     for i in "${files[@]}"
     do
-       sed -i "s/flutterReduxStarter/$package/g" $i
+       sed -i -e "s/flutterReduxStarter/$package/g" $i
     done
 
     # Replace 'flutterreduxstarter'
@@ -50,7 +50,7 @@ if [ ${action} = "init" ]; then
 
     for i in "${files[@]}"
     do
-       sed -i "s/flutterreduxstarter/$package/g" $i
+       sed -i -e "s/flutterreduxstarter/$package/g" $i
     done
 
     declare -a files=(
@@ -107,7 +107,7 @@ if [ ${action} = "init" ]; then
 
     for i in "${files[@]}"
     do
-       sed -i "s/flutter_redux_starter/$package/g" $i
+       sed -i -e "s/flutter_redux_starter/$package/g" $i
     done
 
     flutter pub get
@@ -171,24 +171,24 @@ else
        filename=$(echo $i | sed "s/stubs/lib/g" | sed "s/stub/$module/g")
        echo "Creating file: $filename.dart"
        cp $i "$filename.dart"
-       sed -i "s/stub/$module/g" "$filename.dart"
-       sed -i "s/Stub/$Module/g" "$filename.dart"
+       sed -i -e "s/stub/$module/g" "$filename.dart"
+       sed -i -e "s/Stub/$Module/g" "$filename.dart"
     done
 
     # Link in new module
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     comment="STARTER: states switch - do not remove comment"
     code="case EntityType.${module}:\nreturn ${module}UIState;\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     comment="STARTER: state getters - do not remove comment"
     code="${Module}State get ${module}State => this.dataState.${module}State;\n"
     code="${code}ListUIState get ${module}ListState => this.uiState.${module}UIState.listUIState;\n"
     code="${code}${Module}UIState get ${module}UIState => this.uiState.${module}UIState;\n\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/app_state.dart
 
     for (( idx=${#fieldsArray[@]}-1 ; idx>=0 ; idx-- )) ; do
         elements="${fieldsArray[idx]}"
@@ -200,42 +200,42 @@ else
 
         comment="STARTER: fields - do not remove comment"
         code="static const String ${element} = '${element}';\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: properties - do not remove comment"
         code="String get ${element};\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: sort switch - do not remove comment"
         code="case ${Module}Fields.${element}:\n"
         code="${code}response = ${module}A.${element}.compareTo(${module}B.${element});\nbreak;\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: search - do not remove comment"
         code="if (${element}.contains(search)){\n"
         code="${code}return true;\n"
         code="${code}}\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: constructor - do not remove comment"
         code="${element}: '',\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
         comment="STARTER: controllers - do not remove comment"
         code="final _${element}Controller = TextEditingController();\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: array - do not remove comment"
         code="_${element}Controller,\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: read value - do not remove comment"
         code="_${element}Controller.text = ${module}.${element};\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: set value - do not remove comment"
         code="..${element} = _${element}Controller.text.trim()\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: widgets - do not remove comment"
         code="TextFormField(\n"
@@ -248,7 +248,7 @@ else
         code="${code}labelText: '${Element}',\n"
         code="${code}),\n"
         code="${code}),\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/edit/${module}_edit.dart"
 
         comment="STARTER: widgets - do not remove comment"
         if [ ${element} = ${fieldsArray[0]} ]; then
@@ -257,26 +257,26 @@ else
         else
             code="Text(${module}.${element}),"
         fi
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/view/${module}_view.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/view/${module}_view.dart"
 
         comment="STARTER: sort - do not remove comment"
         code="${Module}Fields.${element},\n"
-        sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_screen.dart"
+        sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_screen.dart"
 
         if [ "$idx" -eq 0 ]; then
             comment="STARTER: sort default - do not remove comment"
             code="return ${module}A.${element}.compareTo(${module}B.${element});\n"
-            sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+            sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
             comment="STARTER: display name - do not remove comment"
             code="return ${element};\n"
-            sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
+            sed -i -e "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
         fi
 
         if [ "$idx" -eq 1 ]; then
             comment="STARTER: subtitle - do not remove comment"
             code="subtitle: Text(${module}.${element}, maxLines: 4),\n"
-            sed -i "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_item.dart"
+            sed -i -e "s/$comment/$comment\n$code/g" "./lib/ui/${module}/${module}_item.dart"
         fi
     done
 
@@ -287,11 +287,11 @@ else
     code="${code}import 'package:${package}\/ui\/${module}\/view\/${module}_view_vm.dart';\n"
     code="${code}import 'package:${package}\/redux\/${module}\/${module}_actions.dart';\n"
     code="${code}import 'package:${package}\/redux\/${module}\/${module}_middleware.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/main.dart
 
     comment="STARTER: middleware - do not remove comment"
     code="..addAll(createStore${Module}sMiddleware())\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/main.dart
 
     comment="STARTER: routes - do not remove comment"
     code="${Module}Screen.route: (context) {\n"
@@ -300,41 +300,41 @@ else
     code="${code}},\n"
     code="${code}${Module}ViewScreen.route: (context) => ${Module}ViewScreen(),\n"
     code="${code}${Module}EditScreen.route: (context) => ${Module}EditScreen(),\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/main.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/main.dart
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/data\/models\/${module}_model.dart';\n"
     code="${code}import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
 
     comment="STARTER: serializers - do not remove comment"
     code="${Module}Entity,\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
 
     comment="STARTER: fields - do not remove comment"
     code="${Module}State get ${module}State;\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
 
     comment="STARTER: constructor - do not remove comment"
     code="${module}State: ${Module}State(),\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/data_state.dart
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_reducer.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
 
     comment="STARTER: reducer - do not remove comment"
     code="..${module}State.replace(${module}sReducer(state.${module}State, action))\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/app/data_reducer.dart
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_actions.dart';\n"
     code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
 
     comment="STARTER: menu - do not remove comment"
     code="ListTile(\n"
@@ -346,32 +346,32 @@ else
     code="${code}navigator.pushReplacementNamed(${Module}Screen.route);\n"
     code="${code}},\n"
     code="${code}),\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/ui/app/app_drawer.dart
 
     comment="STARTER: types - do not remove comment"
     code="static const EntityType ${module} = _$"
     code="${code}${module};\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/models.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/data/models/models.dart
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_state.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
 
     comment="STARTER: properties - do not remove comment"
     code="${Module}UIState get ${module}UIState;\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
 
     comment="STARTER: constructor - do not remove comment"
     code="${module}UIState: ${Module}UIState(),\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_state.dart
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_reducer.dart';\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
 
     comment="STARTER: reducer - do not remove comment"
     code="..${module}UIState.replace(${module}UIReducer(state.${module}UIState, action))\n"
-    sed -i "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
+    sed -i -e "s/$comment/$comment\n$code/g" ./lib/redux/ui/ui_reducer.dart
 
     echo "Generating built files.."
     rm -rf ./.dart_tool/build/
