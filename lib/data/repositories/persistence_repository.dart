@@ -38,7 +38,7 @@ class PersistenceRepository {
   }
 
   Future<File> saveDataState(DataState state) async {
-    var data = serializers.serializeWith(UIState.serializer, state);
+    var data = serializers.serializeWith(DataState.serializer, state);
     return await fileStorage.save(json.encode(data));
   }
 
