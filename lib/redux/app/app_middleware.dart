@@ -39,7 +39,7 @@ List<Middleware<AppState>> createStorePersistenceMiddleware([
       authRepository,
       uiRepository);
   final uiChange = _createUIChange(uiRepository);
-  final dataChange = _createDataChange(uiRepository);
+  final dataChange = _createDataChange(dataRepository);
   final deleteState = _createDeleteState(
       authRepository,
       uiRepository);
