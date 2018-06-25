@@ -5,24 +5,6 @@ import 'package:flutter_redux_starter/data/models/models.dart';
 
 part 'stub_model.g.dart';
 
-abstract class StubListResponse implements Built<StubListResponse, StubListResponseBuilder> {
-
-  BuiltList<StubEntity> get data;
-
-  StubListResponse._();
-  factory StubListResponse([updates(StubListResponseBuilder b)]) = _$StubListResponse;
-  static Serializer<StubListResponse> get serializer => _$stubListResponseSerializer;
-}
-
-abstract class StubItemResponse implements Built<StubItemResponse, StubItemResponseBuilder> {
-
-  StubEntity get data;
-
-  StubItemResponse._();
-  factory StubItemResponse([updates(StubItemResponseBuilder b)]) = _$StubItemResponse;
-  static Serializer<StubItemResponse> get serializer => _$stubItemResponseSerializer;
-}
-
 class StubFields {
   // STARTER: fields - do not remove comment
 }

@@ -17,14 +17,13 @@ class StubRepository {
   });
 
   Future<BuiltList<StubEntity>> loadList(AuthState auth) async {
+    final response = await webClient.get(kApiUrl + '/stubs');
 
-    final response = await webClient.get(
-        kApiUrl + '/stubs');
+    var list = new BuiltList<StubEntity>(response.map((stub) {
+      return serializers.deserializeWith(StubEntity.serializer, stub);
+    }));
 
-    StubListResponse stubResponse = serializers.deserializeWith(
-        StubListResponse.serializer, response);
-
-    return stubResponse.data;
+    return list;
   }
 
   Future saveData(AuthState auth, StubEntity stub, [EntityAction action]) async {
@@ -40,9 +39,6 @@ class StubRepository {
       response = await webClient.put(url, json.encode(data));
     }
 
-    StubItemResponse stubResponse = serializers.deserializeWith(
-        StubItemResponse.serializer, response);
-
-    return stubResponse.data;
+    return serializers.deserializeWith(StubEntity.serializer, response);
   }
 }

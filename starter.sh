@@ -278,8 +278,7 @@ else
     sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
 
     comment="STARTER: serializers - do not remove comment"
-    code="${Module}ListResponse,\n"
-    code="${code}${Module}ItemResponse,\n"
+    code="${Module}Entity,\n"
     sed -i "s/$comment/$comment\n$code/g" ./lib/data/models/serializers.dart
 
     comment="STARTER: import - do not remove comment"
