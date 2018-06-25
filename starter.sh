@@ -6,15 +6,15 @@ echo "Flutter/Redux Starter by @hillelcoren"
 [ $# -eq 0 ] && { echo "Usage: $0 init or $0 make <module-name>"; exit 1; }
 
 
-if [ "$(uname)" == "Darwin" ]; then
+if [ "$(uname)" = "Darwin" ]; then
     lineBreak=''$'\n'
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+elif [ "$(expr substr $(uname -s) 1 5)" = "Linux" ]; then
     lineBreak='\n'
 else
     lineBreak='\r\n'
 fi
 
-if [ ${action} = "init" ]; then
+if [ "${action}" = "init" ]; then
 
     company="$2"
     package="$3"
@@ -23,6 +23,9 @@ if [ ${action} = "init" ]; then
     echo "Company: $company"
     echo "Package: $package"
     echo "URL: $url"
+
+    flutter pub get
+
     echo "Creating files..."
 
     cp .env.dart.example .env.dart
@@ -117,8 +120,6 @@ if [ ${action} = "init" ]; then
     do
        sed -i -e "s/flutter_redux_starter/$package/g" $i
     done
-
-    flutter pub get
 
 else
 
