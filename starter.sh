@@ -241,7 +241,7 @@ else
         code="TextFormField(\n"
         code="${code}controller: _${element}Controller,\n"
         code="${code}autocorrect: false,\n"
-        if [ ${type} = "textarea" ]; then
+        if [ "$type" = "textarea" ]; then
            code="${code}maxLines: 4,\n"
         fi
         code="${code}decoration: InputDecoration(\n"
@@ -273,7 +273,8 @@ else
     code="return ${fieldsArray[0]};\n"
     sed -i "s/$comment/$comment\n$code/g" "./lib/data/models/${module}_model.dart"
 
-    if [ ${fieldsArray[1]} -neq '' ]; then
+    countFields=${#fieldsArray[@]}
+    if [ "$countFields" -gt 1 ]; then
         comment="STARTER: subtitle - do not remove comment"
         code="subtitle: Text(${module}.${fieldsArray[1]}, maxLines: 4),\n"
         sed -i "s/$comment/$comment\n$code/g" "./lib/ui/stub/stub_item.dart"
