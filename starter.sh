@@ -297,7 +297,7 @@ else
 
     comment="STARTER: routes - do not remove comment"
     code="${Module}Screen.route: (context) {${lineBreak}"
-    code="${code}widget.store.dispatch(Load${Module}s());${lineBreak}"
+    code="${code}widget.store.dispatch(View${Module}List());${lineBreak}"
     code="${code}return ${Module}Screen();${lineBreak}"
     code="${code}},${lineBreak}"
     code="${code}${Module}ViewScreen.route: (context) => ${Module}ViewScreen(),${lineBreak}"
@@ -343,9 +343,7 @@ else
     code="${code}leading: Icon(Icons.widgets),${lineBreak}"
     code="${code}title: Text('${Module}s'),${lineBreak}"
     code="${code}onTap: () {${lineBreak}"
-    code="${code}store.dispatch(Search${Module}s(null));${lineBreak}"
-    code="${code}store.dispatch(UpdateCurrentRoute(${Module}Screen.route));${lineBreak}"
-    code="${code}navigator.pushReplacementNamed(${Module}Screen.route);${lineBreak}"
+    code="${code}store.dispatch(View${Module}List());${lineBreak}"
     code="${code}},${lineBreak}"
     code="${code}),${lineBreak}"
     sed -i -e "s/$comment/$comment${lineBreak}$code/g" ./lib/ui/app/app_drawer.dart

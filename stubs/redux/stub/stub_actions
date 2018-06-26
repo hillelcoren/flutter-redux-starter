@@ -4,6 +4,25 @@ import 'package:built_collection/built_collection.dart';
 import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/redux/app/app_actions.dart';
 
+
+class ViewStubList implements PersistUI {
+  final BuildContext context;
+  ViewStub([this.context]);
+}
+
+class ViewStub implements PersistUI {
+  final StubEntity stub;
+  final BuildContext context;
+  ViewStub({this.stub, this.context});
+}
+
+class EditStub implements PersistUI {
+  final StubEntity stub;
+  final BuildContext context;
+  EditStub({this.stub, this.context});
+}
+
+
 class LoadStubs {
   final Completer completer;
   final bool force;
@@ -33,17 +52,6 @@ class LoadStubsSuccess implements StopLoading, PersistData {
   }
 }
 
-class ViewStub implements PersistUI {
-  final StubEntity stub;
-  final BuildContext context;
-  ViewStub({this.stub, this.context});
-}
-
-class EditStub implements PersistUI {
-  final StubEntity stub;
-  final BuildContext context;
-  EditStub({this.stub, this.context});
-}
 
 class UpdateStub implements PersistUI {
   final StubEntity stub;

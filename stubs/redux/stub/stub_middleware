@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
+import 'package:invoiceninja/ui/product/stub_screen.dart';
 import 'package:flutter_redux_starter/data/models/models.dart';
 import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
 import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
@@ -11,27 +12,34 @@ import 'package:flutter_redux_starter/data/repositories/stub_repository.dart';
 List<Middleware<AppState>> createStoreStubsMiddleware([
   StubRepository repository = const StubRepository(),
 ]) {
+  final viewStubList = _viewStubList();
+  final viewStub = _viewStub();
+  final editStub = _editStub();
   final loadStubs = _loadStubs(repository);
   final saveStub = _saveStub(repository);
   final deleteStub = _deleteStub(repository);
-  final editStub = _editStub();
-  final viewStub = _viewStub();
 
   return [
+    TypedMiddleware<AppState, ViewStubList>(viewStubList),
+    TypedMiddleware<AppState, ViewStub>(viewStub),
+    TypedMiddleware<AppState, EditStub>(editStub),
     TypedMiddleware<AppState, LoadStubs>(loadStubs),
     TypedMiddleware<AppState, SaveStubRequest>(saveStub),
     TypedMiddleware<AppState, DeleteStubRequest>(deleteStub),
-    TypedMiddleware<AppState, EditStub>(editStub),
-    TypedMiddleware<AppState, ViewStub>(viewStub),
   ];
 }
 
-Middleware<AppState> _editStub() {
+Middleware<AppState> _viewStubList() {
   return (Store<AppState> store, action, NextDispatcher next) {
-    next(action);
+    store.dispatch(LoadStubs());
+    store.dispatch(UpdateCurrentRoute(StubScreen.route));
 
-    store.dispatch(UpdateCurrentRoute(StubEditScreen.route));
-    Navigator.of(action.context).pushNamed(StubEditScreen.route);
+    if (action.context != null) {
+      NavigatorState navigator = Navigator.of(action.context);
+      navigator.pushReplacementNamed(StubScreen.route);
+    }
+
+    next(action);
   };
 }
 
@@ -43,6 +51,16 @@ Middleware<AppState> _viewStub() {
     Navigator.of(action.context).pushNamed(StubViewScreen.route);
   };
 }
+
+Middleware<AppState> _editStub() {
+  return (Store<AppState> store, action, NextDispatcher next) {
+    next(action);
+
+    store.dispatch(UpdateCurrentRoute(StubEditScreen.route));
+    Navigator.of(action.context).pushNamed(StubEditScreen.route);
+  };
+}
+
 
 Middleware<AppState> _deleteStub(StubRepository repository) {
   return (Store<AppState> store, action, NextDispatcher next) {
