@@ -376,7 +376,7 @@ else
     sed -i -e "s/$comment/$comment${lineBreak}$code/g" ./lib/redux/ui/ui_reducer.dart
 
     echo "Generating built files.."
-    rm -rf ./.dart_tool/build/
+    flutter packages pub run build_runner clean
     flutter packages pub run build_runner build --delete-conflicting-outputs
 fi
 
