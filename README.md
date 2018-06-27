@@ -27,6 +27,7 @@ For example:
 git clone git@github.com:hillelcoren/flutter-redux-starter.git posts && cd posts
 ./starter.sh init acme posts jsonplaceholder.typicode.com
 ./starter.sh make posts post title,body:textarea
+flutter run
 ```
 
 ## Features
