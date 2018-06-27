@@ -9,15 +9,15 @@ We're using this approach to develop the [Flutter app](https://github.com/invoic
 
 ## Usage
 
-### Step 1: Clone the GitHub repo
+#### Step 1: Clone the GitHub repo
 
 `git clone git@github.com:hillelcoren/flutter-redux-starter.git <application> && cd <application>`
 
-### Step 2: Initialize the project (only run this once)
+#### Step 2: Initialize the project (only run this once)
 
 `./starter.sh init <company> <application> <url>`
 
-### Step 3: Create the module
+#### Step 3: Create the module
 
 `./starter.sh make <application> <module> <fields>`
 
