@@ -1,11 +1,11 @@
-# Flutter Redux Starter/CRUD Generator - [Watch Video](https://www.youtube.com/watch?v=pMSokKmwp1U)
+# Flutter Redux Starter/Code Generator - [Watch Video](https://www.youtube.com/watch?v=pMSokKmwp1U)
 
 <p align="center">
     <img src="https://hillelcoren.files.wordpress.com/2018/06/redux.png" alt="Flutter Redux Starter"/>
 </p>
 
 
-We're using this approach to develop our [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
+We're using this approach to develop the [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
 
 ## Usage
 
@@ -15,9 +15,9 @@ We're using this approach to develop our [Flutter app](https://github.com/invoic
 
 For example:
 
-- `git clone git@github.com:hillelcoren/flutter-redux-starter.git posts && cd posts`
-- `./starter.sh init acme posts jsonplaceholder.typicode.com`
-- `./starter.sh make posts post title,body:textarea`
+- `git clone git@github.com:hillelcoren/flutter-redux-starter.git hacker_news && cd hacker_news`
+- `./starter.sh init hacker_news articles api.hackerwebapp.com`
+- `./starter.sh make articles article title,url﻿`
 
 ## Features
 
@@ -26,7 +26,6 @@ For example:
 - Automatically implements support for sorting and searching
 - The account email is also backed up in shared preferences
 - All state and models classes are created using built_values
-- Includes sample integration test configured with local settings
 
 ## Included Packages
 
