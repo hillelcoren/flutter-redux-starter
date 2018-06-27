@@ -13,7 +13,7 @@ We're using this approach to develop the [Flutter app](https://github.com/invoic
 
 `git clone git@github.com:hillelcoren/flutter-redux-starter.git <application> && cd <application>`
 
-#### Step 2: Initialize the project (only run this once)
+#### Step 2: Initialize the project
 
 `./starter.sh init <company> <application> <url>`
 
