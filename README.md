@@ -9,11 +9,17 @@ We're using this approach to develop the [Flutter app](https://github.com/invoic
 
 ## Usage
 
-```
-git clone git@github.com:hillelcoren/flutter-redux-starter.git <application> && cd <application>
-./starter.sh init <company> <application> <url>
-./starter.sh make <application> <module> <fields>
-```
+### Step 1: Clone the GitHub repo
+
+`git clone git@github.com:hillelcoren/flutter-redux-starter.git <application> && cd <application>`
+
+### Step 2: Initialize the project (only run this once)
+
+`./starter.sh init <company> <application> <url>`
+
+### Step 3: Create the module
+
+`./starter.sh make <application> <module> <fields>`
 
 For example:
 
