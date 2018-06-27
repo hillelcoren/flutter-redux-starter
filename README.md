@@ -1,6 +1,9 @@
-# Flutter Redux Starter/CRUD Generator
+# Flutter Redux Starter/CRUD Generator - [Watch Video](https://www.youtube.com/watch?v=pMSokKmwp1U)
 
-[![Flutter Redux Starter](https://img.youtube.com/vi/pMSokKmwp1U/0.jpg)](https://www.youtube.com/watch?v=pMSokKmwp1U)
+<p align="center">
+    <img src="https://hillelcoren.files.wordpress.com/2018/06/redux.png" alt="Flutter Redux Starter"/>
+</p>
+
 
 We're using this approach to develop our [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
 
