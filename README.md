@@ -9,15 +9,19 @@ We're using this approach to develop the [Flutter app](https://github.com/invoic
 
 ## Usage
 
-- `git clone git@github.com:hillelcoren/flutter-redux-starter.git <application> && cd <application>`
-- `./starter.sh init <company> <application> <url>`
-- `./starter.sh make <application> <module> <fields>`
+```
+git clone git@github.com:hillelcoren/flutter-redux-starter.git <application> && cd <application>
+./starter.sh init <company> <application> <url>
+./starter.sh make <application> <module> <fields>
+```
 
 For example:
 
-- `git clone git@github.com:hillelcoren/flutter-redux-starter.git hacker_news && cd hacker_news`
-- `./starter.sh init hacker_news articles api.hackerwebapp.com`
-- `./starter.sh make articles article title,url﻿`
+```
+git clone git@github.com:hillelcoren/flutter-redux-starter.git hacker_news && cd hacker_news
+./starter.sh init hacker_news articles api.hackerwebapp.com
+./starter.sh make articles article title,url﻿
+```
 
 ## Features
 
