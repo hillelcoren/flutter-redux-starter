@@ -42,15 +42,11 @@ class _SampleReduxAppState extends State<SampleReduxApp> {
     return StoreProvider<AppState>(
       store: widget.store,
       child: MaterialApp(
-        title: 'Sample Redux App',
+        title: 'Sample App',
         routes: {
           InitScreen.route: (context) => InitScreen(),
-          LoginScreen.route: (context) {
-            return LoginScreen();
-          },
-          HomeScreen.route: (context) {
-            return HomeScreen();
-          },
+          LoginScreen.route: (context) => LoginScreen(),
+          HomeScreen.route: (context) => HomeScreen(),
           // STARTER: routes - do not remove comment
         },
       ),
