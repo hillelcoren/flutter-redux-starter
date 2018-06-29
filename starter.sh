@@ -336,15 +336,14 @@ else
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_actions.dart';${lineBreak}"
+    code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';${lineBreak}"
     sed -i -e "s/$comment/$comment${lineBreak}$code/g" ./lib/ui/app/app_drawer.dart
 
     comment="STARTER: menu - do not remove comment"
     code="ListTile(${lineBreak}"
     code="${code}leading: Icon(Icons.widgets),${lineBreak}"
     code="${code}title: Text('${Module}s'),${lineBreak}"
-    code="${code}onTap: () {${lineBreak}"
-    code="${code}store.dispatch(View${Module}List(context));${lineBreak}"
-    code="${code}},${lineBreak}"
+    code="${code}onTap: () => navigator.pushReplacementNamed(${Module}Screen.route),${lineBreak}"
     code="${code}),${lineBreak}"
     sed -i -e "s/$comment/$comment${lineBreak}$code/g" ./lib/ui/app/app_drawer.dart
 
