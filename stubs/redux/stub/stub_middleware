@@ -31,12 +31,12 @@ List<Middleware<AppState>> createStoreStubsMiddleware([
 
 Middleware<AppState> _viewStubList() {
   return (Store<AppState> store, action, NextDispatcher next) {
-    store.dispatch(LoadStubs());
-    store.dispatch(UpdateCurrentRoute(StubScreen.route));
-
     if (action.context != null) {
       NavigatorState navigator = Navigator.of(action.context);
       navigator.pushReplacementNamed(StubScreen.route);
+    } else {
+      store.dispatch(LoadStubs());
+      store.dispatch(UpdateCurrentRoute(StubScreen.route));
     }
 
     next(action);
