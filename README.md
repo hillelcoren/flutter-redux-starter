@@ -24,9 +24,10 @@ We're using this approach to develop the [Flutter app](https://github.com/invoic
 For example:
 
 ```
-git clone git@github.com:hillelcoren/flutter-redux-starter.git posts && cd posts
-./starter.sh init acme posts jsonplaceholder.typicode.com
-./starter.sh make posts post title,body:textarea
+git clone git@github.com:hillelcoren/flutter-redux-starter.git hacker_news && cd hacker_news
+./starter.sh init hacker_news articles api.hackerwebapp.com
+./starter.sh make articles article title,url﻿
+Change the route on line 20 of lib/data/repositories/article_repository.dart from /articles to /news
 flutter run
 ```
 
