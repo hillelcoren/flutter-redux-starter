@@ -27,7 +27,7 @@ For example:
 git clone git@github.com:hillelcoren/flutter-redux-starter.git hacker_news && cd hacker_news
 ./starter.sh init hacker_news articles api.hackerwebapp.com
 ./starter.sh make articles article title,url
-// Change the route on line 20 of lib/data/repositories/article_repository.dart from /articles to /news
+# Change the route on line 20 of lib/data/repositories/article_repository.dart from /articles to /news
 flutter run
 ```
 
