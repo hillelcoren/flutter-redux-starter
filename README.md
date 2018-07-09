@@ -1,7 +1,7 @@
 # Flutter Redux Starter/Code Generator - [Watch Video](https://www.youtube.com/watch?v=pMSokKmwp1U)
 
 <p align="center">
-    <img src="https://hillelcoren.files.wordpress.com/2018/06/redux.png" alt="Flutter Redux Starter"/>
+    <img src="https://hillelcoren.files.wordpress.com/2018/06/starter1.png" alt="Flutter Redux Starter"/>
 </p>
 
 
