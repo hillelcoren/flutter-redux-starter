@@ -2,9 +2,6 @@ import 'package:flutter_redux_starter/keys.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
-// Rename .env.dart.example to .env.dart
-import '../.env.dart';
-
 void main() {
   group('LOGIN TEST', () {
 
@@ -15,8 +12,8 @@ void main() {
       driver = await FlutterDriver.connect();
 
       // read config file
-      loginEmail = Config.testLoginEmail;
-      loginPassword = Config.testLoginPassword;
+      //loginEmail = Config.testLoginEmail;
+      //loginPassword = Config.testLoginPassword;
     });
 
     tearDown(() async {

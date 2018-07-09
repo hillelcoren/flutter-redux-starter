@@ -33,8 +33,8 @@ Middleware<AppState> _viewStubList() {
   return (Store<AppState> store, action, NextDispatcher next) {
     next(action);
 
-    store.dispatch(UpdateCurrentRoute(ClientScreen.route));
-    Navigator.of(action.context).pushReplacementNamed(ClientScreen.route);
+    store.dispatch(UpdateCurrentRoute(StubScreen.route));
+    Navigator.of(action.context).pushReplacementNamed(StubScreen.route);
   };
 }
 

@@ -5,7 +5,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_redux_starter/redux/app/app_middleware.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/redux/app/app_reducer.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
 import 'package:flutter_redux_starter/redux/auth/auth_middleware.dart';
 import 'package:flutter_redux_starter/ui/app/init.dart';
 import 'package:flutter_redux_starter/ui/auth/login_vm.dart';

@@ -21,7 +21,6 @@ if [ ${action} = "init" ]; then
 
     echo "Creating files..."
 
-    cp .env.dart.example .env.dart
     sed -i -e "s/__API_URL__/$url/g" ./lib/constants.dart
 
     mv "./android/app/src/main/java/com/hillelcoren" "./android/app/src/main/java/com/$company"
@@ -336,14 +335,13 @@ else
 
     comment="STARTER: import - do not remove comment"
     code="import 'package:${package}\/redux\/${module}\/${module}_actions.dart';${lineBreak}"
-    code="${code}import 'package:${package}\/ui\/${module}\/${module}_screen.dart';${lineBreak}"
     sed -i -e "s/$comment/$comment${lineBreak}$code/g" ./lib/ui/app/app_drawer.dart
 
     comment="STARTER: menu - do not remove comment"
     code="ListTile(${lineBreak}"
     code="${code}leading: Icon(Icons.widgets),${lineBreak}"
     code="${code}title: Text('${Module}s'),${lineBreak}"
-    code="${code}onTap: () => store.dispatch(View${Module}List(context),${lineBreak}"
+    code="${code}onTap: () => store.dispatch(View${Module}List(context)),${lineBreak}"
     code="${code}),${lineBreak}"
     sed -i -e "s/$comment/$comment${lineBreak}$code/g" ./lib/ui/app/app_drawer.dart
 
