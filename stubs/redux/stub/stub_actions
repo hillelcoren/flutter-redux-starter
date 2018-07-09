@@ -5,7 +5,10 @@ import 'package:flutter_redux_starter/data/models/stub_model.dart';
 import 'package:flutter_redux_starter/redux/app/app_actions.dart';
 
 
-class ViewStubList implements PersistUI {}
+class ViewStubList implements PersistUI {
+  final BuildContext context;
+  ViewStubList(this.context);
+}
 
 class ViewStub implements PersistUI {
   final StubEntity stub;
