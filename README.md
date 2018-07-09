@@ -1,9 +1,13 @@
-# Flutter Redux Starter/Code Generator - [Watch Video](https://www.youtube.com/watch?v=pMSokKmwp1U)
+# Flutter Redux Starter/Code Generator
 
 <p align="center">
     <img src="https://hillelcoren.files.wordpress.com/2018/06/starter1.png" alt="Flutter Redux Starter"/>
 </p>
 
+@@ Videos
+
+- [Short video](https://www.youtube.com/watch?v=pMSokKmwp1U) ~ 1 minute
+- [Long video](https://www.youtube.com/watch?v=RgV5xesTgDA) ~ 10 minutes
 
 We're using this approach to develop the [Flutter app](https://github.com/invoiceninja/flutter-mobile/) for [Invoice Ninja](https://www.invoiceninja.com).
 
