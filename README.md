@@ -35,6 +35,10 @@ git clone git@github.com:hillelcoren/flutter-redux-starter.git hacker_news && cd
 flutter run
 ```
 
+Note: on macOS sed leaves behind backup files ending with `-e`, you can use this command to delete the files:
+
+`find . -name "*-e" -type f -delete`
+
 ## Features
 
 - Supports large Redux stores by persisting parts separately
