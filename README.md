@@ -4,7 +4,7 @@
     <img src="https://hillelcoren.files.wordpress.com/2018/06/starter1.png" alt="Flutter Redux Starter"/>
 </p>
 
-@@ Videos
+## Videos
 
 - [Short video](https://www.youtube.com/watch?v=pMSokKmwp1U) ~ 1 minute
 - [Long video](https://www.youtube.com/watch?v=RgV5xesTgDA) ~ 10 minutes
