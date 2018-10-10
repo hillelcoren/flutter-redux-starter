@@ -7,14 +7,14 @@ homepage:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_redux: "^0.5.0"
-  redux_logging: "^0.3.0"
-  http: "^0.11.3+16"
-  path_provider: "^0.4.0"
-  shared_preferences: "^0.4.1"
-  built_value: "^5.4.5"
-  built_collection: "^3.1.1"
-  memoize: "^1.4.0"
+  flutter_redux: ^0.5.2
+  redux_logging: ^0.3.0
+  http: ^0.11.3+17
+  path_provider: ^0.4.1
+  shared_preferences: ^0.4.3
+  built_value: ^6.1.4
+  built_collection: ^4.0.0
+  memoize: ^2.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -25,8 +25,8 @@ dev_dependencies:
     sdk: flutter
   flutter_test:
     sdk: flutter
-  build_runner: "^0.8.9"
-  built_value_generator: "^5.4.5"
+  build_runner: ^1.0.0
+  built_value_generator: ^6.1.4
 
 
 # For information on the generic Dart part of this file, see the
