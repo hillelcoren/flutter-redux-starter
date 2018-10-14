@@ -7,7 +7,18 @@ echo "Flutter/Redux Starter by @hillelcoren"
 action="$1"
 lineBreak='\'$'\n'
 
-if [ ${action} = "init" ]; then
+if [ ${action} = "cleanup" ]; then
+
+    echo "Cleaning temporary built files.."
+    find . -name "*-e" -type f -delete
+
+elif [ ${action} = "build" ]; then
+
+    echo "Generating built files.."
+    flutter packages pub run build_runner clean
+    flutter packages pub run build_runner build --delete-conflicting-outputs
+
+elif [ ${action} = "init" ]; then
 
     company="$2"
     package="$3"
