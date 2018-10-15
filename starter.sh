@@ -125,7 +125,7 @@ elif [ ${action} = "init" ]; then
        sed -i -e "s/flutter_redux_starter/$package/g" $i
     done
 
-else
+elif [ ${action} = "make" ]; then
 
     package="$2"
     module="$3"
