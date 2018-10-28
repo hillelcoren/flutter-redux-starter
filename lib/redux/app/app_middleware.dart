@@ -1,15 +1,15 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_redux_starter/data/file_storage.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
-import 'package:flutter_redux_starter/data/repositories/persistence_repository.dart';
-import 'package:flutter_redux_starter/redux/app/app_actions.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/redux/app/data_state.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
-import 'package:flutter_redux_starter/redux/ui/ui_state.dart';
-import 'package:flutter_redux_starter/ui/auth/login_vm.dart';
-import 'package:flutter_redux_starter/ui/home/home_screen.dart';
+import 'package:flutterreduxrad/data/file_storage.dart';
+import 'package:flutterreduxrad/data/models/models.dart';
+import 'package:flutterreduxrad/data/repositories/persistence_repository.dart';
+import 'package:flutterreduxrad/redux/app/app_actions.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/app/data_state.dart';
+import 'package:flutterreduxrad/redux/auth/auth_actions.dart';
+import 'package:flutterreduxrad/redux/auth/auth_state.dart';
+import 'package:flutterreduxrad/redux/ui/ui_state.dart';
+import 'package:flutterreduxrad/ui/auth/login_vm.dart';
+import 'package:flutterreduxrad/ui/home/home_screen.dart';
 import 'package:redux/redux.dart';
 import 'package:path_provider/path_provider.dart';
 

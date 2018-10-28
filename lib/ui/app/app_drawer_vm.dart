@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/ui/app/app_drawer.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/ui/app/app_drawer.dart';
 import 'package:redux/redux.dart';
 
 class AppDrawerBuilder extends StatelessWidget {

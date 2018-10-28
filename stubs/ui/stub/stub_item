@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_starter/data/models/stub_model.dart';
-//import 'package:flutter_redux_starter/ui/app/dismissible_entity.dart';
+import 'package:flutterreduxrad/data/models/stub_model.dart';
+//import 'package:flutterreduxrad/ui/app/dismissible_entity.dart';
 
 
 class StubItem extends StatelessWidget {
@@ -9,7 +9,7 @@ class StubItem extends StatelessWidget {
   final GestureTapCallback onTap;
   final StubEntity stub;
 
-  static final stubItemKey = (int id) => Key('__stub_item_${id}__');
+  static final stubItemKey = (String id) => Key('__stub_item_${id}__');
 
   StubItem({
     @required this.onDismissed,
@@ -32,7 +32,7 @@ class StubItem extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Text(
-                  stub.displayName,
+                  stub.listDisplayName,
                   style: Theme.of(context).textTheme.title,
                 ),
               ),
@@ -53,7 +53,7 @@ class StubItem extends StatelessWidget {
           children: <Widget>[
             Expanded(
               child: Text(
-                stub.displayName,
+                stub.listDisplayName,
                 style: Theme.of(context).textTheme.title,
               ),
             ),

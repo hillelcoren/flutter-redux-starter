@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_starter/redux/stub/stub_selectors.dart';
-import 'package:flutter_redux_starter/ui/app/icon_message.dart';
-import 'package:flutter_redux_starter/data/models/stub_model.dart';
-import 'package:flutter_redux_starter/ui/stub/stub_list.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
+import 'package:flutterreduxrad/redux/stub/stub_selectors.dart';
+import 'package:flutterreduxrad/ui/app/icon_message.dart';
+import 'package:flutterreduxrad/data/models/stub_model.dart';
+import 'package:flutterreduxrad/ui/stub/stub_list.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/stub/stub_actions.dart';
 
 class StubListBuilder extends StatelessWidget {
   static final String route = '/stubs/edit';
@@ -30,8 +30,8 @@ class StubListBuilder extends StatelessWidget {
 }
 
 class StubListVM {
-  final List<int> stubList;
-  final BuiltMap<int, StubEntity> stubMap;
+  final List<String> stubList;
+  final BuiltMap<String, StubEntity> stubMap;
   final bool isLoading;
   final bool isLoaded;
   final Function(BuildContext, StubEntity) onStubTap;

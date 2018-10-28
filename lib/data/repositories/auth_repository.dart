@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:convert';
 import 'package:built_collection/built_collection.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
-import 'package:flutter_redux_starter/data/models/serializers.dart';
-import 'package:flutter_redux_starter/data/web_client.dart';
+import 'package:flutterreduxrad/data/models/models.dart';
+import 'package:flutterreduxrad/data/models/serializers.dart';
+import 'package:flutterreduxrad/data/web_client.dart';
 
 class AuthRepository {
   final WebClient webClient;
@@ -27,6 +27,6 @@ class AuthRepository {
     LoginResponse loginResponse = serializers.deserializeWith(
         LoginResponse.serializer, response);
 
-    return loginResponse.data.toBuiltList();
+    return null; // loginResponse.data.toBuiltList();
   }
 }

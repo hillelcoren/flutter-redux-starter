@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_state.dart';
-import 'package:flutter_redux_starter/ui/auth/login.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/auth/auth_actions.dart';
+import 'package:flutterreduxrad/redux/auth/auth_state.dart';
+import 'package:flutterreduxrad/ui/auth/login.dart';
 import 'package:redux/redux.dart';
 
 class LoginScreen extends StatelessWidget {

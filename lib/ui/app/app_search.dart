@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
+import 'package:flutterreduxrad/data/models/models.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/ui/list_ui_state.dart';
 import 'package:redux/redux.dart';
 
 class AppSearch extends StatelessWidget {

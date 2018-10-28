@@ -1,0 +1,65 @@
+import 'dart:async';
+import 'dart:core';
+import 'package:built_collection/built_collection.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutterreduxrad/data/models/models.dart';
+
+import 'package:flutterreduxrad/data/models/serializers.dart';
+import 'package:flutterreduxrad/redux/auth/auth_state.dart';
+import 'package:flutterreduxrad/data/models/stub_model.dart';
+
+class StubRepository {
+  final String entityCollection = 'entity-collection';
+
+  final Firestore firestore;
+
+  const StubRepository(this.firestore);
+
+  Future saveData(AuthState auth, StubEntity entity,
+      [EntityAction action]) async {
+    var data = serializers.serializeWith(
+        StubEntity.serializer, entity);
+    var response;
+
+    if (entity.isNew) {
+      response = await firestore
+          .collection(entityCollection)
+          .add(data)
+          .then((DocumentReference docRef) {
+        docRef.updateData({"id": docRef.documentID});
+        var dataWithID = new Map.from(data)
+          ..addEntries([new MapEntry("id", docRef.documentID)]);
+        print(dataWithID);
+        return dataWithID;
+      });
+    } else {
+      response = await firestore
+          .collection(entityCollection)
+          .document(entity.id)
+          .updateData(data)
+          .then((onValue) {
+        var dataWithID = new Map.from(data);
+        print(dataWithID);
+        return dataWithID;
+      });
+    }
+    return serializers.deserializeWith(
+        StubEntity.serializer, response);
+  }
+
+  Future<BuiltList<StubEntity>> loadList(AuthState auth) async {
+    return await firestore
+        .collection(entityCollection)
+        .getDocuments()
+        .then((querySnapshot) => new BuiltList<StubEntity>(
+                querySnapshot.documents.map((docSnapshot) {
+              var dataWithID = new Map.from(docSnapshot.data)
+                ..addEntries([new MapEntry("id", docSnapshot.documentID)]);
+              StubEntity entity =
+                  serializers.deserializeWith<StubEntity>(
+                      StubEntity.serializer, dataWithID);
+              print(entity);
+              return entity;
+            })));
+  }
+}

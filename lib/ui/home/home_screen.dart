@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_starter/ui/app/app_drawer_vm.dart';
+import 'package:flutterreduxrad/ui/app/app_drawer_vm.dart';
 
 class HomeScreen extends StatelessWidget {
 

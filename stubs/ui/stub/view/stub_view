@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_starter/ui/app/actions_menu_button.dart';
-import 'package:flutter_redux_starter/ui/stub/view/stub_view_vm.dart';
-import 'package:flutter_redux_starter/ui/app/form_card.dart';
+import 'package:flutterreduxrad/ui/app/actions_menu_button.dart';
+import 'package:flutterreduxrad/ui/stub/view/stub_view_vm.dart';
+import 'package:flutterreduxrad/ui/app/form_card.dart';
 
 class StubView extends StatefulWidget {
   final StubViewVM viewModel;
@@ -24,7 +24,7 @@ class _StubViewState extends State<StubView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(stub.displayName),
+        title: Text(stub.listDisplayName),
         actions: stub.isNew
             ? []
             : [
