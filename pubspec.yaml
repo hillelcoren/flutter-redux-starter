@@ -2,7 +2,7 @@ name: flutter_redux_starter
 version: 0.0.1
 description:
 author:
-homepage: 
+homepage:
 
 dependencies:
   flutter:
@@ -21,10 +21,10 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
-  flutter_driver:
-    sdk: flutter
-  flutter_test:
-    sdk: flutter
+  #flutter_driver:
+    #sdk: flutter
+  #flutter_test:
+    #sdk: flutter
   build_runner: ^1.0.0
   built_value_generator: ^6.1.4
 
