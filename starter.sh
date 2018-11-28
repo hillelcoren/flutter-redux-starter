@@ -18,6 +18,12 @@ elif [ ${action} = "build" ]; then
     flutter packages pub run build_runner clean
     flutter packages pub run build_runner build --delete-conflicting-outputs
 
+elif [ ${action} = "watch" ]; then
+
+    echo "Watching for changes and generating built files.."
+    # flutter packages pub run build_runner clean
+    flutter packages pub run build_runner watch --delete-conflicting-outputs
+
 elif [ ${action} = "init" ]; then
 
     company="$2"
