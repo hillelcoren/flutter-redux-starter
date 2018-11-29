@@ -9,10 +9,15 @@ part of 'auth_state.dart';
 // ignore_for_file: always_put_control_body_on_new_line
 // ignore_for_file: annotate_overrides
 // ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_catches_without_on_clauses
 // ignore_for_file: avoid_returning_this
+// ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: sort_constructors_first
+// ignore_for_file: unnecessary_const
+// ignore_for_file: unnecessary_new
+// ignore_for_file: test_types_in_equals
 
 Serializer<AuthState> _$authStateSerializer = new _$AuthStateSerializer();
 
@@ -24,7 +29,7 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
 
   @override
   Iterable serialize(Serializers serializers, AuthState object,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'email',
       serializers.serialize(object.email,
@@ -51,7 +56,7 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
 
   @override
   AuthState deserialize(Serializers serializers, Iterable serialized,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = new AuthStateBuilder();
 
     final iterator = serialized.iterator;
@@ -109,13 +114,18 @@ class _$AuthState extends AuthState {
       this.isAuthenticated,
       this.error})
       : super._() {
-    if (email == null) throw new BuiltValueNullFieldError('AuthState', 'email');
-    if (password == null)
+    if (email == null) {
+      throw new BuiltValueNullFieldError('AuthState', 'email');
+    }
+    if (password == null) {
       throw new BuiltValueNullFieldError('AuthState', 'password');
-    if (isInitialized == null)
+    }
+    if (isInitialized == null) {
       throw new BuiltValueNullFieldError('AuthState', 'isInitialized');
-    if (isAuthenticated == null)
+    }
+    if (isAuthenticated == null) {
       throw new BuiltValueNullFieldError('AuthState', 'isAuthenticated');
+    }
   }
 
   @override
@@ -126,10 +136,10 @@ class _$AuthState extends AuthState {
   AuthStateBuilder toBuilder() => new AuthStateBuilder()..replace(this);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! AuthState) return false;
-    return email == other.email &&
+    return other is AuthState &&
+        email == other.email &&
         password == other.password &&
         isInitialized == other.isInitialized &&
         isAuthenticated == other.isAuthenticated &&
@@ -199,7 +209,9 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
 
   @override
   void replace(AuthState other) {
-    if (other == null) throw new ArgumentError.notNull('other');
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
     _$v = other as _$AuthState;
   }
 

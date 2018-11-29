@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
+import 'package:flutterreduxrad/data/models/models.dart';
 
 class ActionMenuChoice {
   const ActionMenuChoice({

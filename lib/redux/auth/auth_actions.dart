@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_redux_starter/redux/app/app_actions.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/app/app_actions.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
 
 class LoadStateRequest {
   final BuildContext context;

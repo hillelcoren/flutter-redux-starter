@@ -9,10 +9,15 @@ part of 'app_state.dart';
 // ignore_for_file: always_put_control_body_on_new_line
 // ignore_for_file: annotate_overrides
 // ignore_for_file: avoid_annotating_with_dynamic
+// ignore_for_file: avoid_catches_without_on_clauses
 // ignore_for_file: avoid_returning_this
+// ignore_for_file: lines_longer_than_80_chars
 // ignore_for_file: omit_local_variable_types
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: sort_constructors_first
+// ignore_for_file: unnecessary_const
+// ignore_for_file: unnecessary_new
+// ignore_for_file: test_types_in_equals
 
 Serializer<AppState> _$appStateSerializer = new _$AppStateSerializer();
 
@@ -24,10 +29,13 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
 
   @override
   Iterable serialize(Serializers serializers, AppState object,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'isLoading',
       serializers.serialize(object.isLoading,
+          specifiedType: const FullType(bool)),
+      'isSaving',
+      serializers.serialize(object.isSaving,
           specifiedType: const FullType(bool)),
       'authState',
       serializers.serialize(object.authState,
@@ -38,6 +46,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'dataState',
       serializers.serialize(object.dataState,
           specifiedType: const FullType(DataState)),
+      'staticState',
+      serializers.serialize(object.staticState,
+          specifiedType: const FullType(StaticState)),
     ];
 
     return result;
@@ -45,7 +56,7 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
 
   @override
   AppState deserialize(Serializers serializers, Iterable serialized,
-      {FullType specifiedType: FullType.unspecified}) {
+      {FullType specifiedType = FullType.unspecified}) {
     final result = new AppStateBuilder();
 
     final iterator = serialized.iterator;
@@ -56,6 +67,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       switch (key) {
         case 'isLoading':
           result.isLoading = serializers.deserialize(value,
+              specifiedType: const FullType(bool)) as bool;
+          break;
+        case 'isSaving':
+          result.isSaving = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'authState':
@@ -70,6 +85,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.dataState.replace(serializers.deserialize(value,
               specifiedType: const FullType(DataState)) as DataState);
           break;
+        case 'staticState':
+          result.staticState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(StaticState)) as StaticState);
+          break;
       }
     }
 
@@ -81,25 +100,45 @@ class _$AppState extends AppState {
   @override
   final bool isLoading;
   @override
+  final bool isSaving;
+  @override
   final AuthState authState;
   @override
   final UIState uiState;
   @override
   final DataState dataState;
+  @override
+  final StaticState staticState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.isLoading, this.authState, this.uiState, this.dataState})
+  _$AppState._(
+      {this.isLoading,
+      this.isSaving,
+      this.authState,
+      this.uiState,
+      this.dataState,
+      this.staticState})
       : super._() {
-    if (isLoading == null)
+    if (isLoading == null) {
       throw new BuiltValueNullFieldError('AppState', 'isLoading');
-    if (authState == null)
+    }
+    if (isSaving == null) {
+      throw new BuiltValueNullFieldError('AppState', 'isSaving');
+    }
+    if (authState == null) {
       throw new BuiltValueNullFieldError('AppState', 'authState');
-    if (uiState == null)
+    }
+    if (uiState == null) {
       throw new BuiltValueNullFieldError('AppState', 'uiState');
-    if (dataState == null)
+    }
+    if (dataState == null) {
       throw new BuiltValueNullFieldError('AppState', 'dataState');
+    }
+    if (staticState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'staticState');
+    }
   }
 
   @override
@@ -110,31 +149,27 @@ class _$AppState extends AppState {
   AppStateBuilder toBuilder() => new AppStateBuilder()..replace(this);
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    if (other is! AppState) return false;
-    return isLoading == other.isLoading &&
+    return other is AppState &&
+        isLoading == other.isLoading &&
+        isSaving == other.isSaving &&
         authState == other.authState &&
         uiState == other.uiState &&
-        dataState == other.dataState;
+        dataState == other.dataState &&
+        staticState == other.staticState;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, isLoading.hashCode), authState.hashCode),
-            uiState.hashCode),
-        dataState.hashCode));
-  }
-
-  @override
-  String toString() {
-    return (newBuiltValueToStringHelper('AppState')
-          ..add('isLoading', isLoading)
-          ..add('authState', authState)
-          ..add('uiState', uiState)
-          ..add('dataState', dataState))
-        .toString();
+        $jc(
+            $jc(
+                $jc($jc($jc(0, isLoading.hashCode), isSaving.hashCode),
+                    authState.hashCode),
+                uiState.hashCode),
+            dataState.hashCode),
+        staticState.hashCode));
   }
 }
 
@@ -144,6 +179,10 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   bool _isLoading;
   bool get isLoading => _$this._isLoading;
   set isLoading(bool isLoading) => _$this._isLoading = isLoading;
+
+  bool _isSaving;
+  bool get isSaving => _$this._isSaving;
+  set isSaving(bool isSaving) => _$this._isSaving = isSaving;
 
   AuthStateBuilder _authState;
   AuthStateBuilder get authState =>
@@ -159,14 +198,22 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$this._dataState ??= new DataStateBuilder();
   set dataState(DataStateBuilder dataState) => _$this._dataState = dataState;
 
+  StaticStateBuilder _staticState;
+  StaticStateBuilder get staticState =>
+      _$this._staticState ??= new StaticStateBuilder();
+  set staticState(StaticStateBuilder staticState) =>
+      _$this._staticState = staticState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
       _isLoading = _$v.isLoading;
+      _isSaving = _$v.isSaving;
       _authState = _$v.authState?.toBuilder();
       _uiState = _$v.uiState?.toBuilder();
       _dataState = _$v.dataState?.toBuilder();
+      _staticState = _$v.staticState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -174,7 +221,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
 
   @override
   void replace(AppState other) {
-    if (other == null) throw new ArgumentError.notNull('other');
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
     _$v = other as _$AppState;
   }
 
@@ -190,9 +239,11 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               isLoading: isLoading,
+              isSaving: isSaving,
               authState: authState.build(),
               uiState: uiState.build(),
-              dataState: dataState.build());
+              dataState: dataState.build(),
+              staticState: staticState.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -202,6 +253,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         uiState.build();
         _$failedField = 'dataState';
         dataState.build();
+        _$failedField = 'staticState';
+        staticState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

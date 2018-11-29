@@ -1,4 +1,4 @@
-import 'package:flutter_redux_starter/redux/app/data_state.dart';
+import 'package:flutterreduxrad/redux/app/data_state.dart';
 // STARTER: import - do not remove comment
 
 DataState dataReducer(DataState state, action) {

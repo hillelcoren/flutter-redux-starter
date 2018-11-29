@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux_starter/ui/stub/stub_item.dart';
-import 'package:flutter_redux_starter/ui/stub/stub_list_vm.dart';
+import 'package:flutterreduxrad/ui/stub/stub_item.dart';
+import 'package:flutterreduxrad/ui/stub/stub_list_vm.dart';
 
 class StubList extends StatelessWidget {
   final StubListVM viewModel;

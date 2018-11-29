@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/redux/ui/ui_actions.dart';
-import 'package:flutter_redux_starter/ui/app/app_drawer_vm.dart';
-import 'package:flutter_redux_starter/ui/home/home_screen.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/ui/ui_actions.dart';
+import 'package:flutterreduxrad/ui/app/app_drawer_vm.dart';
+import 'package:flutterreduxrad/ui/home/home_screen.dart';
 import 'package:redux/redux.dart';
 // STARTER: import - do not remove comment
 

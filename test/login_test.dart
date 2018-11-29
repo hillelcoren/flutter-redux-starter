@@ -1,4 +1,4 @@
-import 'package:flutter_redux_starter/keys.dart';
+import 'package:flutterreduxrad/keys.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 

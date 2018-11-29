@@ -1,22 +1,22 @@
 import 'package:memoize/memoize.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:flutter_redux_starter/data/models/stub_model.dart';
-import 'package:flutter_redux_starter/redux/ui/list_ui_state.dart';
+import 'package:flutterreduxrad/data/models/stub_model.dart';
+import 'package:flutterreduxrad/redux/ui/list_ui_state.dart';
 
 var memoizedStubList = memo3((
-    BuiltMap<int, StubEntity> stubMap,
-    BuiltList<int> stubList,
+    BuiltMap<String, StubEntity> stubMap,
+    BuiltList<String> stubList,
     ListUIState stubListState) => visibleStubsSelector(stubMap, stubList, stubListState)
 );
 
-List<int> visibleStubsSelector(
-    BuiltMap<int, StubEntity> stubMap,
-    BuiltList<int> stubList,
+List<String> visibleStubsSelector(
+    BuiltMap<String, StubEntity> stubMap,
+    BuiltList<String> stubList,
     ListUIState stubListState) {
 
   var list = stubList.where((stubId) {
     var stub = stubMap[stubId];
-    return stub.matchesSearch(stubListState.search);
+    return stub.matchesFilter(stubListState.search);
   }).toList();
 
   list.sort((stubAId, stubBId) {

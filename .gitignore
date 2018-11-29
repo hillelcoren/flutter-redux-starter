@@ -10,3 +10,5 @@ build/
 
 .flutter-plugins
 .env.dart
+
+android/app/google-services.json

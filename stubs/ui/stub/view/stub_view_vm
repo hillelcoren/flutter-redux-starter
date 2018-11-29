@@ -3,12 +3,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_redux_starter/redux/stub/stub_actions.dart';
-import 'package:flutter_redux_starter/data/models/stub_model.dart';
-import 'package:flutter_redux_starter/data/models/models.dart';
-import 'package:flutter_redux_starter/ui/stub/view/stub_view.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/ui/app/icon_message.dart';
+import 'package:flutterreduxrad/redux/stub/stub_actions.dart';
+import 'package:flutterreduxrad/data/models/stub_model.dart';
+import 'package:flutterreduxrad/data/models/models.dart';
+import 'package:flutterreduxrad/ui/stub/view/stub_view.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/ui/app/icon_message.dart';
 
 class StubViewScreen extends StatelessWidget {
   static final String route = '/stub/view';

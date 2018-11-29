@@ -1,16 +1,21 @@
-import 'package:flutter_redux_starter/redux/app/app_actions.dart';
-import 'package:flutter_redux_starter/redux/app/app_state.dart';
-import 'package:flutter_redux_starter/redux/app/data_reducer.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_actions.dart';
-import 'package:flutter_redux_starter/redux/auth/auth_reducer.dart';
-import 'package:flutter_redux_starter/redux/ui/ui_reducer.dart';
+import 'package:flutterreduxrad/redux/app/app_actions.dart';
+import 'package:flutterreduxrad/redux/app/app_state.dart';
+import 'package:flutterreduxrad/redux/app/data_reducer.dart';
+import 'package:flutterreduxrad/redux/auth/auth_actions.dart';
+import 'package:flutterreduxrad/redux/auth/auth_reducer.dart';
+import 'package:flutterreduxrad/redux/ui/ui_reducer.dart';
 import 'package:redux/redux.dart';
 
 AppState appReducer(AppState state, action) {
   if (action is UserLogout) {
-    return AppState().rebuild((b) => b.authState.replace(state.authState));
+     return AppState().rebuild((b) => b
+        ..authState.replace(state.authState)
+        ..uiState.enableDarkMode = state.uiState.enableDarkMode);
   } else if (action is LoadStateSuccess) {
-    return action.state.rebuild((b) => b.isLoading = false);
+     return action.state.rebuild((b) => b
+        ..isLoading = false
+        ..isSaving = false
+    );
   }
 
   return state.rebuild((b) => b
