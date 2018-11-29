@@ -7,7 +7,7 @@ echo "Flutter/Redux Starter by @hillelcoren"
 action="$1"
 lineBreak='\'$'\n'
 
-if [ ${action} = "cleanup" ]; then
+if [ ${action} = "cleanup" ] || [ ${action} = "clean" ]; then
 
     echo "Cleaning temporary built files.."
     find . -name "*-e" -type f -delete
