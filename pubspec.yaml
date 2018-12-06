@@ -7,6 +7,8 @@ homepage:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_redux: ^0.5.2
   redux_logging: ^0.3.0
   http: ^0.11.3+17
