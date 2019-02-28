@@ -38,7 +38,7 @@ elif [ ${action} = "init" ]; then
 
     echo "Creating files..."
 
-    sed -i -e "s/__API_URL__/$url/g" ./lib/constants.dart
+    sed -i -e "s,__API_URL__,$url,g" ./lib/constants.dart
 
     mv "./android/app/src/main/java/com/hillelcoren" "./android/app/src/main/java/com/$company"
     mv "./android/app/src/main/java/com/$company/flutterreduxstarter" "./android/app/src/main/java/com/$company/$package"
