@@ -2,6 +2,8 @@ import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_redux_starter/localizations.dart';
 import 'package:flutter_redux_starter/redux/app/app_middleware.dart';
 import 'package:flutter_redux_starter/redux/app/app_state.dart';
 import 'package:flutter_redux_starter/redux/app/app_reducer.dart';
@@ -41,7 +43,14 @@ class _SampleReduxAppState extends State<SampleReduxApp> {
     return StoreProvider<AppState>(
       store: widget.store,
       child: MaterialApp(
-        title: 'Sample App',
+        localizationsDelegates: [
+          AppLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate
+        ],
+        supportedLocales: [Locale("en"), Locale("no"), Locale("nb")],
+        debugShowCheckedModeBanner: false,
+        onGenerateTitle: (BuildContext context) => AppLocalizations.of(context).title,
         routes: {
           InitScreen.route: (context) => InitScreen(),
           LoginScreen.route: (context) => LoginScreen(),
